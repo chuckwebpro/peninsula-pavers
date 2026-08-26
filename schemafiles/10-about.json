@@ -1,0 +1,60 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "AboutPage",
+      "@id": "https://peninsulapavers.com/about/#webpage",
+      "url": "https://peninsulapavers.com/about/",
+      "name": "About Peninsula Pavers | Traverse City Hardscaping for 25+ Years",
+      "description": "Peninsula Pavers has built patios, driveways, walls, and outdoor living spaces across Traverse City for more than 25 years. Owner-designed, locally owned.",
+      "isPartOf": {
+        "@id": "https://peninsulapavers.com/#website"
+      },
+      "about": {
+        "@id": "https://peninsulapavers.com/#business"
+      },
+      "mainEntity": {
+        "@id": "https://peninsulapavers.com/#business"
+      },
+      "breadcrumb": {
+        "@id": "https://peninsulapavers.com/about/#breadcrumb"
+      },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://peninsulapavers.com/about/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://peninsulapavers.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "About",
+          "item": "https://peninsulapavers.com/about/"
+        }
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://peninsulapavers.com/about/#len-allgaier",
+      "name": "Len Allgaier",
+      "jobTitle": "Owner and Designer",
+      "worksFor": {
+        "@id": "https://peninsulapavers.com/#business"
+      },
+      "knowsAbout": [
+        "Hardscape design",
+        "Paver installation",
+        "Retaining wall engineering",
+        "Cold climate base preparation and drainage",
+        "Landscape design"
+      ],
+      "image": "REPLACE_LEN_ALLGAIER_PHOTO_URL"
+    }
+  ]
+}

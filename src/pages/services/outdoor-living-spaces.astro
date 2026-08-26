@@ -6,6 +6,7 @@ import Heading from '../../components/ui/Heading.astro';
 import Button from '../../components/ui/Button.astro';
 import { Icon } from 'astro-icon/components';
 import { site } from '../../config/site';
+import { serviceSchema } from '../../config/schema';
 
 const benefits = [
   {
@@ -63,6 +64,14 @@ const faqs = [
 <BaseLayout
   title={`Outdoor Living Spaces | ${site.name}`}
   description="Custom outdoor living spaces in Traverse City, MI. Peninsula Pavers designs and builds patios, hardscaping, and outdoor areas using quality brick pavers and natural stone."
+  pageType="service"
+  breadcrumbs={[
+    { name: 'Home',                                        href: '/' },
+    { name: 'Services',                                    href: '/services/' },
+    { name: 'Outdoor Living Space Design and Construction', href: '/services/outdoor-living-spaces/' },
+  ]}
+  faqs={faqs.map(f => ({ question: f.q, answer: f.a }))}
+  service={serviceSchema['outdoor-living-spaces']}
   sticky="overlay"
 >
 

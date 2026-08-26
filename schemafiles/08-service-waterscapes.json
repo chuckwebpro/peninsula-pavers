@@ -1,0 +1,203 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://peninsulapavers.com/services/waterscapes/#webpage",
+      "url": "https://peninsulapavers.com/services/waterscapes/",
+      "name": "Waterscapes and Water Features Traverse City MI | Peninsula Pavers",
+      "description": "Custom ponds, waterfalls, and fountains designed and built for Traverse City yards, with liner, plumbing, and pump systems sized to run reliably and winterize cleanly through northern Michigan seasons.",
+      "isPartOf": {
+        "@id": "https://peninsulapavers.com/#website"
+      },
+      "about": {
+        "@id": "https://peninsulapavers.com/services/waterscapes/#service"
+      },
+      "breadcrumb": {
+        "@id": "https://peninsulapavers.com/services/waterscapes/#breadcrumb"
+      },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://peninsulapavers.com/services/waterscapes/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://peninsulapavers.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://peninsulapavers.com/services/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Waterscape and Water Feature Construction",
+          "item": "https://peninsulapavers.com/services/waterscapes/"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://peninsulapavers.com/services/waterscapes/#service",
+      "name": "Waterscape and Water Feature Construction",
+      "serviceType": "Water feature construction",
+      "description": "Custom ponds, waterfalls, and fountains designed and built for Traverse City yards, with liner, plumbing, and pump systems sized to run reliably and winterize cleanly through northern Michigan seasons.",
+      "url": "https://peninsulapavers.com/services/waterscapes/",
+      "provider": {
+        "@id": "https://peninsulapavers.com/#business"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Traverse City",
+          "address": {
+            "@type": "PostalAddress",
+            "addressRegion": "MI",
+            "addressCountry": "US"
+          }
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Grand Traverse County, Michigan"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Leelanau County, Michigan"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Benzie County, Michigan"
+        }
+      ],
+      "termsOfService": "Written quotes are provided at no cost after an on-site consultation and are held for 30 days.",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Waterscape and Water Feature Construction",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "position": 1,
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Pond design and construction"
+            }
+          },
+          {
+            "@type": "Offer",
+            "position": 2,
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Waterfall and stream installation"
+            }
+          },
+          {
+            "@type": "Offer",
+            "position": 3,
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Bubbling boulder and fountain installation"
+            }
+          },
+          {
+            "@type": "Offer",
+            "position": 4,
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Pump, filtration, and winterization setup"
+            }
+          }
+        ]
+      },
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "USD",
+          "description": "Every project is quoted individually after a free on-site consultation. Written quotes are held for 30 days."
+        },
+        "areaServed": [
+          {
+            "@type": "City",
+            "name": "Traverse City",
+            "address": {
+              "@type": "PostalAddress",
+              "addressRegion": "MI",
+              "addressCountry": "US"
+            }
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Grand Traverse County, Michigan"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Leelanau County, Michigan"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Benzie County, Michigan"
+          }
+        ],
+        "seller": {
+          "@id": "https://peninsulapavers.com/#business"
+        }
+      },
+      "isPartOf": {
+        "@id": "https://peninsulapavers.com/services/#catalog"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://peninsulapavers.com/services/waterscapes/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How long does a water feature installation take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A self-contained fountain is a short project. A pond with a waterfall, filtration, and integrated stonework takes substantially longer. Your written estimate specifies the timeline for your particular feature before you commit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does a waterscape cost in Traverse City?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every water feature is unique to its site and we won't quote a range that misrepresents your project. Feature type, size, excavation, liner and plumbing work, pump and filtration selection, stone, and electrical access all factor in. Free detailed written quote after we see your property, held for 30 days."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much maintenance does a water feature require?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "More than a patio, less than most people fear. Routine care involves debris removal, occasional pump and filter service, and seasonal shutdown and startup. We walk you through all of it at completion so you know exactly what you're taking on."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What do I need to do before you start?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Your prep list arrives a few days ahead. For water features it typically covers clearing the installation area, confirming access for excavation equipment, and identifying nearby electrical service for pump power."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the phases of a waterscape project?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Site visit and design, written quote with 30-day lock, scheduling and prep, excavation, liner and plumbing installation, pump and filtration setup, stonework and edge detailing, filling and system testing, then cleanup and a full operating walkthrough."
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,203 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://peninsulapavers.com/services/driveways/#webpage",
+      "url": "https://peninsulapavers.com/services/driveways/",
+      "name": "Paver Driveways Traverse City MI | Peninsula Pavers",
+      "description": "Paver driveway design and installation for Traverse City homes, engineered with proper excavation depth, compacted aggregate base, and drainage to handle plow blades, road salt, and vehicle loads.",
+      "isPartOf": {
+        "@id": "https://peninsulapavers.com/#website"
+      },
+      "about": {
+        "@id": "https://peninsulapavers.com/services/driveways/#service"
+      },
+      "breadcrumb": {
+        "@id": "https://peninsulapavers.com/services/driveways/#breadcrumb"
+      },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://peninsulapavers.com/services/driveways/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://peninsulapavers.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://peninsulapavers.com/services/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Paver Driveway Installation",
+          "item": "https://peninsulapavers.com/services/driveways/"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://peninsulapavers.com/services/driveways/#service",
+      "name": "Paver Driveway Installation",
+      "serviceType": "Driveway paving",
+      "description": "Paver driveway design and installation for Traverse City homes, engineered with proper excavation depth, compacted aggregate base, and drainage to handle plow blades, road salt, and vehicle loads.",
+      "url": "https://peninsulapavers.com/services/driveways/",
+      "provider": {
+        "@id": "https://peninsulapavers.com/#business"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Traverse City",
+          "address": {
+            "@type": "PostalAddress",
+            "addressRegion": "MI",
+            "addressCountry": "US"
+          }
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Grand Traverse County, Michigan"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Leelanau County, Michigan"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Benzie County, Michigan"
+        }
+      ],
+      "termsOfService": "Written quotes are provided at no cost after an on-site consultation and are held for 30 days.",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Paver Driveway Installation",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "position": 1,
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Paver driveway installation"
+            }
+          },
+          {
+            "@type": "Offer",
+            "position": 2,
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Existing driveway removal and replacement"
+            }
+          },
+          {
+            "@type": "Offer",
+            "position": 3,
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Driveway aprons and borders"
+            }
+          },
+          {
+            "@type": "Offer",
+            "position": 4,
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Driveway grading and drainage"
+            }
+          }
+        ]
+      },
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "USD",
+          "description": "Every project is quoted individually after a free on-site consultation. Written quotes are held for 30 days."
+        },
+        "areaServed": [
+          {
+            "@type": "City",
+            "name": "Traverse City",
+            "address": {
+              "@type": "PostalAddress",
+              "addressRegion": "MI",
+              "addressCountry": "US"
+            }
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Grand Traverse County, Michigan"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Leelanau County, Michigan"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Benzie County, Michigan"
+          }
+        ],
+        "seller": {
+          "@id": "https://peninsulapavers.com/#business"
+        }
+      },
+      "isPartOf": {
+        "@id": "https://peninsulapavers.com/services/#catalog"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://peninsulapavers.com/services/driveways/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How long does a paver driveway installation take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Driveways involve more excavation and base material than most hardscape projects, so timeline tracks closely with square footage and site access. We give you a specific window in your written estimate and update you the same day if weather moves it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does a paver driveway cost in Traverse City?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every property is different and a published range would be wrong for most people reading it. Square footage, paver selection, existing surface removal, grading, and drainage requirements all factor in. You get a detailed written quote after we walk the property, at no cost, and the price holds for 30 days."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will a paver driveway handle snowplows and salt?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, when it's installed correctly. Properly set pavers with the right base and edge restraint handle plow blades and vehicle loads without issue. We'll talk through plowing during your consultation so the installation accounts for how your drive gets cleared."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I prepare for the crew?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We send a prep list a few days ahead. For driveways it usually means arranging alternate parking, clearing the drive completely, and flagging sprinkler heads, invisible fence, or landscape lighting near the edges."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the phases of a driveway project?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Site visit and design, written quote with 30-day price lock, scheduling and prep list, removal of the existing surface, excavation and grading, base installation and compaction, paver installation and cutting, edge restraint and joint sand, then final cleanup. No surprises at any point."
+          }
+        }
+      ]
+    }
+  ]
+}

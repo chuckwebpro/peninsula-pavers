@@ -57,13 +57,13 @@ export const navigation: NavigationConfig = {
       panel: {
         kind: 'links',
         links: [
-          { label: 'Outdoor Living Spaces', href: '/services/outdoor-living-spaces/' },
-          { label: 'Custom Patios',         href: '/services/patios/' },
+          { label: 'Custom Walkways',        href: '/services/walkways/' },
           { label: 'Paver Driveways',       href: '/services/driveways/' },
-          { label: 'Retaining Walls',       href: '/services/retaining-walls/' },
-          { label: 'Stone Walkways',        href: '/services/walkways/' },
-          { label: 'Waterscapes',           href: '/services/waterscapes/' },
           { label: 'Landscaping',           href: '/services/landscaping/' },
+          { label: 'Outdoor Living Spaces', href: '/services/outdoor-living-spaces/' },
+          { label: 'Patios',         href: '/services/patios/' },
+          { label: 'Retaining Walls',       href: '/services/retaining-walls/' },
+          { label: 'Waterscapes',           href: '/services/waterscapes/' },
         ],
       },
     },

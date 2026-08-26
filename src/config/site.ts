@@ -27,6 +27,25 @@ export interface SiteConfig {
   tagline: string;
   description: string;
   locale: string;
+  foundingYear?: number;
+  slogan?: string;
+  knowsAbout?: string[];
+  logoUrl?: string;
+  primaryImageUrl?: string;
+  areaServed?: Array<{
+    type: 'City' | 'AdministrativeArea';
+    name: string;
+    region?: string;
+    country?: string;
+  }>;
+  team?: {
+    len?: {
+      name: string;
+      title: string;
+      photoUrl?: string;
+      knowsAbout?: string[];
+    };
+  };
 
   business: {
     schemaType: SchemaBusinessType;
@@ -49,6 +68,7 @@ export interface SiteConfig {
   };
 
   social: {
+    googleBusiness?: string;
     facebook?: string;
     instagram?: string;
     linkedin?: string;
@@ -89,6 +109,41 @@ export const site: SiteConfig = {
   description:
     'Full-service hardscaping and landscape company serving Northern Michigan since 1994. Residential and commercial paving brick, retaining walls, and outdoor living spaces.',
   locale: 'en-US',
+  foundingYear: 1994,
+  slogan:
+    'No surprises. You will know precisely what we are going to do, step by step, before we do it.',
+  knowsAbout: [
+    'Paver patio installation',
+    'Paver driveway installation',
+    'Retaining wall design and construction',
+    'Hardscape base preparation and drainage',
+    'Frost heave prevention in cold climates',
+    'Shoreline and slope erosion control',
+    'Pond and waterfall construction',
+    'Landscape design',
+  ],
+  logoUrl: '',
+  primaryImageUrl: '',
+  areaServed: [
+    { type: 'City',               name: 'Traverse City',               region: 'MI', country: 'US' },
+    { type: 'AdministrativeArea', name: 'Grand Traverse County, Michigan' },
+    { type: 'AdministrativeArea', name: 'Leelanau County, Michigan' },
+    { type: 'AdministrativeArea', name: 'Benzie County, Michigan' },
+  ],
+  team: {
+    len: {
+      name:       'Len Allgaier',
+      title:      'Owner and Designer',
+      photoUrl:   '/images/Team.webp',
+      knowsAbout: [
+        'Hardscape design',
+        'Paver installation',
+        'Retaining wall engineering',
+        'Cold climate base preparation and drainage',
+        'Landscape design',
+      ],
+    },
+  },
 
   business: {
     schemaType: 'HomeAndConstructionBusiness',
@@ -107,9 +162,9 @@ export const site: SiteConfig = {
     priceRange: '$$$',
   },
 
-  social: {},
+  social: { googleBusiness: '' },
 
-  defaultOgImage: '/og-default.png',
+  defaultOgImage: '/images/s1.webp',
 
   formspreeId: '',
 
@@ -122,7 +177,7 @@ export const site: SiteConfig = {
   },
 
   verification: {
-    google: '',
+    google: 'QQ-snN_HfJJLU4XLcZvlfPpxepYLwe2QVZJfvGVyNAo',
     bing: '',
     meta: '',
   },

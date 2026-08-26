@@ -1,0 +1,203 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://peninsulapavers.com/services/patios/#webpage",
+      "url": "https://peninsulapavers.com/services/patios/",
+      "name": "Custom Paver Patios Traverse City MI | Peninsula Pavers",
+      "description": "Custom patios built with pavers, natural stone, and brick in Traverse City, designed around your grade, sun exposure, and use, with excavation and base depth engineered for Michigan winters.",
+      "isPartOf": {
+        "@id": "https://peninsulapavers.com/#website"
+      },
+      "about": {
+        "@id": "https://peninsulapavers.com/services/patios/#service"
+      },
+      "breadcrumb": {
+        "@id": "https://peninsulapavers.com/services/patios/#breadcrumb"
+      },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://peninsulapavers.com/services/patios/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://peninsulapavers.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://peninsulapavers.com/services/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Custom Paver Patio Installation",
+          "item": "https://peninsulapavers.com/services/patios/"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://peninsulapavers.com/services/patios/#service",
+      "name": "Custom Paver Patio Installation",
+      "serviceType": "Patio installation",
+      "description": "Custom patios built with pavers, natural stone, and brick in Traverse City, designed around your grade, sun exposure, and use, with excavation and base depth engineered for Michigan winters.",
+      "url": "https://peninsulapavers.com/services/patios/",
+      "provider": {
+        "@id": "https://peninsulapavers.com/#business"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Traverse City",
+          "address": {
+            "@type": "PostalAddress",
+            "addressRegion": "MI",
+            "addressCountry": "US"
+          }
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Grand Traverse County, Michigan"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Leelanau County, Michigan"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Benzie County, Michigan"
+        }
+      ],
+      "termsOfService": "Written quotes are provided at no cost after an on-site consultation and are held for 30 days.",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Custom Paver Patio Installation",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "position": 1,
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Paver patio installation"
+            }
+          },
+          {
+            "@type": "Offer",
+            "position": 2,
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Natural stone patio installation"
+            }
+          },
+          {
+            "@type": "Offer",
+            "position": 3,
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Patio extension and replacement"
+            }
+          },
+          {
+            "@type": "Offer",
+            "position": 4,
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Patio drainage and grading"
+            }
+          }
+        ]
+      },
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "USD",
+          "description": "Every project is quoted individually after a free on-site consultation. Written quotes are held for 30 days."
+        },
+        "areaServed": [
+          {
+            "@type": "City",
+            "name": "Traverse City",
+            "address": {
+              "@type": "PostalAddress",
+              "addressRegion": "MI",
+              "addressCountry": "US"
+            }
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Grand Traverse County, Michigan"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Leelanau County, Michigan"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Benzie County, Michigan"
+          }
+        ],
+        "seller": {
+          "@id": "https://peninsulapavers.com/#business"
+        }
+      },
+      "isPartOf": {
+        "@id": "https://peninsulapavers.com/services/#catalog"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://peninsulapavers.com/services/patios/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How long does a patio installation take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Size, access, and site conditions drive the timeline more than anything else. A patio on flat, open ground goes in faster than one that needs significant excavation or sits behind a tight side yard. You get a specific timeline in your written estimate, and we tell you immediately if weather shifts it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does a paver patio cost in Traverse City?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every project is unique and we'd rather quote your yard than publish a range that misleads you. Material choice, square footage, site prep, drainage, and any built-in features all move the number. We provide a detailed written quote after seeing your space at no cost and no obligation, and we hold that price for 30 days."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long will the crew be at my house?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Your written estimate includes the on-site window. We stick to it unless weather intervenes, and if it does, you hear from us that day. The work area stays clean and secure while we're there."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What do I need to do before installation starts?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You'll get a prep list a few days out. Usually it's moving furniture and grills, marking sprinklers and any buried lines we should know about, and making sure the crew can get equipment to the work area."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the steps in a patio project?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Consultation and design, written quote with a 30-day lock, scheduling and prep list, excavation, base and drainage installation, paver laying and cutting, edging and joint sand, then final cleanup and walkthrough. You know what's happening before it happens, every time."
+          }
+        }
+      ]
+    }
+  ]
+}

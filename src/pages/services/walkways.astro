@@ -6,6 +6,7 @@ import Heading from '../../components/ui/Heading.astro';
 import Button from '../../components/ui/Button.astro';
 import { Icon } from 'astro-icon/components';
 import { site } from '../../config/site';
+import { serviceSchema } from '../../config/schema';
 
 const benefits = [
   {
@@ -63,6 +64,14 @@ const faqs = [
 <BaseLayout
   title={`Custom Walkways | ${site.name}`}
   description="Custom stone and paver walkways in Traverse City, MI. Peninsula Pavers designs and installs walkways for homes and businesses built for safety, beauty, and Northern Michigan winters."
+  pageType="service"
+  breadcrumbs={[
+    { name: 'Home',                  href: '/' },
+    { name: 'Services',              href: '/services/' },
+    { name: 'Custom Walkway Installation', href: '/services/walkways/' },
+  ]}
+  faqs={faqs.map(f => ({ question: f.q, answer: f.a }))}
+  service={serviceSchema.walkways}
   sticky="overlay"
 >
 

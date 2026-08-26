@@ -6,6 +6,7 @@ import Heading from '../../components/ui/Heading.astro';
 import Button from '../../components/ui/Button.astro';
 import { Icon } from 'astro-icon/components';
 import { site } from '../../config/site';
+import { serviceSchema } from '../../config/schema';
 
 const benefits = [
   {
@@ -63,6 +64,14 @@ const faqs = [
 <BaseLayout
   title={`Custom Paver Driveways | ${site.name}`}
   description="Custom paver driveways in Traverse City, MI. Peninsula Pavers builds driveways that handle Northern Michigan winters using quality brick pavers and natural stone."
+  pageType="service"
+  breadcrumbs={[
+    { name: 'Home',                   href: '/' },
+    { name: 'Services',               href: '/services/' },
+    { name: 'Paver Driveway Installation', href: '/services/driveways/' },
+  ]}
+  faqs={faqs.map(f => ({ question: f.q, answer: f.a }))}
+  service={serviceSchema.driveways}
   sticky="overlay"
 >
 

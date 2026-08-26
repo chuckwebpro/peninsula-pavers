@@ -6,6 +6,7 @@ import Heading from '../../components/ui/Heading.astro';
 import Button from '../../components/ui/Button.astro';
 import { Icon } from 'astro-icon/components';
 import { site } from '../../config/site';
+import { serviceSchema } from '../../config/schema';
 
 const benefits = [
   {
@@ -63,6 +64,14 @@ const faqs = [
 <BaseLayout
   title={`Landscaping & Hardscaping | ${site.name}`}
   description="Professional landscaping and hardscaping in Traverse City, MI. Peninsula Pavers brings patios, walls, plantings, and outdoor features together into one cohesive design."
+  pageType="service"
+  breadcrumbs={[
+    { name: 'Home',                           href: '/' },
+    { name: 'Services',                       href: '/services/' },
+    { name: 'Landscape Design and Installation', href: '/services/landscaping/' },
+  ]}
+  faqs={faqs.map(f => ({ question: f.q, answer: f.a }))}
+  service={serviceSchema.landscaping}
   sticky="overlay"
 >
 

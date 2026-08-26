@@ -19,13 +19,19 @@ interface Props {
   noindex?: boolean;
   publishedTime?: string;
   modifiedTime?: string;
+  pageType?: 'home' | 'services' | 'service' | 'about';
   breadcrumbs?: BreadcrumbEntry[];
   faqs?: FaqEntry[];
-  service?: { name: string; description?: string };
+  service?: {
+    name: string;
+    description?: string;
+    serviceType?: string;
+    subServices?: string[];
+  };
   sticky?: HeaderSticky;
 }
 
-const { breadcrumbs, faqs, service, sticky = 'sticky', ...seo } = Astro.props;
+const { breadcrumbs, faqs, service, pageType, sticky = 'sticky', ...seo } = Astro.props;
 ---
 
 <!doctype html>
@@ -48,7 +54,7 @@ const { breadcrumbs, faqs, service, sticky = 'sticky', ...seo } = Astro.props;
     </script>
 
     <SEO {...seo} />
-    <Schema breadcrumbs={breadcrumbs} faqs={faqs} service={service} />
+    <Schema pageType={pageType} breadcrumbs={breadcrumbs} faqs={faqs} service={service} />
     {hasAnalytics && <Analytics />}
 
     <slot name="head" />

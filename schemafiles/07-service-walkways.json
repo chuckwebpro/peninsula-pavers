@@ -1,0 +1,203 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://peninsulapavers.com/services/walkways/#webpage",
+      "url": "https://peninsulapavers.com/services/walkways/",
+      "name": "Custom Walkways Traverse City MI | Peninsula Pavers",
+      "description": "Custom paver and natural stone walkways for Traverse City homes and businesses, built with proper excavation depth and compacted base to resist frost heave and stay level through Michigan winters.",
+      "isPartOf": {
+        "@id": "https://peninsulapavers.com/#website"
+      },
+      "about": {
+        "@id": "https://peninsulapavers.com/services/walkways/#service"
+      },
+      "breadcrumb": {
+        "@id": "https://peninsulapavers.com/services/walkways/#breadcrumb"
+      },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://peninsulapavers.com/services/walkways/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://peninsulapavers.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://peninsulapavers.com/services/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Custom Walkway Installation",
+          "item": "https://peninsulapavers.com/services/walkways/"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://peninsulapavers.com/services/walkways/#service",
+      "name": "Custom Walkway Installation",
+      "serviceType": "Walkway installation",
+      "description": "Custom paver and natural stone walkways for Traverse City homes and businesses, built with proper excavation depth and compacted base to resist frost heave and stay level through Michigan winters.",
+      "url": "https://peninsulapavers.com/services/walkways/",
+      "provider": {
+        "@id": "https://peninsulapavers.com/#business"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Traverse City",
+          "address": {
+            "@type": "PostalAddress",
+            "addressRegion": "MI",
+            "addressCountry": "US"
+          }
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Grand Traverse County, Michigan"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Leelanau County, Michigan"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Benzie County, Michigan"
+        }
+      ],
+      "termsOfService": "Written quotes are provided at no cost after an on-site consultation and are held for 30 days.",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Custom Walkway Installation",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "position": 1,
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Residential paver walkways"
+            }
+          },
+          {
+            "@type": "Offer",
+            "position": 2,
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Commercial and accessible walkways"
+            }
+          },
+          {
+            "@type": "Offer",
+            "position": 3,
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Natural stone garden paths"
+            }
+          },
+          {
+            "@type": "Offer",
+            "position": 4,
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Entry and front walk replacement"
+            }
+          }
+        ]
+      },
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "USD",
+          "description": "Every project is quoted individually after a free on-site consultation. Written quotes are held for 30 days."
+        },
+        "areaServed": [
+          {
+            "@type": "City",
+            "name": "Traverse City",
+            "address": {
+              "@type": "PostalAddress",
+              "addressRegion": "MI",
+              "addressCountry": "US"
+            }
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Grand Traverse County, Michigan"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Leelanau County, Michigan"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Benzie County, Michigan"
+          }
+        ],
+        "seller": {
+          "@id": "https://peninsulapavers.com/#business"
+        }
+      },
+      "isPartOf": {
+        "@id": "https://peninsulapavers.com/services/#catalog"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://peninsulapavers.com/services/walkways/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How long does a walkway installation take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Length, width, curves, and site access set the schedule. A straight run across open lawn installs faster than a winding path through established landscaping. You get the specific timeline in writing before you approve anything."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does a custom walkway cost in Traverse City?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every project is unique, so we quote your actual walkway rather than publish a range. Length, width, material, existing surface removal, and grading all matter. Detailed written quote after we see the site, free, no obligation, held for 30 days."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you build a walkway that is safe in winter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, and it's worth planning for. Surface texture, slope, and drainage all affect how a walkway performs when it's icy. We'll discuss snow removal and de-icing during the consultation so the material choice fits how you'll maintain it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I prepare for installation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We send a prep list a few days ahead. Usually it means clearing planters and decorative items along the route, marking sprinklers and landscape lighting, and giving the crew a clear path for materials and equipment."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the steps in a walkway project?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Consultation and layout, written quote with 30-day price lock, scheduling and prep list, excavation along the path, base installation and compaction, paver or stone setting and cutting, edge restraint and joint sand, then cleanup and final walkthrough."
+          }
+        }
+      ]
+    }
+  ]
+}

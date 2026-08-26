@@ -6,6 +6,7 @@ import Heading from '../../components/ui/Heading.astro';
 import Button from '../../components/ui/Button.astro';
 import { Icon } from 'astro-icon/components';
 import { site } from '../../config/site';
+import { serviceSchema } from '../../config/schema';
 
 const benefits = [
   {
@@ -63,6 +64,14 @@ const faqs = [
 <BaseLayout
   title={`Custom Retaining Walls | ${site.name}`}
   description="Custom retaining walls in Traverse City, MI. Engineered natural stone and block wall systems for slopes and waterfront properties across Northern Michigan."
+  pageType="service"
+  breadcrumbs={[
+    { name: 'Home',                              href: '/' },
+    { name: 'Services',                          href: '/services/' },
+    { name: 'Retaining Wall Design and Construction', href: '/services/retaining-walls/' },
+  ]}
+  faqs={faqs.map(f => ({ question: f.q, answer: f.a }))}
+  service={serviceSchema['retaining-walls']}
   sticky="overlay"
 >
 
