@@ -1,4 +1,4 @@
-# Hosting (cPanel)
+# Hosting (cPanel server)
 
 Everything runs on your own infrastructure. The only external services are GitHub
 (source + CI) and Formspree (form delivery).
@@ -34,7 +34,7 @@ the same page.
    | `FTP_SERVER`     | `ftp.example.com`                        |
    | `FTP_USERNAME`   | The scoped FTP account                   |
    | `FTP_PASSWORD`   | Its password                             |
-   | `FTP_SERVER_DIR` | `public_html/` (trailing slash required) | 
+   | `FTP_SERVER_DIR` | `public_html/` (trailing slash required) |
 
 5. Update `site` in `astro.config.mjs` and the `Sitemap:` line in
    `public/robots.txt` to the real domain.
