@@ -72,7 +72,7 @@ export const navigation: NavigationConfig = {
     { label: 'Contact',      href: '#contact' },
   ],
 
-  cta: { label: 'Free Estimate', href: '#contact' },
+  cta: { label: 'Free Estimate', href: '#free-estimate' },
 
   footer: [
     {
