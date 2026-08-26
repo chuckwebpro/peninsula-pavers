@@ -52,7 +52,7 @@ const faqs = [
   },
   {
     q: 'What does a custom waterscape cost in Traverse City?',
-    a: "Every water feature is designed for its site, so a price range would be misleading. Size, type, liner work, plumbing, pump, and integration with existing hardscape or planting all affect the cost. We provide a detailed written quote after seeing your property—free, no obligation, held 30 days.",
+    a: 'Every water feature is designed for its site, so a price range would be misleading. Size, type, liner work, plumbing, pump, and integration with existing hardscape or planting all affect the cost. We provide a detailed written quote after seeing your property—free, no obligation, held 30 days.',
   },
   {
     q: 'How do I maintain a pond or waterfall through the seasons?',
@@ -66,34 +66,36 @@ const faqs = [
   description="Custom ponds, waterfalls, and water features in Traverse City, MI. Peninsula Pavers designs and builds waterscapes that are as reliable mechanically as they are beautiful."
   pageType="service"
   breadcrumbs={[
-    { name: 'Home',                              href: '/' },
-    { name: 'Services',                          href: '/services/' },
+    { name: 'Home', href: '/' },
+    { name: 'Services', href: '/services/' },
     { name: 'Waterscape and Water Feature Construction', href: '/services/waterscapes/' },
   ]}
-  faqs={faqs.map(f => ({ question: f.q, answer: f.a }))}
+  faqs={faqs.map((f) => ({ question: f.q, answer: f.a }))}
   service={serviceSchema.waterscapes}
   sticky="overlay"
 >
-
   <!-- ── HERO ───────────────────────────────────────────────────────────── -->
   <section class="relative flex min-h-[750px] items-center overflow-hidden" aria-label="Page hero">
     <div
       class="absolute inset-0 bg-cover bg-center"
       style="background-image:linear-gradient(rgba(0,0,0,0.502),rgba(0,0,0,0.502)),url('/images/s1.webp')"
       aria-hidden="true"
-    ></div>
+    >
+    </div>
 
-    <div class="relative z-10 mx-auto w-full max-w-page px-gutter pt-[100px]">
+    <div class="max-w-page px-gutter relative z-10 mx-auto w-full pt-[100px]">
       <div class="mb-5 flex items-center gap-3">
-        <span class="block h-px w-10 shrink-0 bg-accent-500" aria-hidden="true"></span>
-        <span class="font-sans text-[16px] font-medium tracking-wide text-accent-400">Peninsula Pavers, Inc.</span>
+        <span class="bg-accent-500 block h-px w-10 shrink-0" aria-hidden="true"></span>
+        <span class="text-accent-400 font-sans text-[16px] font-medium tracking-wide"
+          >Peninsula Pavers, Inc.</span
+        >
       </div>
 
-      <Heading level={1} class="!text-[56px] font-medium text-neutral-0 max-w-3xl">
+      <Heading level={1} class="text-neutral-0 max-w-3xl !text-[56px] font-medium">
         Waterscapes and Water Features<br />Traverse City MI
       </Heading>
 
-      <p class="mt-4 max-w-[900px] font-sans text-[20px] font-medium text-neutral-0/75">
+      <p class="text-neutral-0/75 mt-4 max-w-[900px] font-sans text-[20px] font-medium">
         Moving water changes a yard. Peninsula Pavers designs and builds fountains, ponds, and
         waterfalls that work as well mechanically as they look — built for Northern Michigan
         property and climate.
@@ -103,7 +105,7 @@ const faqs = [
         <Button href="#free-estimate" size="lg">Free Estimate</Button>
         <a
           href={`tel:${site.business.phoneHref}`}
-          class="inline-flex items-center gap-2 border border-neutral-0/75 bg-transparent px-[25px] py-[12px] font-sans text-[20px] font-medium text-neutral-0 no-underline hover:border-neutral-0 hover:bg-white/10"
+          class="border-neutral-0/75 text-neutral-0 hover:border-neutral-0 inline-flex items-center gap-2 border bg-transparent px-[25px] py-[12px] font-sans text-[20px] font-medium no-underline hover:bg-white/10"
         >
           <Icon name="lucide:phone" class="size-5" aria-hidden="true" />
           {site.business.phone}
@@ -116,12 +118,12 @@ const faqs = [
   <Section background="muted" spacing="md">
     <Container gap="lg">
       <div class="flex w-full flex-col gap-10 md:flex-row md:items-center md:gap-10">
-
         <div class="relative shrink-0 md:w-[50%]">
           <div
-            class="absolute bottom-[-12px] right-[-12px] hidden size-24 border border-accent-500 md:block"
+            class="border-accent-500 absolute right-[-12px] bottom-[-12px] hidden size-24 border md:block"
             aria-hidden="true"
-          ></div>
+          >
+          </div>
           <img
             src="/images/waterscape-feature.jpg"
             alt="Custom waterscape built by Peninsula Pavers"
@@ -134,24 +136,28 @@ const faqs = [
 
         <div class="flex flex-col gap-3 md:w-[50%]">
           <div class="flex items-center gap-3">
-            <span class="block h-px w-10 bg-accent-500" aria-hidden="true"></span>
-            <span class="font-sans text-[16px] font-medium uppercase tracking-[2px] text-accent-500">Create Your Perfect Space</span>
+            <span class="bg-accent-500 block h-px w-10" aria-hidden="true"></span>
+            <span class="text-accent-500 font-sans text-[16px] font-medium tracking-[2px] uppercase"
+              >Create Your Perfect Space</span
+            >
           </div>
-          <Heading level={2} class="!text-4xl font-bold text-brand-700">Bring Your Landscape to Life</Heading>
-          <Heading level={2} class="!text-4xl font-medium italic text-brand-700">With Water</Heading>
-          <p class="font-sans text-[16px] text-ink-muted">
+          <Heading level={2} class="text-brand-700 !text-4xl font-bold"
+            >Bring Your Landscape to Life</Heading
+          >
+          <Heading level={2} class="text-brand-700 !text-4xl font-medium italic">With Water</Heading
+          >
+          <p class="text-ink-muted font-sans text-[16px]">
             Moving water changes a yard. It masks road noise, draws birds, and gives the space a
             center that everything else arranges itself around. We design and build fountains,
             ponds, and waterfalls that work as well mechanically as they look visually.
           </p>
-          <p class="font-sans text-[16px] text-ink-muted">
+          <p class="text-ink-muted font-sans text-[16px]">
             That distinction matters, because a water feature that was built without proper liner
             work, plumbing, and pump sizing becomes a maintenance headache rather than a retreat.
             Our projects range from simple bubbling boulder fountains to larger pond and waterfall
             systems integrated into surrounding hardscape and planting.
           </p>
         </div>
-
       </div>
     </Container>
   </Section>
@@ -159,53 +165,70 @@ const faqs = [
   <!-- ── WHY INVEST ────────────────────────────────────────────────────── -->
   <Section background="muted" spacing="md">
     <Container gap="lg">
-
       <div class="flex w-full flex-col gap-10 md:flex-row md:items-end md:justify-between">
         <div class="flex flex-col gap-3">
           <div class="flex items-center gap-3">
-            <span class="block h-px w-10 bg-accent-500" aria-hidden="true"></span>
-            <span class="font-sans text-[16px] font-medium uppercase tracking-[2px] text-accent-500">Outdoor Living Spaces</span>
+            <span class="bg-accent-500 block h-px w-10" aria-hidden="true"></span>
+            <span class="text-accent-500 font-sans text-[16px] font-medium tracking-[2px] uppercase"
+              >Outdoor Living Spaces</span
+            >
           </div>
-          <Heading level={2} class="!text-4xl font-bold text-brand-700">Why Invest in a Custom Waterscape?</Heading>
+          <Heading level={2} class="text-brand-700 !text-4xl font-bold"
+            >Why Invest in a Custom Waterscape?</Heading
+          >
         </div>
-        <p class="max-w-sm font-sans text-[16px] text-ink-muted md:text-end">
+        <p class="text-ink-muted max-w-sm font-sans text-[16px] md:text-end">
           From a simple bubbling boulder to a custom pond and waterfall, your waterscape can be
           designed specifically for your property and vision.
         </p>
       </div>
 
       <div class="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-6">
-        {benefits.map((b, i) => (
-          <div class:list={[
-            'flex flex-col gap-5 bg-neutral-0 p-[10px] lg:col-span-2',
-            i === 3 && 'lg:col-start-2',
-            i === 4 && 'lg:col-start-4',
-          ]}>
-            <div class="inline-flex size-14 shrink-0 items-center justify-center bg-accent-50">
-              <Fragment set:html={b.icon} />
+        {
+          benefits.map((b, i) => (
+            <div
+              class:list={[
+                'bg-neutral-0 flex flex-col gap-5 p-[10px] lg:col-span-2',
+                i === 3 && 'lg:col-start-2',
+                i === 4 && 'lg:col-start-4',
+              ]}
+            >
+              <div class="bg-accent-50 inline-flex size-14 shrink-0 items-center justify-center">
+                <Fragment set:html={b.icon} />
+              </div>
+              <h3 class="font-heading text-brand-700 text-xl font-bold">{b.title}</h3>
+              <p class="text-ink-muted font-sans text-[16px]">{b.body}</p>
             </div>
-            <h3 class="font-heading text-xl font-bold text-brand-700">{b.title}</h3>
-            <p class="font-sans text-[16px] text-ink-muted">{b.body}</p>
-          </div>
-        ))}
+          ))
+        }
       </div>
-
     </Container>
   </Section>
 
   <!-- ── MID-PAGE CTA STRIP ─────────────────────────────────────────────── -->
-  <div class="w-full bg-surface-brand py-[30px]">
-    <div class="mx-auto flex max-w-page flex-col items-start justify-between gap-6 px-gutter md:flex-row md:items-center">
+  <div class="bg-surface-brand w-full py-[30px]">
+    <div
+      class="max-w-page px-gutter mx-auto flex flex-col items-start justify-between gap-6 md:flex-row md:items-center"
+    >
       <div class="flex flex-col items-start gap-[10px]">
-        <p class="font-sans text-[16px] font-medium uppercase tracking-[2px] text-accent-500">Free Consultation</p>
-        <h2 class="font-heading text-[30px] font-medium text-neutral-0">Ready to Add Water to Your Landscape?</h2>
-        <p class="font-sans text-[16px] text-neutral-0/75">Let's design a water feature that fits your property, complements your landscape, and is built to operate reliably through the seasons.</p>
+        <p class="text-accent-500 font-sans text-[16px] font-medium tracking-[2px] uppercase">
+          Free Consultation
+        </p>
+        <h2 class="font-heading text-neutral-0 text-[30px] font-medium">
+          Ready to Add Water to Your Landscape?
+        </h2>
+        <p class="text-neutral-0/75 font-sans text-[16px]">
+          Let's design a water feature that fits your property, complements your landscape, and is
+          built to operate reliably through the seasons.
+        </p>
       </div>
-      <div class="flex w-full shrink-0 flex-col items-stretch gap-[10px] sm:w-auto sm:flex-row sm:items-center">
+      <div
+        class="flex w-full shrink-0 flex-col items-stretch gap-[10px] sm:w-auto sm:flex-row sm:items-center"
+      >
         <Button href="#free-estimate" size="lg">Free Estimate</Button>
         <a
           href={`tel:${site.business.phoneHref}`}
-          class="inline-flex items-center gap-2 border border-neutral-0/75 bg-transparent px-[25px] py-[12px] font-sans text-[20px] font-medium text-neutral-0 no-underline hover:border-neutral-0 hover:bg-white/10"
+          class="border-neutral-0/75 text-neutral-0 hover:border-neutral-0 inline-flex items-center gap-2 border bg-transparent px-[25px] py-[12px] font-sans text-[20px] font-medium no-underline hover:bg-white/10"
         >
           <Icon name="lucide:phone" class="size-5" aria-hidden="true" />
           {site.business.phone}
@@ -217,70 +240,84 @@ const faqs = [
   <!-- ── GALLERY ────────────────────────────────────────────────────────── -->
   <Section background="muted" spacing="md">
     <Container gap="lg">
-
       <div class="flex w-full flex-col gap-10 md:flex-row md:items-end md:justify-between">
         <div class="flex flex-col gap-3">
           <div class="flex items-center gap-3">
-            <span class="block h-px w-10 bg-accent-500" aria-hidden="true"></span>
-            <span class="font-sans text-[16px] font-medium uppercase tracking-[2px] text-accent-500">Outdoor Living Spaces</span>
+            <span class="bg-accent-500 block h-px w-10" aria-hidden="true"></span>
+            <span class="text-accent-500 font-sans text-[16px] font-medium tracking-[2px] uppercase"
+              >Outdoor Living Spaces</span
+            >
           </div>
-          <Heading level={2} class="!text-4xl font-bold text-brand-700">See Our</Heading>
-          <Heading level={2} class="!text-4xl font-medium italic text-brand-700">Previous Work</Heading>
+          <Heading level={2} class="text-brand-700 !text-4xl font-bold">See Our</Heading>
+          <Heading level={2} class="text-brand-700 !text-4xl font-medium italic"
+            >Previous Work</Heading
+          >
         </div>
-        <p class="max-w-sm font-sans text-[16px] text-ink-muted md:text-end">
+        <p class="text-ink-muted max-w-sm font-sans text-[16px] md:text-end">
           From driveways to waterscapes, Peninsula Pavers brings 30 years of Northern Michigan
           craftsmanship to every project.
         </p>
       </div>
 
       <div class="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {galleryImages.map((src, i) => (
-          <div
-            class="h-[350px]"
-            style={`background-image:url('${src}');background-size:cover;background-position:center`}
-            role="img"
-            aria-label={`Waterscape project ${i + 1}`}
-          ></div>
-        ))}
+        {
+          galleryImages.map((src, i) => (
+            <div
+              class="h-[350px]"
+              style={`background-image:url('${src}');background-size:cover;background-position:center`}
+              role="img"
+              aria-label={`Waterscape project ${i + 1}`}
+            />
+          ))
+        }
       </div>
-
     </Container>
   </Section>
 
   <!-- ── FAQ ────────────────────────────────────────────────────────────── -->
-  <section class="w-full bg-surface-brand py-section" aria-labelledby="faq-heading">
-    <div class="mx-auto flex max-w-[1380px] flex-col items-center gap-8 px-gutter">
-
+  <section class="bg-surface-brand py-section w-full" aria-labelledby="faq-heading">
+    <div class="px-gutter mx-auto flex max-w-[1380px] flex-col items-center gap-8">
       <div class="flex flex-col items-center gap-4 text-center">
         <div class="flex items-center gap-4">
-          <span class="block h-px w-10 bg-accent-500" aria-hidden="true"></span>
-          <span class="font-sans text-[16px] font-medium uppercase tracking-[2px] text-accent-500">Frequently Asked Questions</span>
-          <span class="block h-px w-10 bg-accent-500" aria-hidden="true"></span>
+          <span class="bg-accent-500 block h-px w-10" aria-hidden="true"></span>
+          <span class="text-accent-500 font-sans text-[16px] font-medium tracking-[2px] uppercase"
+            >Frequently Asked Questions</span
+          >
+          <span class="bg-accent-500 block h-px w-10" aria-hidden="true"></span>
         </div>
-        <Heading id="faq-heading" level={2} class="!text-4xl font-bold text-neutral-0">
+        <Heading id="faq-heading" level={2} class="text-neutral-0 !text-4xl font-bold">
           We Can Answer All Your Questions
         </Heading>
       </div>
 
       <div class="flex w-full flex-wrap justify-center gap-5">
-        {faqs.map((faq) => (
-          <div class="flex w-full flex-col gap-5 bg-white/[0.08] p-[30px] sm:w-[calc(50%-10px)] lg:w-[32%]">
-            <div class="flex items-start gap-3">
-              <svg aria-hidden="true" class="mt-1 size-5 shrink-0 text-accent-400" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-                <path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"/>
-              </svg>
-              <h3 class="font-heading text-xl font-medium text-neutral-0">{faq.q}</h3>
+        {
+          faqs.map((faq) => (
+            <div class="flex w-full flex-col gap-5 bg-white/[0.08] p-[30px] sm:w-[calc(50%-10px)] lg:w-[32%]">
+              <div class="flex items-start gap-3">
+                <svg
+                  aria-hidden="true"
+                  class="text-accent-400 mt-1 size-5 shrink-0"
+                  viewBox="0 0 512 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                >
+                  <path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z" />
+                </svg>
+                <h3 class="font-heading text-neutral-0 text-xl font-medium">{faq.q}</h3>
+              </div>
+              <p class="text-neutral-0/75 font-sans text-[16px] font-medium">{faq.a}</p>
             </div>
-            <p class="font-sans text-[16px] font-medium text-neutral-0/75">{faq.a}</p>
-          </div>
-        ))}
+          ))
+        }
       </div>
 
-      <p class="font-sans text-[16px] text-neutral-0/75">
-        Still have questions? <a href={`tel:${site.business.phoneHref}`} class="text-accent-400 no-underline hover:underline">Call us today!</a>
+      <p class="text-neutral-0/75 font-sans text-[16px]">
+        Still have questions? <a
+          href={`tel:${site.business.phoneHref}`}
+          class="text-accent-400 no-underline hover:underline">Call us today!</a
+        >
       </p>
-
     </div>
   </section>
-
 </BaseLayout>

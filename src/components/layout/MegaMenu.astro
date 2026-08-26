@@ -78,7 +78,11 @@ const chevronClass = overlaid
                     aria-label={`Toggle ${item.label} submenu`}
                     class={chevronClass}
                   >
-                    <Icon name="lucide:chevron-down" class="mega-chevron size-4" aria-hidden="true" />
+                    <Icon
+                      name="lucide:chevron-down"
+                      class="mega-chevron size-4"
+                      aria-hidden="true"
+                    />
                   </button>
                 </>
               ) : (
@@ -95,7 +99,7 @@ const chevronClass = overlaid
 
               <div
                 id={panelId}
-                class="mega-panel absolute top-full left-0 z-50 min-w-[12em] border border-accent-500 bg-[#1C1C1C]/90"
+                class="mega-panel border-accent-500 absolute top-full left-0 z-50 min-w-[12em] border bg-[#1C1C1C]/90"
               >
                 <ul class="flex flex-col">
                   {columns[0].links.map((link) => (
@@ -103,7 +107,7 @@ const chevronClass = overlaid
                       <a
                         href={link.href}
                         aria-current={isCurrent(link.href) ? 'page' : undefined}
-                        class="block border-l-[8px] border-l-transparent px-5 py-[13px] text-[13px] text-neutral-0 no-underline hover:bg-accent-500 hover:text-neutral-0 aria-[current=page]:bg-accent-500 aria-[current=page]:text-neutral-0"
+                        class="text-neutral-0 hover:bg-accent-500 hover:text-neutral-0 aria-[current=page]:bg-accent-500 aria-[current=page]:text-neutral-0 block border-l-[8px] border-l-transparent px-5 py-[13px] text-[13px] no-underline"
                       >
                         {link.label}
                       </a>

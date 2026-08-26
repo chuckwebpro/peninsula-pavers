@@ -97,10 +97,10 @@ export const serviceSchema: Record<string, ServiceSchemaData> = {
 /** Ordered catalog for the services hub OfferCatalog node. */
 export const catalogOrder: Array<{ slug: string; name: string }> = [
   { slug: 'outdoor-living-spaces', name: serviceSchema['outdoor-living-spaces'].name },
-  { slug: 'patios',                name: serviceSchema.patios.name },
-  { slug: 'driveways',             name: serviceSchema.driveways.name },
-  { slug: 'retaining-walls',       name: serviceSchema['retaining-walls'].name },
-  { slug: 'walkways',              name: serviceSchema.walkways.name },
-  { slug: 'waterscapes',           name: serviceSchema.waterscapes.name },
-  { slug: 'landscaping',           name: serviceSchema.landscaping.name },
+  { slug: 'patios', name: serviceSchema.patios.name },
+  { slug: 'driveways', name: serviceSchema.driveways.name },
+  { slug: 'retaining-walls', name: serviceSchema['retaining-walls'].name },
+  { slug: 'walkways', name: serviceSchema.walkways.name },
+  { slug: 'waterscapes', name: serviceSchema.waterscapes.name },
+  { slug: 'landscaping', name: serviceSchema.landscaping.name },
 ];

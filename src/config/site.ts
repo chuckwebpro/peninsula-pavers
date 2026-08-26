@@ -125,16 +125,16 @@ export const site: SiteConfig = {
   logoUrl: '',
   primaryImageUrl: '',
   areaServed: [
-    { type: 'City',               name: 'Traverse City',               region: 'MI', country: 'US' },
+    { type: 'City', name: 'Traverse City', region: 'MI', country: 'US' },
     { type: 'AdministrativeArea', name: 'Grand Traverse County, Michigan' },
     { type: 'AdministrativeArea', name: 'Leelanau County, Michigan' },
     { type: 'AdministrativeArea', name: 'Benzie County, Michigan' },
   ],
   team: {
     len: {
-      name:       'Len Allgaier',
-      title:      'Owner and Designer',
-      photoUrl:   '/images/Team.webp',
+      name: 'Len Allgaier',
+      title: 'Owner and Designer',
+      photoUrl: '/images/Team.webp',
       knowsAbout: [
         'Hardscape design',
         'Paver installation',

@@ -26,43 +26,47 @@ interface Props {
 
 const { pageType, breadcrumbs, faqs, service } = Astro.props;
 
-const origin     = site.url;
+const origin = site.url;
 const businessId = `${origin}/#business`;
-const websiteId  = `${origin}/#website`;
-const orgId      = `${origin}/#organization`;
-const logoId     = `${origin}/#logo`;
-const catalogId  = `${origin}/services/#catalog`;
-const lenId      = `${origin}/about-us/#len-allgaier`;
+const websiteId = `${origin}/#website`;
+const orgId = `${origin}/#organization`;
+const logoId = `${origin}/#logo`;
+const catalogId = `${origin}/services/#catalog`;
+const lenId = `${origin}/about-us/#len-allgaier`;
 
-const abs = (path: string) =>
-  path.startsWith('http') ? path : new URL(path, origin).href;
+const abs = (path: string) => (path.startsWith('http') ? path : new URL(path, origin).href);
 const pageUrl = abs(Astro.url.pathname);
 
 // Parse 'Mo-Fr 08:00-17:00' into OpeningHoursSpecification objects
 const dayMap: Record<string, string> = {
-  Mo: 'Monday', Tu: 'Tuesday', We: 'Wednesday',
-  Th: 'Thursday', Fr: 'Friday', Sa: 'Saturday', Su: 'Sunday',
+  Mo: 'Monday',
+  Tu: 'Tuesday',
+  We: 'Wednesday',
+  Th: 'Thursday',
+  Fr: 'Friday',
+  Sa: 'Saturday',
+  Su: 'Sunday',
 };
 const dayKeys = Object.keys(dayMap);
 
 const openingHoursSpecification = site.business.hours
-  .map(h => {
+  .map((h) => {
     const m = h.match(/^([A-Z][a-z])(?:-([A-Z][a-z]))?\s+(\d{2}:\d{2})-(\d{2}:\d{2})$/);
     if (!m) return null;
     const [, from, to, opens, closes] = m;
     const days = to
-      ? dayKeys.slice(dayKeys.indexOf(from), dayKeys.indexOf(to) + 1).map(d => dayMap[d])
+      ? dayKeys.slice(dayKeys.indexOf(from), dayKeys.indexOf(to) + 1).map((d) => dayMap[d])
       : [dayMap[from]!];
     return { '@type': 'OpeningHoursSpecification', dayOfWeek: days, opens, closes };
   })
   .filter((x): x is NonNullable<typeof x> => x !== null);
 
-const areaServed = (site.areaServed ?? []).map(a => {
+const areaServed = (site.areaServed ?? []).map((a) => {
   const node: Record<string, unknown> = { '@type': a.type, name: a.name };
   if (a.region || a.country) {
     node.address = {
       '@type': 'PostalAddress',
-      ...(a.region  && { addressRegion:  a.region  }),
+      ...(a.region && { addressRegion: a.region }),
       ...(a.country && { addressCountry: a.country }),
     };
   }
@@ -78,54 +82,54 @@ if (pageType === 'home') {
   graph.push(
     {
       '@type': [site.business.schemaType, 'LocalBusiness'],
-      '@id':   businessId,
-      name:    site.name,
-      ...(site.legalName     && { legalName:    site.legalName }),
-      url:         `${origin}/`,
-      telephone:   site.business.phoneHref,
+      '@id': businessId,
+      name: site.name,
+      ...(site.legalName && { legalName: site.legalName }),
+      url: `${origin}/`,
+      telephone: site.business.phoneHref,
       description: site.description,
-      ...(site.slogan        && { slogan:       site.slogan }),
-      ...(site.foundingYear  && { foundingDate: String(site.foundingYear) }),
-      priceRange:        site.business.priceRange,
+      ...(site.slogan && { slogan: site.slogan }),
+      ...(site.foundingYear && { foundingDate: String(site.foundingYear) }),
+      priceRange: site.business.priceRange,
       currenciesAccepted: 'USD',
       address: {
-        '@type':          'PostalAddress',
-        streetAddress:    site.business.address.street,
-        addressLocality:  site.business.address.locality,
-        addressRegion:    site.business.address.region,
-        postalCode:       site.business.address.postalCode,
-        addressCountry:   site.business.address.country,
+        '@type': 'PostalAddress',
+        streetAddress: site.business.address.street,
+        addressLocality: site.business.address.locality,
+        addressRegion: site.business.address.region,
+        postalCode: site.business.address.postalCode,
+        addressCountry: site.business.address.country,
       },
       ...(site.business.geo && {
         geo: {
-          '@type':    'GeoCoordinates',
-          latitude:   site.business.geo.latitude,
-          longitude:  site.business.geo.longitude,
+          '@type': 'GeoCoordinates',
+          latitude: site.business.geo.latitude,
+          longitude: site.business.geo.longitude,
         },
       }),
       openingHoursSpecification,
-      ...(areaServed.length  && { areaServed }),
+      ...(areaServed.length && { areaServed }),
       ...(site.team?.len && {
         founder: {
-          '@type':    'Person',
-          '@id':      lenId,
-          name:       site.team.len.name,
-          jobTitle:   site.team.len.title,
-          worksFor:   { '@id': businessId },
+          '@type': 'Person',
+          '@id': lenId,
+          name: site.team.len.name,
+          jobTitle: site.team.len.title,
+          worksFor: { '@id': businessId },
         },
         employee: { '@id': lenId },
       }),
       ...(site.knowsAbout?.length && { knowsAbout: site.knowsAbout }),
       hasOfferCatalog: { '@id': catalogId },
-      ...(sameAs.length      && { sameAs }),
+      ...(sameAs.length && { sameAs }),
       ...(site.primaryImageUrl && { image: site.primaryImageUrl }),
       logo: { '@id': logoId },
       potentialAction: {
         '@type': 'ReserveAction',
-        name:    'Request a free on-site consultation',
-        target:  {
-          '@type':       'EntryPoint',
-          urlTemplate:   `${origin}/contact/`,
+        name: 'Request a free on-site consultation',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate: `${origin}/contact/`,
           actionPlatform: [
             'http://schema.org/DesktopWebPlatform',
             'http://schema.org/MobileWebPlatform',
@@ -134,63 +138,63 @@ if (pageType === 'home') {
       },
     },
     {
-      '@type':    'Organization',
-      '@id':      orgId,
-      name:       site.name,
-      url:        `${origin}/`,
-      telephone:  site.business.phoneHref,
+      '@type': 'Organization',
+      '@id': orgId,
+      name: site.name,
+      url: `${origin}/`,
+      telephone: site.business.phoneHref,
       logo: {
-        '@type':   'ImageObject',
-        '@id':     logoId,
-        caption:   site.name,
+        '@type': 'ImageObject',
+        '@id': logoId,
+        caption: site.name,
         ...(site.logoUrl && { url: site.logoUrl }),
       },
     },
     {
-      '@type':     'WebSite',
-      '@id':       websiteId,
-      url:         `${origin}/`,
-      name:        site.name,
-      publisher:   { '@id': orgId },
-      inLanguage:  site.locale,
+      '@type': 'WebSite',
+      '@id': websiteId,
+      url: `${origin}/`,
+      name: site.name,
+      publisher: { '@id': orgId },
+      inLanguage: site.locale,
     },
     {
-      '@type':    'WebPage',
-      '@id':      `${origin}/#webpage`,
-      url:        `${origin}/`,
-      name:       `${site.name} — ${site.tagline}`,
-      isPartOf:   { '@id': websiteId },
-      about:      { '@id': businessId },
+      '@type': 'WebPage',
+      '@id': `${origin}/#webpage`,
+      url: `${origin}/`,
+      name: `${site.name} — ${site.tagline}`,
+      isPartOf: { '@id': websiteId },
+      about: { '@id': businessId },
       inLanguage: site.locale,
     },
   );
 
-// ── Services hub ─────────────────────────────────────────────────────────────
+  // ── Services hub ─────────────────────────────────────────────────────────────
 } else if (pageType === 'services') {
   graph.push(
     {
-      '@type':    'CollectionPage',
-      '@id':      `${pageUrl}#webpage`,
-      url:        pageUrl,
-      isPartOf:   { '@id': websiteId },
-      about:      { '@id': businessId },
+      '@type': 'CollectionPage',
+      '@id': `${pageUrl}#webpage`,
+      url: pageUrl,
+      isPartOf: { '@id': websiteId },
+      about: { '@id': businessId },
       ...(breadcrumbs?.length && { breadcrumb: { '@id': `${pageUrl}#breadcrumb` } }),
       inLanguage: site.locale,
     },
     {
-      '@type':    'OfferCatalog',
-      '@id':      catalogId,
-      name:       `${site.name} Services`,
-      url:        pageUrl,
-      provider:   { '@id': businessId },
+      '@type': 'OfferCatalog',
+      '@id': catalogId,
+      name: `${site.name} Services`,
+      url: pageUrl,
+      provider: { '@id': businessId },
       itemListElement: catalogOrder.map((svc, i) => ({
-        '@type':    'Offer',
-        position:   i + 1,
+        '@type': 'Offer',
+        position: i + 1,
         itemOffered: {
           '@type': 'Service',
-          '@id':   `${origin}/services/${svc.slug}/#service`,
-          name:    svc.name,
-          url:     `${origin}/services/${svc.slug}/`,
+          '@id': `${origin}/services/${svc.slug}/#service`,
+          name: svc.name,
+          url: `${origin}/services/${svc.slug}/`,
         },
       })),
     },
@@ -198,59 +202,59 @@ if (pageType === 'home') {
   if (breadcrumbs?.length) {
     graph.push({
       '@type': 'BreadcrumbList',
-      '@id':   `${pageUrl}#breadcrumb`,
+      '@id': `${pageUrl}#breadcrumb`,
       itemListElement: breadcrumbs.map((crumb, i) => ({
-        '@type':   'ListItem',
-        position:  i + 1,
-        name:      crumb.name,
-        item:      abs(crumb.href),
+        '@type': 'ListItem',
+        position: i + 1,
+        name: crumb.name,
+        item: abs(crumb.href),
       })),
     });
   }
 
-// ── Individual service page ───────────────────────────────────────────────────
+  // ── Individual service page ───────────────────────────────────────────────────
 } else if (pageType === 'service' && service) {
-  const slug      = Astro.url.pathname.replace(/\/$/, '').split('/').pop() ?? '';
+  const slug = Astro.url.pathname.replace(/\/$/, '').split('/').pop() ?? '';
   const serviceId = `${origin}/services/${slug}/#service`;
 
   graph.push(
     {
-      '@type':    'WebPage',
-      '@id':      `${pageUrl}#webpage`,
-      url:        pageUrl,
-      isPartOf:   { '@id': websiteId },
-      about:      { '@id': serviceId },
+      '@type': 'WebPage',
+      '@id': `${pageUrl}#webpage`,
+      url: pageUrl,
+      isPartOf: { '@id': websiteId },
+      about: { '@id': serviceId },
       ...(breadcrumbs?.length && { breadcrumb: { '@id': `${pageUrl}#breadcrumb` } }),
       inLanguage: site.locale,
     },
     {
-      '@type':  'Service',
-      '@id':    serviceId,
-      name:     service.name,
-      ...(service.serviceType  && { serviceType:  service.serviceType }),
-      ...(service.description  && { description:  service.description }),
-      url:      pageUrl,
+      '@type': 'Service',
+      '@id': serviceId,
+      name: service.name,
+      ...(service.serviceType && { serviceType: service.serviceType }),
+      ...(service.description && { description: service.description }),
+      url: pageUrl,
       provider: { '@id': businessId },
-      ...(areaServed.length    && { areaServed }),
+      ...(areaServed.length && { areaServed }),
       termsOfService:
         'Written quotes are provided at no cost after an on-site consultation and are held for 30 days.',
       ...(service.subServices?.length && {
         hasOfferCatalog: {
           '@type': 'OfferCatalog',
-          name:    service.name,
+          name: service.name,
           itemListElement: service.subServices.map((name, i) => ({
-            '@type':    'Offer',
-            position:   i + 1,
+            '@type': 'Offer',
+            position: i + 1,
             itemOffered: { '@type': 'Service', name },
           })),
         },
       }),
       offers: {
-        '@type':        'Offer',
-        availability:   'https://schema.org/InStock',
+        '@type': 'Offer',
+        availability: 'https://schema.org/InStock',
         priceSpecification: {
-          '@type':        'PriceSpecification',
-          priceCurrency:  'USD',
+          '@type': 'PriceSpecification',
+          priceCurrency: 'USD',
           description:
             'Every project is quoted individually after a free on-site consultation. Written quotes are held for 30 days.',
         },
@@ -263,58 +267,58 @@ if (pageType === 'home') {
   if (breadcrumbs?.length) {
     graph.push({
       '@type': 'BreadcrumbList',
-      '@id':   `${pageUrl}#breadcrumb`,
+      '@id': `${pageUrl}#breadcrumb`,
       itemListElement: breadcrumbs.map((crumb, i) => ({
-        '@type':   'ListItem',
-        position:  i + 1,
-        name:      crumb.name,
-        item:      abs(crumb.href),
+        '@type': 'ListItem',
+        position: i + 1,
+        name: crumb.name,
+        item: abs(crumb.href),
       })),
     });
   }
   if (faqs?.length) {
     graph.push({
       '@type': 'FAQPage',
-      '@id':   `${pageUrl}#faq`,
-      mainEntity: faqs.map(faq => ({
+      '@id': `${pageUrl}#faq`,
+      mainEntity: faqs.map((faq) => ({
         '@type': 'Question',
-        name:    faq.question,
+        name: faq.question,
         acceptedAnswer: { '@type': 'Answer', text: faq.answer },
       })),
     });
   }
 
-// ── About page ───────────────────────────────────────────────────────────────
+  // ── About page ───────────────────────────────────────────────────────────────
 } else if (pageType === 'about') {
   graph.push({
-    '@type':      'AboutPage',
-    '@id':        `${pageUrl}#webpage`,
-    url:          pageUrl,
-    isPartOf:     { '@id': websiteId },
-    about:        { '@id': businessId },
-    mainEntity:   { '@id': businessId },
+    '@type': 'AboutPage',
+    '@id': `${pageUrl}#webpage`,
+    url: pageUrl,
+    isPartOf: { '@id': websiteId },
+    about: { '@id': businessId },
+    mainEntity: { '@id': businessId },
     ...(breadcrumbs?.length && { breadcrumb: { '@id': `${pageUrl}#breadcrumb` } }),
-    inLanguage:   site.locale,
+    inLanguage: site.locale,
   });
   if (breadcrumbs?.length) {
     graph.push({
       '@type': 'BreadcrumbList',
-      '@id':   `${pageUrl}#breadcrumb`,
+      '@id': `${pageUrl}#breadcrumb`,
       itemListElement: breadcrumbs.map((crumb, i) => ({
-        '@type':   'ListItem',
-        position:  i + 1,
-        name:      crumb.name,
-        item:      abs(crumb.href),
+        '@type': 'ListItem',
+        position: i + 1,
+        name: crumb.name,
+        item: abs(crumb.href),
       })),
     });
   }
   if (site.team?.len) {
     graph.push({
-      '@type':    'Person',
-      '@id':      lenId,
-      name:       site.team.len.name,
-      jobTitle:   site.team.len.title,
-      worksFor:   { '@id': businessId },
+      '@type': 'Person',
+      '@id': lenId,
+      name: site.team.len.name,
+      jobTitle: site.team.len.title,
+      worksFor: { '@id': businessId },
       ...(site.team.len.knowsAbout?.length && { knowsAbout: site.team.len.knowsAbout }),
       ...(site.team.len.photoUrl && { image: site.team.len.photoUrl }),
     });
@@ -324,4 +328,8 @@ if (pageType === 'home') {
 const jsonLd = { '@context': 'https://schema.org', '@graph': graph };
 ---
 
-{graph.length > 0 && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />}
+{
+  graph.length > 0 && (
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
+  )
+}

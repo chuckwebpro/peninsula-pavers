@@ -8,12 +8,36 @@ import { Icon } from 'astro-icon/components';
 import { site } from '../config/site';
 
 const serviceTiles = [
-  { label: 'Outdoor Living Spaces', href: '/services/outdoor-living-spaces/', image: '/images/backyard-hardscaping.webp' },
-  { label: 'Custom Patios',         href: '/services/patios/',                 image: '/images/custom-patio-construction.webp' },
-  { label: 'Paver Driveways',       href: '/services/driveways/',              image: '/images/driveway-with-pavers.webp' },
-  { label: 'Retaining Walls',       href: '/services/retaining-walls/',        image: '/images/retaining-wall-construction.jpg' },
-  { label: 'Stone Walkways',        href: '/services/walkways/',        image: '/images/custom-stone-walkway.webp' },
-  { label: 'Waterscapes',           href: '/services/waterscapes/',            image: '/images/frontyard-waterscape.jpg' },
+  {
+    label: 'Outdoor Living Spaces',
+    href: '/services/outdoor-living-spaces/',
+    image: '/images/backyard-hardscaping.webp',
+  },
+  {
+    label: 'Custom Patios',
+    href: '/services/patios/',
+    image: '/images/custom-patio-construction.webp',
+  },
+  {
+    label: 'Paver Driveways',
+    href: '/services/driveways/',
+    image: '/images/driveway-with-pavers.webp',
+  },
+  {
+    label: 'Retaining Walls',
+    href: '/services/retaining-walls/',
+    image: '/images/retaining-wall-construction.jpg',
+  },
+  {
+    label: 'Stone Walkways',
+    href: '/services/walkways/',
+    image: '/images/custom-stone-walkway.webp',
+  },
+  {
+    label: 'Waterscapes',
+    href: '/services/waterscapes/',
+    image: '/images/frontyard-waterscape.jpg',
+  },
 ];
 
 interface ServiceCard {
@@ -36,7 +60,7 @@ const walkwayCards: ServiceCard[] = [
     title: 'Driveways',
     href: '/services/driveways/',
     image: '/images/IMG_2014.webp',
-    body: 'Your driveway is one of the first things visitors notice about your property. Our custom paver driveways provide a durable, attractive alternative to traditional concrete or asphalt surfaces. Designed to handle daily traffic while enhancing curb appeal, our driveways combine strength with timeless aesthetics. We offer a variety of patterns, colors, and materials to create a driveway that complements your home\'s architecture and landscape.',
+    body: "Your driveway is one of the first things visitors notice about your property. Our custom paver driveways provide a durable, attractive alternative to traditional concrete or asphalt surfaces. Designed to handle daily traffic while enhancing curb appeal, our driveways combine strength with timeless aesthetics. We offer a variety of patterns, colors, and materials to create a driveway that complements your home's architecture and landscape.",
     cta: 'Never Shovel Your Driveway Again',
   },
 ];
@@ -46,14 +70,14 @@ const wallWaterCards: ServiceCard[] = [
     title: 'Retaining Walls',
     href: '/services/retaining-walls/',
     image: '/images/retaining-wallz.webp',
-    body: 'Retaining walls do more than hold back soil—they add structure, dimension, and visual interest to your landscape. Whether you need erosion control, slope management, or decorative landscaping features, our retaining wall solutions are built for both strength and beauty. We design and install retaining walls using premium materials that blend seamlessly with your property\'s overall design.',
+    body: "Retaining walls do more than hold back soil—they add structure, dimension, and visual interest to your landscape. Whether you need erosion control, slope management, or decorative landscaping features, our retaining wall solutions are built for both strength and beauty. We design and install retaining walls using premium materials that blend seamlessly with your property's overall design.",
     cta: 'Keep Your Foundation Safe',
   },
   {
     title: 'Waterscapes',
     href: '/services/waterscapes/',
     image: '/images/frontyard-waterscape.jpg',
-    body: 'Bring the beauty of water to your outdoor environment. From decorative water walls to naturalistic ponds and pondless waterfalls, we design and install custom water features that add serenity, sound, and visual interest to your landscape. Our waterscape installations are crafted to complement Northern Michigan\'s natural surroundings while enhancing your property\'s unique character.',
+    body: "Bring the beauty of water to your outdoor environment. From decorative water walls to naturalistic ponds and pondless waterfalls, we design and install custom water features that add serenity, sound, and visual interest to your landscape. Our waterscape installations are crafted to complement Northern Michigan's natural surroundings while enhancing your property's unique character.",
     cta: 'Design Your Water Feature',
   },
 ];
@@ -61,34 +85,39 @@ const wallWaterCards: ServiceCard[] = [
 
 <BaseLayout
   title={`Services | ${site.name}`}
-  description="Paving brick, retaining walls &amp; outdoor living spaces built to last a lifetime. View all hardscaping services offered by Peninsula Pavers of Traverse City, MI."
+  description="Paving brick, retaining walls & outdoor living spaces built to last a lifetime. View all hardscaping services offered by Peninsula Pavers of Traverse City, MI."
   pageType="services"
   breadcrumbs={[
-    { name: 'Home',     href: '/' },
+    { name: 'Home', href: '/' },
     { name: 'Services', href: '/services/' },
   ]}
   sticky="overlay"
 >
-
   <!-- ── HERO ───────────────────────────────────────────────────────────── -->
-  <section class="relative flex min-h-[750px] items-center overflow-hidden" aria-label="Services hero">
+  <section
+    class="relative flex min-h-[750px] items-center overflow-hidden"
+    aria-label="Services hero"
+  >
     <div
       class="absolute inset-0 bg-cover bg-center"
       style="background-image:linear-gradient(rgba(0,0,0,0.502),rgba(0,0,0,0.502)),url('/images/s1.webp')"
       aria-hidden="true"
-    ></div>
+    >
+    </div>
 
-    <div class="relative z-10 mx-auto w-full max-w-page px-gutter pt-[100px]">
+    <div class="max-w-page px-gutter relative z-10 mx-auto w-full pt-[100px]">
       <div class="mb-5 flex items-center gap-3">
-        <span class="block h-px w-10 shrink-0 bg-accent-500" aria-hidden="true"></span>
-        <span class="font-sans text-[16px] font-medium tracking-wide text-accent-400">Peninsula Pavers, Inc.</span>
+        <span class="bg-accent-500 block h-px w-10 shrink-0" aria-hidden="true"></span>
+        <span class="text-accent-400 font-sans text-[16px] font-medium tracking-wide"
+          >Peninsula Pavers, Inc.</span
+        >
       </div>
 
-      <Heading level={1} class="!text-[56px] font-medium text-neutral-0">
+      <Heading level={1} class="text-neutral-0 !text-[56px] font-medium">
         Services We Offer
       </Heading>
 
-      <p class="mt-4 max-w-[900px] font-sans text-[20px] font-medium text-neutral-0/75">
+      <p class="text-neutral-0/75 mt-4 max-w-[900px] font-sans text-[20px] font-medium">
         Paving brick, retaining walls &amp; outdoor living spaces built to last a lifetime.
       </p>
 
@@ -96,7 +125,7 @@ const wallWaterCards: ServiceCard[] = [
         <Button href="#free-estimate" size="lg">Free Estimate</Button>
         <a
           href={`tel:${site.business.phoneHref}`}
-          class="inline-flex items-center gap-2 border border-neutral-0/75 bg-transparent px-[25px] py-[12px] font-sans text-[20px] font-medium text-neutral-0 no-underline hover:border-neutral-0 hover:bg-white/10"
+          class="border-neutral-0/75 text-neutral-0 hover:border-neutral-0 inline-flex items-center gap-2 border bg-transparent px-[25px] py-[12px] font-sans text-[20px] font-medium no-underline hover:bg-white/10"
         >
           <Icon name="lucide:phone" class="size-5" aria-hidden="true" />
           {site.business.phone}
@@ -111,32 +140,38 @@ const wallWaterCards: ServiceCard[] = [
       <div class="flex w-full flex-col gap-10 md:flex-row md:items-end md:justify-between">
         <div class="flex flex-col gap-3">
           <div class="flex items-center gap-3">
-            <span class="block h-px w-10 bg-accent-500" aria-hidden="true"></span>
-            <span class="font-sans text-[16px] font-medium uppercase tracking-[2px] text-accent-500">Our Services</span>
+            <span class="bg-accent-500 block h-px w-10" aria-hidden="true"></span>
+            <span class="text-accent-500 font-sans text-[16px] font-medium tracking-[2px] uppercase"
+              >Our Services</span
+            >
           </div>
-          <Heading level={2} class="!text-4xl font-bold text-brand-700">Every Surface,</Heading>
-          <Heading level={2} class="!text-4xl font-medium italic text-brand-700">Masterfully Crafted</Heading>
+          <Heading level={2} class="text-brand-700 !text-4xl font-bold">Every Surface,</Heading>
+          <Heading level={2} class="text-brand-700 !text-4xl font-medium italic"
+            >Masterfully Crafted</Heading
+          >
         </div>
-        <p class="max-w-sm font-sans text-[16px] text-ink-muted md:text-end">
+        <p class="text-ink-muted max-w-sm font-sans text-[16px] md:text-end">
           From driveways to waterscapes, Peninsula Pavers brings 30 years of Northern Michigan
           craftsmanship to every project.
         </p>
       </div>
 
       <ul class="grid w-full gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {serviceTiles.map(({ label, href, image }) => (
-          <li>
-            <a
-              href={href}
-              class="group flex h-[349px] flex-col items-start justify-end overflow-hidden p-6 no-underline"
-              style={`background-image:linear-gradient(#0000004d,#0000004d),url('${image}');background-size:cover;background-position:center`}
-            >
-              <span class="font-sans text-[16px] font-medium text-neutral-0 transition-colors group-hover:text-accent-300">
-                {label}
-              </span>
-            </a>
-          </li>
-        ))}
+        {
+          serviceTiles.map(({ label, href, image }) => (
+            <li>
+              <a
+                href={href}
+                class="group flex h-[349px] flex-col items-start justify-end overflow-hidden p-6 no-underline"
+                style={`background-image:linear-gradient(#0000004d,#0000004d),url('${image}');background-size:cover;background-position:center`}
+              >
+                <span class="text-neutral-0 group-hover:text-accent-300 font-sans text-[16px] font-medium transition-colors">
+                  {label}
+                </span>
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </Container>
   </Section>
@@ -144,78 +179,97 @@ const wallWaterCards: ServiceCard[] = [
   <!-- ── WALKWAYS, PATIOS, & DRIVEWAYS ─────────────────────────────────── -->
   <Section background="muted" spacing="md">
     <Container gap="lg">
-
       <!-- Section header: heading left, body right -->
       <div class="flex w-full flex-col gap-10 md:flex-row md:items-end md:justify-between">
         <div class="flex flex-col gap-3">
           <div class="flex items-center gap-3">
-            <span class="block h-px w-10 bg-accent-500" aria-hidden="true"></span>
-            <span class="font-sans text-[16px] font-medium uppercase tracking-[2px] text-accent-500">Walkways, Patios, &amp; Driveways</span>
+            <span class="bg-accent-500 block h-px w-10" aria-hidden="true"></span>
+            <span class="text-accent-500 font-sans text-[16px] font-medium tracking-[2px] uppercase"
+              >Walkways, Patios, &amp; Driveways</span
+            >
           </div>
-          <Heading level={2} class="!text-4xl font-bold text-brand-700">Our Keystone Service</Heading>
-          <Heading level={2} class="!text-4xl font-medium italic text-brand-700">Fitted for Your Needs</Heading>
+          <Heading level={2} class="text-brand-700 !text-4xl font-bold"
+            >Our Keystone Service</Heading
+          >
+          <Heading level={2} class="text-brand-700 !text-4xl font-medium italic"
+            >Fitted for Your Needs</Heading
+          >
         </div>
-        <p class="max-w-sm font-sans text-[16px] text-ink-muted md:text-end">
+        <p class="text-ink-muted max-w-sm font-sans text-[16px] md:text-end">
           Whether you're updating an existing landscape or building a new outdoor retreat, we work
-          closely with you from design to completion to create a space that reflects your vision
-          and complements your home.
+          closely with you from design to completion to create a space that reflects your vision and
+          complements your home.
         </p>
       </div>
 
       <!-- Row 1: Walkways + Driveways -->
       <div class="grid gap-5 md:grid-cols-2">
-        {walkwayCards.map((card) => (
-          <a
-            href={card.href}
-            class="group flex min-h-[619px] flex-col items-start justify-end gap-5 border-l-4 border-accent-500 p-[30px] no-underline"
-            style={`background-image:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(3,39,127,0.8) 100%),url('${card.image}');background-size:cover;background-position:center`}
-          >
-            <h3 class="font-heading text-2xl font-medium text-neutral-0">{card.title}</h3>
-            <p class="font-sans text-[16px] text-neutral-0/75">{card.body}</p>
-            <div class="inline-flex items-center gap-[10px] border border-accent-500 bg-accent-500 px-4 py-[9px] font-sans text-[16px] font-medium text-neutral-0 group-hover:border-neutral-0 transition-colors">
-              {card.cta}
-              <Icon name="lucide:arrow-right" class="size-5 shrink-0" aria-hidden="true" />
-            </div>
-          </a>
-        ))}
+        {
+          walkwayCards.map((card) => (
+            <a
+              href={card.href}
+              class="group border-accent-500 flex min-h-[619px] flex-col items-start justify-end gap-5 border-l-4 p-[30px] no-underline"
+              style={`background-image:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(3,39,127,0.8) 100%),url('${card.image}');background-size:cover;background-position:center`}
+            >
+              <h3 class="font-heading text-neutral-0 text-2xl font-medium">{card.title}</h3>
+              <p class="text-neutral-0/75 font-sans text-[16px]">{card.body}</p>
+              <div class="border-accent-500 bg-accent-500 text-neutral-0 group-hover:border-neutral-0 inline-flex items-center gap-[10px] border px-4 py-[9px] font-sans text-[16px] font-medium transition-colors">
+                {card.cta}
+                <Icon name="lucide:arrow-right" class="size-5 shrink-0" aria-hidden="true" />
+              </div>
+            </a>
+          ))
+        }
       </div>
 
       <!-- Row 2: Custom Patios (full width) -->
       <a
         href="/services/patios/"
-        class="group flex min-h-[619px] w-full flex-col items-start justify-end gap-5 border-l-4 border-accent-500 p-[30px] no-underline"
+        class="group border-accent-500 flex min-h-[619px] w-full flex-col items-start justify-end gap-5 border-l-4 p-[30px] no-underline"
         style="background-image:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(3,39,127,0.8) 100%),url('/images/custom-patio-construction.webp');background-size:cover;background-position:center"
       >
-        <h3 class="font-heading text-2xl font-medium text-neutral-0">Custom Patios</h3>
-        <p class="max-w-2xl font-sans text-[16px] text-neutral-0/75">
+        <h3 class="font-heading text-neutral-0 text-2xl font-medium">Custom Patios</h3>
+        <p class="text-neutral-0/75 max-w-2xl font-sans text-[16px]">
           A professionally designed patio extends your living space beyond the walls of your home.
           Whether you're looking for a cozy gathering area, a backyard entertainment space, or a
           complete outdoor retreat, we create custom patios using high-quality pavers, natural
           stone, and premium hardscape materials. Our patio designs are built to withstand Northern
-          Michigan's changing seasons while providing lasting beauty and functionality for years to come.
+          Michigan's changing seasons while providing lasting beauty and functionality for years to
+          come.
         </p>
-        <div class="inline-flex items-center gap-[10px] border border-accent-500 bg-accent-500 px-4 py-[9px] font-sans text-[16px] font-medium text-neutral-0 group-hover:border-neutral-0 transition-colors">
+        <div
+          class="border-accent-500 bg-accent-500 text-neutral-0 group-hover:border-neutral-0 inline-flex items-center gap-[10px] border px-4 py-[9px] font-sans text-[16px] font-medium transition-colors"
+        >
           Create Your Dream Patio Today
           <Icon name="lucide:arrow-right" class="size-5 shrink-0" aria-hidden="true" />
         </div>
       </a>
-
     </Container>
   </Section>
 
   <!-- ── MID-PAGE CTA STRIP ─────────────────────────────────────────────── -->
-  <div class="w-full bg-surface-brand py-[30px]">
-    <div class="mx-auto flex max-w-page flex-col items-start justify-between gap-6 px-gutter md:flex-row md:items-center">
+  <div class="bg-surface-brand w-full py-[30px]">
+    <div
+      class="max-w-page px-gutter mx-auto flex flex-col items-start justify-between gap-6 md:flex-row md:items-center"
+    >
       <div class="flex flex-col items-start gap-[10px]">
-        <p class="font-sans text-[16px] font-medium uppercase tracking-[2px] text-accent-500">Free Consultation</p>
-        <h2 class="font-heading text-[30px] font-medium text-neutral-0">Ready to Transform Your Outdoor Space?</h2>
-        <p class="font-sans text-[16px] text-neutral-0/75">Len will personally visit your property — no obligation, no cost.</p>
+        <p class="text-accent-500 font-sans text-[16px] font-medium tracking-[2px] uppercase">
+          Free Consultation
+        </p>
+        <h2 class="font-heading text-neutral-0 text-[30px] font-medium">
+          Ready to Transform Your Outdoor Space?
+        </h2>
+        <p class="text-neutral-0/75 font-sans text-[16px]">
+          Len will personally visit your property — no obligation, no cost.
+        </p>
       </div>
-      <div class="flex w-full shrink-0 flex-col items-stretch gap-[10px] sm:w-auto sm:flex-row sm:items-center">
+      <div
+        class="flex w-full shrink-0 flex-col items-stretch gap-[10px] sm:w-auto sm:flex-row sm:items-center"
+      >
         <Button href="#free-estimate" size="lg">Free Estimate</Button>
         <a
           href={`tel:${site.business.phoneHref}`}
-          class="inline-flex items-center gap-2 border border-neutral-0/75 bg-transparent px-[25px] py-[12px] font-sans text-[20px] font-medium text-neutral-0 no-underline hover:border-neutral-0 hover:bg-white/10"
+          class="border-neutral-0/75 text-neutral-0 hover:border-neutral-0 inline-flex items-center gap-2 border bg-transparent px-[25px] py-[12px] font-sans text-[20px] font-medium no-underline hover:bg-white/10"
         >
           <Icon name="lucide:phone" class="size-5" aria-hidden="true" />
           {site.business.phone}
@@ -227,18 +281,21 @@ const wallWaterCards: ServiceCard[] = [
   <!-- ── RETAINING WALLS & WATERSCAPES ─────────────────────────────────── -->
   <Section background="muted" spacing="md">
     <Container gap="lg">
-
       <!-- Section header: heading left, body right -->
       <div class="flex w-full flex-col gap-10 md:flex-row md:items-end md:justify-between">
         <div class="flex flex-col gap-3">
           <div class="flex items-center gap-3">
-            <span class="block h-px w-10 bg-accent-500" aria-hidden="true"></span>
-            <span class="font-sans text-[16px] font-medium uppercase tracking-[2px] text-accent-500">Retaining Walls &amp; Waterscapes</span>
+            <span class="bg-accent-500 block h-px w-10" aria-hidden="true"></span>
+            <span class="text-accent-500 font-sans text-[16px] font-medium tracking-[2px] uppercase"
+              >Retaining Walls &amp; Waterscapes</span
+            >
           </div>
-          <Heading level={2} class="!text-4xl font-bold text-brand-700">Elevate Your Space</Heading>
-          <Heading level={2} class="!text-4xl font-medium italic text-brand-700">With Natural Landscape</Heading>
+          <Heading level={2} class="text-brand-700 !text-4xl font-bold">Elevate Your Space</Heading>
+          <Heading level={2} class="text-brand-700 !text-4xl font-medium italic"
+            >With Natural Landscape</Heading
+          >
         </div>
-        <p class="max-w-sm font-sans text-[16px] text-ink-muted md:text-end">
+        <p class="text-ink-muted max-w-sm font-sans text-[16px] md:text-end">
           Whether you're planning a space for entertaining guests or relaxing with family, we can
           help bring your vision to life with custom hardscape features and thoughtful design.
         </p>
@@ -246,23 +303,23 @@ const wallWaterCards: ServiceCard[] = [
 
       <!-- Cards: Retaining Walls + Waterscapes -->
       <div class="grid gap-5 md:grid-cols-2">
-        {wallWaterCards.map((card) => (
-          <a
-            href={card.href}
-            class="group flex min-h-[619px] flex-col items-start justify-end gap-5 border-l-4 border-accent-500 p-[30px] no-underline"
-            style={`background-image:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(3,39,127,0.8) 100%),url('${card.image}');background-size:cover;background-position:center`}
-          >
-            <h3 class="font-heading text-2xl font-medium text-neutral-0">{card.title}</h3>
-            <p class="font-sans text-[16px] text-neutral-0/75">{card.body}</p>
-            <div class="inline-flex items-center gap-[10px] border border-accent-500 bg-accent-500 px-4 py-[9px] font-sans text-[16px] font-medium text-neutral-0 group-hover:border-neutral-0 transition-colors">
-              {card.cta}
-              <Icon name="lucide:arrow-right" class="size-5 shrink-0" aria-hidden="true" />
-            </div>
-          </a>
-        ))}
+        {
+          wallWaterCards.map((card) => (
+            <a
+              href={card.href}
+              class="group border-accent-500 flex min-h-[619px] flex-col items-start justify-end gap-5 border-l-4 p-[30px] no-underline"
+              style={`background-image:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(3,39,127,0.8) 100%),url('${card.image}');background-size:cover;background-position:center`}
+            >
+              <h3 class="font-heading text-neutral-0 text-2xl font-medium">{card.title}</h3>
+              <p class="text-neutral-0/75 font-sans text-[16px]">{card.body}</p>
+              <div class="border-accent-500 bg-accent-500 text-neutral-0 group-hover:border-neutral-0 inline-flex items-center gap-[10px] border px-4 py-[9px] font-sans text-[16px] font-medium transition-colors">
+                {card.cta}
+                <Icon name="lucide:arrow-right" class="size-5 shrink-0" aria-hidden="true" />
+              </div>
+            </a>
+          ))
+        }
       </div>
-
     </Container>
   </Section>
-
 </BaseLayout>

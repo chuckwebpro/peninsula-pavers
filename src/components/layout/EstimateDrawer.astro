@@ -22,11 +22,11 @@ const services = [
   id="estimate-tab"
   aria-controls="estimate-drawer"
   aria-expanded="false"
-  class="fixed right-0 top-1/2 z-50 -translate-y-1/2 flex h-[164px] w-10 cursor-pointer flex-col items-center justify-center gap-1 rounded-l-md bg-accent-500 shadow-[-4px_0_12px_rgba(0,0,0,0.25)] transition-colors hover:bg-accent-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-700"
+  class="bg-accent-500 hover:bg-accent-600 focus-visible:outline-brand-700 fixed top-1/2 right-0 z-50 flex h-[164px] w-10 -translate-y-1/2 cursor-pointer flex-col items-center justify-center gap-1 rounded-l-md shadow-[-4px_0_12px_rgba(0,0,0,0.25)] transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
 >
-  <Icon name="lucide:file-text" class="size-4 text-neutral-0/70" aria-hidden="true" />
+  <Icon name="lucide:file-text" class="text-neutral-0/70 size-4" aria-hidden="true" />
   <span
-    class="select-none text-[13px] font-medium uppercase tracking-[2px] text-neutral-0"
+    class="text-neutral-0 text-[13px] font-medium tracking-[2px] uppercase select-none"
     style="writing-mode:vertical-rl;transform:rotate(180deg)"
   >
     Free Estimate
@@ -38,7 +38,8 @@ const services = [
   id="estimate-backdrop"
   aria-hidden="true"
   class="pointer-events-none fixed inset-0 z-[55] bg-neutral-900/60 opacity-0 transition-opacity duration-300"
-></div>
+>
+</div>
 
 <!-- Drawer panel -->
 <div
@@ -48,13 +49,16 @@ const services = [
   aria-labelledby="estimate-heading"
   aria-hidden="true"
   inert
-  class="fixed inset-y-0 right-0 z-[60] flex w-full max-w-[500px] translate-x-full flex-col overflow-y-auto bg-surface-base shadow-2xl transition-transform duration-300 ease-in-out"
+  class="bg-surface-base fixed inset-y-0 right-0 z-[60] flex w-full max-w-[500px] translate-x-full flex-col overflow-y-auto shadow-2xl transition-transform duration-300 ease-in-out"
 >
   <!-- Drawer header -->
-  <div class="flex shrink-0 items-start justify-between border-b border-line-base px-6 py-5">
+  <div class="border-line-base flex shrink-0 items-start justify-between border-b px-6 py-5">
     <div>
-      <p class="text-[12px] font-medium uppercase tracking-[2px] text-accent-500">Get In Touch</p>
-      <h2 id="estimate-heading" class="font-heading text-[30px] font-medium leading-tight text-brand-700">
+      <p class="text-accent-500 text-[12px] font-medium tracking-[2px] uppercase">Get In Touch</p>
+      <h2
+        id="estimate-heading"
+        class="font-heading text-brand-700 text-[30px] leading-tight font-medium"
+      >
         Request a Free Estimate
       </h2>
     </div>
@@ -62,14 +66,14 @@ const services = [
       type="button"
       id="estimate-close"
       aria-label="Close estimate form"
-      class="ml-4 mt-1 flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-md text-ink-base transition-colors hover:bg-neutral-100 focus-visible:outline-2"
+      class="text-ink-base mt-1 ml-4 flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-md transition-colors hover:bg-neutral-100 focus-visible:outline-2"
     >
       <Icon name="lucide:x" class="size-5" aria-hidden="true" />
     </button>
   </div>
 
   <!-- Drawer body -->
-  <div class="flex-1 px-6 pb-10 pt-6">
+  <div class="flex-1 px-6 pt-6 pb-10">
     <p class="mb-6 text-[16px] leading-relaxed text-neutral-900/55">
       Fill out the form and Len will be in touch to schedule your complimentary on-site
       consultation.
@@ -92,11 +96,7 @@ const services = [
       {formAction && <input type="hidden" name="_next" value={thankYouUrl} />}
       {
         formAction && (
-          <input
-            type="hidden"
-            name="_subject"
-            value={`Free estimate request — ${site.name}`}
-          />
+          <input type="hidden" name="_subject" value={`Free estimate request — ${site.name}`} />
         )
       }
       <!-- Honeypot spam prevention -->
@@ -106,7 +106,7 @@ const services = [
 
       <div class="grid gap-4 sm:grid-cols-2">
         <label class="flex flex-col gap-1">
-          <span class="text-[12px] font-medium uppercase tracking-wider text-neutral-900/40"
+          <span class="text-[12px] font-medium tracking-wider text-neutral-900/40 uppercase"
             >Full Name *</span
           >
           <input
@@ -115,11 +115,11 @@ const services = [
             placeholder="Your name"
             required
             autocomplete="name"
-            class="border-b border-neutral-300 bg-transparent py-2 text-[16px] text-neutral-900 placeholder:text-neutral-400 focus:border-brand-700 focus:outline-none"
+            class="focus:border-brand-700 border-b border-neutral-300 bg-transparent py-2 text-[16px] text-neutral-900 placeholder:text-neutral-400 focus:outline-none"
           />
         </label>
         <label class="flex flex-col gap-1">
-          <span class="text-[12px] font-medium uppercase tracking-wider text-neutral-900/40"
+          <span class="text-[12px] font-medium tracking-wider text-neutral-900/40 uppercase"
             >Phone Number</span
           >
           <input
@@ -127,13 +127,13 @@ const services = [
             name="phone"
             placeholder="(231) 555-0000"
             autocomplete="tel"
-            class="border-b border-neutral-300 bg-transparent py-2 text-[16px] text-neutral-900 placeholder:text-neutral-400 focus:border-brand-700 focus:outline-none"
+            class="focus:border-brand-700 border-b border-neutral-300 bg-transparent py-2 text-[16px] text-neutral-900 placeholder:text-neutral-400 focus:outline-none"
           />
         </label>
       </div>
 
       <label class="flex flex-col gap-1">
-        <span class="text-[12px] font-medium uppercase tracking-wider text-neutral-900/40"
+        <span class="text-[12px] font-medium tracking-wider text-neutral-900/40 uppercase"
           >Email Address *</span
         >
         <input
@@ -142,24 +142,24 @@ const services = [
           placeholder="you@email.com"
           required
           autocomplete="email"
-          class="border-b border-neutral-300 bg-transparent py-2 text-[16px] text-neutral-900 placeholder:text-neutral-400 focus:border-brand-700 focus:outline-none"
+          class="focus:border-brand-700 border-b border-neutral-300 bg-transparent py-2 text-[16px] text-neutral-900 placeholder:text-neutral-400 focus:outline-none"
         />
       </label>
 
       <!-- Service checkboxes -->
       <fieldset class="flex flex-col gap-3">
-        <legend class="text-[12px] font-medium uppercase tracking-wider text-neutral-900/40">
+        <legend class="text-[12px] font-medium tracking-wider text-neutral-900/40 uppercase">
           What services are you interested in?
         </legend>
         <div class="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
           {
             services.map((service) => (
-              <label class="flex cursor-pointer items-center gap-2.5 rounded border border-neutral-200 px-3 py-2.5 transition-colors hover:border-brand-700/50 hover:bg-neutral-50 has-[:checked]:border-brand-700 has-[:checked]:bg-brand-700/5">
+              <label class="hover:border-brand-700/50 has-[:checked]:border-brand-700 has-[:checked]:bg-brand-700/5 flex cursor-pointer items-center gap-2.5 rounded border border-neutral-200 px-3 py-2.5 transition-colors hover:bg-neutral-50">
                 <input
                   type="checkbox"
                   name="services"
                   value={service}
-                  class="size-4 shrink-0 accent-brand-700"
+                  class="accent-brand-700 size-4 shrink-0"
                 />
                 <span class="text-[15px] text-neutral-800">{service}</span>
               </label>
@@ -169,7 +169,7 @@ const services = [
       </fieldset>
 
       <label class="flex flex-col gap-1">
-        <span class="text-[12px] font-medium uppercase tracking-wider text-neutral-900/40"
+        <span class="text-[12px] font-medium tracking-wider text-neutral-900/40 uppercase"
           >Tell Us About Your Project *</span
         >
         <textarea
@@ -177,13 +177,13 @@ const services = [
           rows="4"
           placeholder="Describe your project, location, and any specific ideas..."
           required
-          class="resize-none border-b border-neutral-300 bg-transparent py-2 text-[16px] text-neutral-900 placeholder:text-neutral-400 focus:border-brand-700 focus:outline-none"
+          class="focus:border-brand-700 resize-none border-b border-neutral-300 bg-transparent py-2 text-[16px] text-neutral-900 placeholder:text-neutral-400 focus:outline-none"
         ></textarea>
       </label>
 
       <button
         type="submit"
-        class="mt-2 inline-flex min-h-[52px] w-full cursor-pointer items-center justify-center rounded-none bg-brand-700 font-sans text-[18px] font-medium text-neutral-0 transition-colors hover:bg-brand-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500"
+        class="bg-brand-700 text-neutral-0 hover:bg-brand-800 focus-visible:outline-accent-500 mt-2 inline-flex min-h-[52px] w-full cursor-pointer items-center justify-center rounded-none font-sans text-[18px] font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
       >
         Send My Request
       </button>

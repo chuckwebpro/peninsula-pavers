@@ -8,17 +8,41 @@ import { Icon } from 'astro-icon/components';
 import { site } from '../config/site';
 
 const services = [
-  { label: 'Outdoor Living Spaces', href: '/services/outdoor-living-spaces/', image: '/images/backyard-hardscaping.webp' },
-  { label: 'Custom Patios',         href: '/services/patios/',                 image: '/images/custom-patio-construction.webp' },
-  { label: 'Paver Driveways',       href: '/services/driveways/',              image: '/images/driveway-with-pavers.webp' },
-  { label: 'Retaining Walls',       href: '/services/retaining-walls/',        image: '/images/retaining-wall-construction.jpg' },
-  { label: 'Stone Walkways',        href: '/services/walkways/',        image: '/images/custom-stone-walkway.webp' },
-  { label: 'Waterscapes',           href: '/services/waterscapes/',            image: '/images/frontyard-waterscape.jpg' },
+  {
+    label: 'Outdoor Living Spaces',
+    href: '/services/outdoor-living-spaces/',
+    image: '/images/backyard-hardscaping.webp',
+  },
+  {
+    label: 'Custom Patios',
+    href: '/services/patios/',
+    image: '/images/custom-patio-construction.webp',
+  },
+  {
+    label: 'Paver Driveways',
+    href: '/services/driveways/',
+    image: '/images/driveway-with-pavers.webp',
+  },
+  {
+    label: 'Retaining Walls',
+    href: '/services/retaining-walls/',
+    image: '/images/retaining-wall-construction.jpg',
+  },
+  {
+    label: 'Stone Walkways',
+    href: '/services/walkways/',
+    image: '/images/custom-stone-walkway.webp',
+  },
+  {
+    label: 'Waterscapes',
+    href: '/services/waterscapes/',
+    image: '/images/frontyard-waterscape.jpg',
+  },
 ];
 
 const stats = [
-  { value: '30+',  label: 'Years In Business' },
-  { value: '12',   label: 'Counties Served' },
+  { value: '30+', label: 'Years In Business' },
+  { value: '12', label: 'Counties Served' },
   { value: '100%', label: 'Satisfaction Guaranteed' },
   { value: '1994', label: 'Est. In Traverse City' },
 ];
@@ -31,23 +55,37 @@ const aboutBullets = [
 ];
 ---
 
-<BaseLayout title={`${site.name} — ${site.tagline}`} description={site.description} pageType="home" sticky="overlay">
-
+<BaseLayout
+  title={`${site.name} — ${site.tagline}`}
+  description={site.description}
+  pageType="home"
+  sticky="overlay"
+>
   <!-- ── HERO ───────────────────────────────────────────────────────────── -->
-  <section class="relative flex min-h-screen items-end pb-16 pt-32" aria-label="Hero">
-    <div class="hero-bg absolute inset-0 bg-brand-900 bg-cover bg-center"
-      style="background-image:url('/images/s1.webp')" aria-hidden="true"></div>
-    <div class="hero-bg hero-bg-2 absolute inset-0 bg-cover bg-center"
-      style="background-image:url('/images/s2.webp')" aria-hidden="true"></div>
+  <section class="relative flex min-h-screen items-end pt-32 pb-16" aria-label="Hero">
+    <div
+      class="hero-bg bg-brand-900 absolute inset-0 bg-cover bg-center"
+      style="background-image:url('/images/s1.webp')"
+      aria-hidden="true"
+    >
+    </div>
+    <div
+      class="hero-bg hero-bg-2 absolute inset-0 bg-cover bg-center"
+      style="background-image:url('/images/s2.webp')"
+      aria-hidden="true"
+    >
+    </div>
     <div class="absolute inset-0 bg-black/55" aria-hidden="true"></div>
 
-    <div class="relative z-10 mx-auto w-full max-w-page px-gutter">
+    <div class="max-w-page px-gutter relative z-10 mx-auto w-full">
       <div class="mb-5 flex items-center gap-3">
-        <span class="block h-px w-10 shrink-0 bg-accent-500" aria-hidden="true"></span>
-        <span class="font-sans text-[16px] font-medium tracking-wide text-accent-400">Peninsula Pavers, Inc.</span>
+        <span class="bg-accent-500 block h-px w-10 shrink-0" aria-hidden="true"></span>
+        <span class="text-accent-400 font-sans text-[16px] font-medium tracking-wide"
+          >Peninsula Pavers, Inc.</span
+        >
       </div>
 
-      <Heading level={1} size="display" class="max-w-3xl text-neutral-0">
+      <Heading level={1} size="display" class="text-neutral-0 max-w-3xl">
         Crafted for Northern Michigan
       </Heading>
 
@@ -59,7 +97,7 @@ const aboutBullets = [
         <Button href="#free-estimate" size="lg">Free Estimate</Button>
         <a
           href={`tel:${site.business.phoneHref}`}
-          class="inline-flex items-center gap-2 border border-neutral-0/75 bg-transparent px-[25px] py-[12px] font-sans text-[20px] font-medium text-neutral-0 no-underline hover:border-neutral-0 hover:bg-white/10"
+          class="border-neutral-0/75 text-neutral-0 hover:border-neutral-0 inline-flex items-center gap-2 border bg-transparent px-[25px] py-[12px] font-sans text-[20px] font-medium no-underline hover:bg-white/10"
         >
           <Icon name="lucide:phone" class="size-5" aria-hidden="true" />
           {site.business.phone}
@@ -69,15 +107,22 @@ const aboutBullets = [
   </section>
 
   <!-- ── STATS BAR ──────────────────────────────────────────────────────── -->
-  <div class="w-full bg-surface-brand py-section-sm">
-    <div class="mx-auto max-w-page px-gutter">
+  <div class="bg-surface-brand py-section-sm w-full">
+    <div class="max-w-page px-gutter mx-auto">
       <dl class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {stats.map(({ value, label }, i) => (
-          <div class:list={['flex flex-col gap-1 text-center', i > 0 && 'lg:border-l-2 lg:border-l-[#ffffff33]']}>
-            <dd class="font-heading text-4xl font-semibold text-neutral-0">{value}</dd>
-            <dt class="font-sans text-[20px] font-medium text-neutral-0/75">{label}</dt>
-          </div>
-        ))}
+        {
+          stats.map(({ value, label }, i) => (
+            <div
+              class:list={[
+                'flex flex-col gap-1 text-center',
+                i > 0 && 'lg:border-l-2 lg:border-l-[#ffffff33]',
+              ]}
+            >
+              <dd class="font-heading text-neutral-0 text-4xl font-semibold">{value}</dd>
+              <dt class="text-neutral-0/75 font-sans text-[20px] font-medium">{label}</dt>
+            </div>
+          ))
+        }
       </dl>
     </div>
   </div>
@@ -88,50 +133,66 @@ const aboutBullets = [
       <div class="flex w-full flex-col gap-10 md:flex-row md:items-end md:justify-between">
         <div class="flex flex-col gap-3">
           <div class="flex items-center gap-3">
-            <span class="block h-px w-10 bg-accent-500" aria-hidden="true"></span>
-            <span class="font-sans text-[16px] font-medium uppercase tracking-[2px] text-accent-500">Our Services</span>
+            <span class="bg-accent-500 block h-px w-10" aria-hidden="true"></span>
+            <span class="text-accent-500 font-sans text-[16px] font-medium tracking-[2px] uppercase"
+              >Our Services</span
+            >
           </div>
-          <Heading level={2} class="!text-4xl font-bold text-brand-700">Every Surface,</Heading>
-          <Heading level={2} class="!text-4xl font-medium italic text-brand-700">Masterfully Crafted</Heading>
+          <Heading level={2} class="text-brand-700 !text-4xl font-bold">Every Surface,</Heading>
+          <Heading level={2} class="text-brand-700 !text-4xl font-medium italic"
+            >Masterfully Crafted</Heading
+          >
         </div>
-        <p class="max-w-sm font-sans text-[16px] text-ink-muted">
+        <p class="text-ink-muted max-w-sm font-sans text-[16px]">
           From driveways to waterscapes, Peninsula Pavers brings 30 years of Northern Michigan
           craftsmanship to every project.
         </p>
       </div>
 
       <ul class="grid w-full gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {services.map(({ label, href, image }) => (
-          <li>
-            <a
-              href={href}
-              class="group flex h-[349px] flex-col items-start justify-end overflow-hidden p-6 no-underline"
-              style={`background-image:linear-gradient(#0000004d,#0000004d),url('${image}');background-size:cover;background-position:center`}
-            >
-              <span class="font-sans text-[16px] font-medium text-neutral-0 transition-colors group-hover:text-accent-300">
-                {label}
-              </span>
-            </a>
-          </li>
-        ))}
+        {
+          services.map(({ label, href, image }) => (
+            <li>
+              <a
+                href={href}
+                class="group flex h-[349px] flex-col items-start justify-end overflow-hidden p-6 no-underline"
+                style={`background-image:linear-gradient(#0000004d,#0000004d),url('${image}');background-size:cover;background-position:center`}
+              >
+                <span class="text-neutral-0 group-hover:text-accent-300 font-sans text-[16px] font-medium transition-colors">
+                  {label}
+                </span>
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </Container>
   </Section>
 
   <!-- ── CTA STRIP ──────────────────────────────────────────────────────── -->
   <!-- CTA strip: horizontal layout, space-between, bottom border Trans-White -->
-  <div class="w-full border-b border-b-neutral-0/[73%] bg-surface-brand py-[30px]">
-    <div class="mx-auto flex max-w-page flex-col items-start justify-between gap-6 px-gutter md:flex-row md:items-center">
-      <div class="flex flex-col gap-[10px] items-start">
-        <p class="font-sans text-[16px] font-medium uppercase tracking-[2px] text-accent-500">Free Consultation</p>
-        <h3 class="font-heading text-[30px] font-medium text-neutral-0">Ready to Transform Your Outdoor Space?</h3>
-        <p class="font-sans text-[16px] text-neutral-0/75">Len will personally visit your property — no obligation, no cost.</p>
+  <div class="border-b-neutral-0/[73%] bg-surface-brand w-full border-b py-[30px]">
+    <div
+      class="max-w-page px-gutter mx-auto flex flex-col items-start justify-between gap-6 md:flex-row md:items-center"
+    >
+      <div class="flex flex-col items-start gap-[10px]">
+        <p class="text-accent-500 font-sans text-[16px] font-medium tracking-[2px] uppercase">
+          Free Consultation
+        </p>
+        <h3 class="font-heading text-neutral-0 text-[30px] font-medium">
+          Ready to Transform Your Outdoor Space?
+        </h3>
+        <p class="text-neutral-0/75 font-sans text-[16px]">
+          Len will personally visit your property — no obligation, no cost.
+        </p>
       </div>
-      <div class="flex w-full shrink-0 flex-col items-stretch gap-[10px] sm:w-auto sm:flex-row sm:items-center">
+      <div
+        class="flex w-full shrink-0 flex-col items-stretch gap-[10px] sm:w-auto sm:flex-row sm:items-center"
+      >
         <Button href="#free-estimate" size="lg">Free Estimate</Button>
         <a
           href={`tel:${site.business.phoneHref}`}
-          class="inline-flex items-center gap-2 border border-neutral-0/75 bg-transparent px-[25px] py-[12px] font-sans text-[20px] font-medium text-neutral-0 no-underline hover:border-neutral-0 hover:bg-white/10"
+          class="border-neutral-0/75 text-neutral-0 hover:border-neutral-0 inline-flex items-center gap-2 border bg-transparent px-[25px] py-[12px] font-sans text-[20px] font-medium no-underline hover:bg-white/10"
         >
           <Icon name="lucide:phone" class="size-5" aria-hidden="true" />
           {site.business.phone}
@@ -145,29 +206,41 @@ const aboutBullets = [
     class="w-full py-[100px]"
     style="background-image:linear-gradient(#03277fba,#03277fba),url('/images/about-bg.webp');background-size:cover;background-position:center"
   >
-    <div class="mx-auto max-w-page px-gutter">
+    <div class="max-w-page px-gutter mx-auto">
       <div class="flex max-w-xl flex-col items-start gap-5">
         <div class="flex items-center gap-3">
-          <span class="block h-px w-10 bg-accent-500" aria-hidden="true"></span>
-          <span class="font-sans text-[16px] font-medium uppercase tracking-[2px] text-accent-500">About Peninsula Pavers</span>
+          <span class="bg-accent-500 block h-px w-10" aria-hidden="true"></span>
+          <span class="text-accent-500 font-sans text-[16px] font-medium tracking-[2px] uppercase"
+            >About Peninsula Pavers</span
+          >
         </div>
         <div>
-          <Heading level={2} class="!text-4xl font-medium text-neutral-0">Northern Michigan's</Heading>
-          <Heading level={3} class="!text-4xl font-medium italic text-neutral-0">Hardscaping Artisans</Heading>
+          <Heading level={2} class="text-neutral-0 !text-4xl font-medium"
+            >Northern Michigan's</Heading
+          >
+          <Heading level={3} class="text-neutral-0 !text-4xl font-medium italic"
+            >Hardscaping Artisans</Heading
+          >
         </div>
-        <p class="font-sans text-[20px] text-neutral-0/75">
-          At Peninsula Pavers, Inc., one of our main goals is perfection. We strive for it every
-          day on your projects, large or small. We take into account your visions of the design
-          along with our ideas and come up with something that you the customer, and us at
-          Peninsula Pavers, will love and take pride in.
+        <p class="text-neutral-0/75 font-sans text-[20px]">
+          At Peninsula Pavers, Inc., one of our main goals is perfection. We strive for it every day
+          on your projects, large or small. We take into account your visions of the design along
+          with our ideas and come up with something that you the customer, and us at Peninsula
+          Pavers, will love and take pride in.
         </p>
         <ul class="grid w-full gap-2 sm:grid-cols-2">
-          {aboutBullets.map((item) => (
-            <li class="flex items-center gap-2 font-sans text-[20px] text-neutral-0/75">
-              <Icon name="lucide:check" class="size-4 shrink-0 text-accent-400" aria-hidden="true" />
-              {item}
-            </li>
-          ))}
+          {
+            aboutBullets.map((item) => (
+              <li class="text-neutral-0/75 flex items-center gap-2 font-sans text-[20px]">
+                <Icon
+                  name="lucide:check"
+                  class="text-accent-400 size-4 shrink-0"
+                  aria-hidden="true"
+                />
+                {item}
+              </li>
+            ))
+          }
         </ul>
       </div>
     </div>
@@ -177,32 +250,39 @@ const aboutBullets = [
   <Section background="base" spacing="md">
     <Container layout="row" gap="lg">
       <div
-        class="w-full shrink-0 md:w-1/2 h-[556px] bg-no-repeat bg-contain bg-center"
+        class="h-[556px] w-full shrink-0 bg-contain bg-center bg-no-repeat md:w-1/2"
         style="background-image:url('/images/Team.webp')"
         role="img"
-        aria-label="Len Allgaier, Owner &amp; Designer"
-      ></div>
+        aria-label="Len Allgaier, Owner & Designer"
+      >
+      </div>
       <div class="flex flex-col items-start gap-5 md:order-2 md:w-1/2">
         <div class="flex items-center gap-3">
-          <span class="block h-px w-10 bg-accent-500" aria-hidden="true"></span>
-          <span class="font-sans text-[16px] font-medium uppercase tracking-[2px] text-accent-500">Meet The Owner</span>
+          <span class="bg-accent-500 block h-px w-10" aria-hidden="true"></span>
+          <span class="text-accent-500 font-sans text-[16px] font-medium tracking-[2px] uppercase"
+            >Meet The Owner</span
+          >
         </div>
         <div>
-          <Heading level={2} class="!text-4xl font-bold text-brand-700">Len Allgaier</Heading>
-          <Heading level={3} class="!text-4xl font-medium italic text-brand-700">Owner &amp; Designer</Heading>
+          <Heading level={2} class="text-brand-700 !text-4xl font-bold">Len Allgaier</Heading>
+          <Heading level={3} class="text-brand-700 !text-4xl font-medium italic"
+            >Owner &amp; Designer</Heading
+          >
         </div>
-        <p class="font-sans text-ink-muted">
+        <p class="text-ink-muted font-sans">
           Len is owner-operator and designer of Peninsula Pavers, who relocated from the Detroit
           area after college in pursuit of doing something he loves, in a location he truly wanted
-          to live. He started the business in 1994 with just a few small trucks and has grown to
-          be very in demand with handpicked craftsmen to facilitate his vision.
+          to live. He started the business in 1994 with just a few small trucks and has grown to be
+          very in demand with handpicked craftsmen to facilitate his vision.
         </p>
-        <p class="font-sans text-ink-muted">
+        <p class="text-ink-muted font-sans">
           Len personally completes every complimentary consultation and works with the home or
           business owner to create a design that is exactly what they are dreaming of. There is no
           better feeling leaving a job knowing that the customer is 100% satisfied.
         </p>
-        <blockquote class="border-l-2 border-accent-500 pl-4 font-sans text-[16px] italic text-ink-muted">
+        <blockquote
+          class="border-accent-500 text-ink-muted border-l-2 pl-4 font-sans text-[16px] italic"
+        >
           &ldquo;We build trust and friendships with every project we complete.&rdquo;
         </blockquote>
       </div>
@@ -214,40 +294,67 @@ const aboutBullets = [
     <Container gap="lg">
       <div class="flex w-full flex-col items-center gap-3 text-center">
         <div class="flex items-center gap-3">
-          <span class="block h-px w-10 bg-accent-500" aria-hidden="true"></span>
-          <span class="font-sans text-[16px] font-medium uppercase tracking-[2px] text-accent-500">How It Works</span>
-          <span class="block h-px w-10 bg-accent-500" aria-hidden="true"></span>
+          <span class="bg-accent-500 block h-px w-10" aria-hidden="true"></span>
+          <span class="text-accent-500 font-sans text-[16px] font-medium tracking-[2px] uppercase"
+            >How It Works</span
+          >
+          <span class="bg-accent-500 block h-px w-10" aria-hidden="true"></span>
         </div>
-        <Heading level={2} class="!text-4xl font-bold text-brand-700">Our Process</Heading>
+        <Heading level={2} class="text-brand-700 !text-4xl font-bold">Our Process</Heading>
       </div>
       <ol class="grid w-full gap-10 sm:grid-cols-2 lg:grid-cols-4">
-        {[
-          { num: '01', title: 'Complimentary Consultation', body: 'Len personally visits your property, listens to your vision, and provides expert design suggestions — at no cost.' },
-          { num: '02', title: 'Written Estimate',           body: 'Receive a detailed written estimate. Any changes or additions are presented in a separate estimate and require your approval.' },
-          { num: '03', title: 'Scheduled Build',            body: 'Once approved and deposit received, your project is added to our schedule. You receive an estimated start date.' },
-          { num: '04', title: 'Exceptional Delivery',       body: "Our handpicked local craftsmen complete your project to our rigid standards. We don't leave until you're 100% satisfied." },
-        ].map(({ num, title, body }) => (
-          <li class="flex flex-col gap-3">
-            <span class="font-heading text-[72px] font-medium leading-none text-brand-700/30" aria-hidden="true">{num}</span>
-            <span class="block h-px w-10 bg-accent-500" aria-hidden="true"></span>
-            <h3 class="font-heading text-[20px] font-medium text-brand-700">{title}</h3>
-            <p class="font-sans text-[16px] text-ink-muted">{body}</p>
-          </li>
-        ))}
+        {
+          [
+            {
+              num: '01',
+              title: 'Complimentary Consultation',
+              body: 'Len personally visits your property, listens to your vision, and provides expert design suggestions — at no cost.',
+            },
+            {
+              num: '02',
+              title: 'Written Estimate',
+              body: 'Receive a detailed written estimate. Any changes or additions are presented in a separate estimate and require your approval.',
+            },
+            {
+              num: '03',
+              title: 'Scheduled Build',
+              body: 'Once approved and deposit received, your project is added to our schedule. You receive an estimated start date.',
+            },
+            {
+              num: '04',
+              title: 'Exceptional Delivery',
+              body: "Our handpicked local craftsmen complete your project to our rigid standards. We don't leave until you're 100% satisfied.",
+            },
+          ].map(({ num, title, body }) => (
+            <li class="flex flex-col gap-3">
+              <span
+                class="font-heading text-brand-700/30 text-[72px] leading-none font-medium"
+                aria-hidden="true"
+              >
+                {num}
+              </span>
+              <span class="bg-accent-500 block h-px w-10" aria-hidden="true" />
+              <h3 class="font-heading text-brand-700 text-[20px] font-medium">{title}</h3>
+              <p class="text-ink-muted font-sans text-[16px]">{body}</p>
+            </li>
+          ))
+        }
       </ol>
     </Container>
   </Section>
 
   <!-- ── TESTIMONIALS ───────────────────────────────────────────────────── -->
-  <section class="w-full bg-surface-brand py-[50px]">
-    <div class="mx-auto flex max-w-page flex-col items-center gap-5 px-gutter text-center">
+  <section class="bg-surface-brand w-full py-[50px]">
+    <div class="max-w-page px-gutter mx-auto flex flex-col items-center gap-5 text-center">
       <div class="flex items-center gap-3">
-        <span class="block h-px w-10 bg-accent-500" aria-hidden="true"></span>
-        <span class="font-sans text-[16px] font-medium uppercase tracking-[2px] text-accent-500">Client Stories</span>
-        <span class="block h-px w-10 bg-accent-500" aria-hidden="true"></span>
+        <span class="bg-accent-500 block h-px w-10" aria-hidden="true"></span>
+        <span class="text-accent-500 font-sans text-[16px] font-medium tracking-[2px] uppercase"
+          >Client Stories</span
+        >
+        <span class="bg-accent-500 block h-px w-10" aria-hidden="true"></span>
       </div>
-      <Heading level={2} class="!text-4xl font-bold text-neutral-0">What Our Clients Say</Heading>
-      <p class="max-w-lg font-sans text-[20px] font-medium text-neutral-0/75">
+      <Heading level={2} class="text-neutral-0 !text-4xl font-bold">What Our Clients Say</Heading>
+      <p class="text-neutral-0/75 max-w-lg font-sans text-[20px] font-medium">
         Trusted by homeowners and businesses across Northern Michigan for over 30 years.
       </p>
     </div>
@@ -255,44 +362,99 @@ const aboutBullets = [
     <div class="t-carousel relative mx-auto mt-[50px] max-w-[1380px] px-12">
       <div class="t-window overflow-hidden">
         <ul class="t-track flex" style="will-change:transform">
-          {[
-            { quote: 'I have worked with Peninsula Pavers and the experience was WONDERFUL! They exceeded all of my needs; their design and creativity is amazing. Thank you for making my landscape an envy to my neighbors!', name: 'Dawn Hartley',     role: 'Homeowner' },
-            { quote: 'Len and his company come with creativity, reliability and a commitment to detail — no matter the size of the project. Len has the vision and insight of not only what works, but what looks right and is aesthetically pleasing.',  name: 'Kelly E. Miller', role: 'Homeowner' },
-            { quote: "Three years later and my driveway always looks amazing. Lenny said it would be great and he's right!",                                                                                                                              name: 'Maggie Smith Kent', role: 'Homeowner' },
-            { quote: 'I have worked with Peninsula Pavers and the experience was WONDERFUL! They exceeded all of my needs; their design and creativity is amazing. Thank you for making my landscape an envy to my neighbors!', name: 'Dawn Hartley',     role: 'Homeowner' },
-            { quote: 'Len and his company come with creativity, reliability and a commitment to detail — no matter the size of the project. Len has the vision and insight of not only what works, but what looks right and is aesthetically pleasing.',  name: 'Kelly E. Miller', role: 'Homeowner' },
-            { quote: "Three years later and my driveway always looks amazing. Lenny said it would be great and he's right!",                                                                                                                              name: 'Maggie Smith Kent', role: 'Homeowner' },
-          ].map(({ quote, name, role }) => (
-            <li class="t-slide">
-              <div class="flex h-full flex-col gap-4 border border-[#ffffff1c] bg-[#ffffff0d] p-5">
-              <span class="font-heading text-3xl leading-none text-accent-500" aria-hidden="true">&ldquo;</span>
-              <div class="flex gap-0.5" aria-label="5 out of 5 stars">
-                {Array.from({ length: 5 }).map(() => (
-                  <svg class="size-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="var(--color-accent-500)" stroke="none"/></svg>
-                ))}
-              </div>
-              <p class="flex-1 font-sans text-[16px] italic text-neutral-0/75">{quote}</p>
-              <footer>
-                <p class="font-sans text-[16px] font-medium text-neutral-0">{name}</p>
-                <p class="font-sans text-[16px] uppercase tracking-[2px] text-accent-500">{role}</p>
-              </footer>
-            </div>
-            </li>
-          ))}
+          {
+            [
+              {
+                quote:
+                  'I have worked with Peninsula Pavers and the experience was WONDERFUL! They exceeded all of my needs; their design and creativity is amazing. Thank you for making my landscape an envy to my neighbors!',
+                name: 'Dawn Hartley',
+                role: 'Homeowner',
+              },
+              {
+                quote:
+                  'Len and his company come with creativity, reliability and a commitment to detail — no matter the size of the project. Len has the vision and insight of not only what works, but what looks right and is aesthetically pleasing.',
+                name: 'Kelly E. Miller',
+                role: 'Homeowner',
+              },
+              {
+                quote:
+                  "Three years later and my driveway always looks amazing. Lenny said it would be great and he's right!",
+                name: 'Maggie Smith Kent',
+                role: 'Homeowner',
+              },
+              {
+                quote:
+                  'I have worked with Peninsula Pavers and the experience was WONDERFUL! They exceeded all of my needs; their design and creativity is amazing. Thank you for making my landscape an envy to my neighbors!',
+                name: 'Dawn Hartley',
+                role: 'Homeowner',
+              },
+              {
+                quote:
+                  'Len and his company come with creativity, reliability and a commitment to detail — no matter the size of the project. Len has the vision and insight of not only what works, but what looks right and is aesthetically pleasing.',
+                name: 'Kelly E. Miller',
+                role: 'Homeowner',
+              },
+              {
+                quote:
+                  "Three years later and my driveway always looks amazing. Lenny said it would be great and he's right!",
+                name: 'Maggie Smith Kent',
+                role: 'Homeowner',
+              },
+            ].map(({ quote, name, role }) => (
+              <li class="t-slide">
+                <div class="flex h-full flex-col gap-4 border border-[#ffffff1c] bg-[#ffffff0d] p-5">
+                  <span
+                    class="font-heading text-accent-500 text-3xl leading-none"
+                    aria-hidden="true"
+                  >
+                    &ldquo;
+                  </span>
+                  <div class="flex gap-0.5" aria-label="5 out of 5 stars">
+                    {Array.from({ length: 5 }).map(() => (
+                      <svg
+                        class="size-4"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                          fill="var(--color-accent-500)"
+                          stroke="none"
+                        />
+                      </svg>
+                    ))}
+                  </div>
+                  <p class="text-neutral-0/75 flex-1 font-sans text-[16px] italic">{quote}</p>
+                  <footer>
+                    <p class="text-neutral-0 font-sans text-[16px] font-medium">{name}</p>
+                    <p class="text-accent-500 font-sans text-[16px] tracking-[2px] uppercase">
+                      {role}
+                    </p>
+                  </footer>
+                </div>
+              </li>
+            ))
+          }
         </ul>
       </div>
 
-      <button class="t-prev absolute left-0 top-1/2 -translate-y-1/2 flex items-center justify-center p-2 text-neutral-0" aria-label="Previous">
+      <button
+        class="t-prev text-neutral-0 absolute top-1/2 left-0 flex -translate-y-1/2 items-center justify-center p-2"
+        aria-label="Previous"
+      >
         <Icon name="lucide:chevron-left" class="size-6" aria-hidden="true" />
       </button>
-      <button class="t-next absolute right-0 top-1/2 -translate-y-1/2 flex items-center justify-center p-2 text-neutral-0" aria-label="Next">
+      <button
+        class="t-next text-neutral-0 absolute top-1/2 right-0 flex -translate-y-1/2 items-center justify-center p-2"
+        aria-label="Next"
+      >
         <Icon name="lucide:chevron-right" class="size-6" aria-hidden="true" />
       </button>
 
       <div class="t-dots mt-6 flex justify-center gap-2"></div>
     </div>
   </section>
-
 </BaseLayout>
 
 <style>
@@ -302,27 +464,61 @@ const aboutBullets = [
     opacity: 0;
   }
   @keyframes hero-crossfade {
-    0%       { opacity: 0; }
-    10%, 45% { opacity: 1; }
-    55%, 90% { opacity: 0; }
-    100%     { opacity: 0; }
+    0% {
+      opacity: 0;
+    }
+    10%,
+    45% {
+      opacity: 1;
+    }
+    55%,
+    90% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
   }
   @media (prefers-reduced-motion: reduce) {
-    .hero-bg-2 { animation: none; }
+    .hero-bg-2 {
+      animation: none;
+    }
   }
 
   /* Testimonial slide widths — JS reads perView from CSS */
-  .t-slide { flex-shrink: 0; width: 33.333%; padding: 0 10px; box-sizing: border-box; }
-  @media (max-width: 1023px) { .t-slide { width: 50%; } }
-  @media (max-width: 767px)  { .t-slide { width: 100%; } }
+  .t-slide {
+    flex-shrink: 0;
+    width: 33.333%;
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+  @media (max-width: 1023px) {
+    .t-slide {
+      width: 50%;
+    }
+  }
+  @media (max-width: 767px) {
+    .t-slide {
+      width: 100%;
+    }
+  }
 
-  .t-track { transition: transform 500ms ease; }
+  .t-track {
+    transition: transform 500ms ease;
+  }
 
   /* Pagination dots */
   .t-dots button {
-    width: 12px; height: 12px; border-radius: 50%;
-    background: #fff; opacity: 0.5; border: none; cursor: pointer;
-    transition: opacity 150ms, background 150ms;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #fff;
+    opacity: 0.5;
+    border: none;
+    cursor: pointer;
+    transition:
+      opacity 150ms,
+      background 150ms;
     padding: 0;
   }
   .t-dots button.active {
@@ -335,54 +531,70 @@ const aboutBullets = [
   (function () {
     var carousel = document.querySelector('.t-carousel');
     if (!carousel) return;
-    var track  = carousel.querySelector('.t-track');
+    var track = carousel.querySelector('.t-track');
     var slides = Array.from(carousel.querySelectorAll('.t-slide'));
     var prevBtn = carousel.querySelector('.t-prev');
     var nextBtn = carousel.querySelector('.t-next');
-    var dotsEl  = carousel.querySelector('.t-dots');
-    var idx = 0, timer;
+    var dotsEl = carousel.querySelector('.t-dots');
+    var idx = 0,
+      timer;
     var UNIQUE = 3; /* real testimonial count — slides are doubled for loop */
 
     function perView() {
       if (window.innerWidth >= 1024) return 3;
-      if (window.innerWidth >= 768)  return 2;
+      if (window.innerWidth >= 768) return 2;
       return 1;
     }
 
     function goTo(i) {
-      var pv  = perView();
+      var pv = perView();
       var max = slides.length - pv; /* 6-3=3 on desktop */
       idx = i;
-      if (idx < 0)   idx = max;
+      if (idx < 0) idx = max;
       if (idx > max) idx = 0;
-      track.style.transform = 'translateX(-' + (idx * (100 / pv)) + '%)';
+      track.style.transform = 'translateX(-' + idx * (100 / pv) + '%)';
       dotsEl.querySelectorAll('button').forEach(function (d, j) {
-        d.classList.toggle('active', j === (idx % UNIQUE));
+        d.classList.toggle('active', j === idx % UNIQUE);
       });
     }
 
     /* build dots (one per unique testimonial) */
     for (var i = 0; i < UNIQUE; i++) {
-      (function(n) {
+      (function (n) {
         var btn = document.createElement('button');
         btn.setAttribute('aria-label', 'Go to slide ' + (n + 1));
-        btn.addEventListener('click', function () { goTo(n); });
+        btn.addEventListener('click', function () {
+          goTo(n);
+        });
         dotsEl.appendChild(btn);
-      }(i));
+      })(i);
     }
 
-    prevBtn.addEventListener('click', function () { clearInterval(timer); goTo(idx - 1); startTimer(); });
-    nextBtn.addEventListener('click', function () { clearInterval(timer); goTo(idx + 1); startTimer(); });
+    prevBtn.addEventListener('click', function () {
+      clearInterval(timer);
+      goTo(idx - 1);
+      startTimer();
+    });
+    nextBtn.addEventListener('click', function () {
+      clearInterval(timer);
+      goTo(idx + 1);
+      startTimer();
+    });
 
     function startTimer() {
-      timer = setInterval(function () { goTo(idx + 1); }, 5000);
+      timer = setInterval(function () {
+        goTo(idx + 1);
+      }, 5000);
     }
-    carousel.addEventListener('mouseenter', function () { clearInterval(timer); });
+    carousel.addEventListener('mouseenter', function () {
+      clearInterval(timer);
+    });
     carousel.addEventListener('mouseleave', startTimer);
-    window.addEventListener('resize', function () { goTo(idx); });
+    window.addEventListener('resize', function () {
+      goTo(idx);
+    });
 
     goTo(0);
     startTimer();
-  }());
+  })();
 </script>
-

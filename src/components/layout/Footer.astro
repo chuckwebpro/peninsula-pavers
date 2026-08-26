@@ -8,130 +8,229 @@ const formAction = site.formspreeId ? `https://formspree.io/f/${site.formspreeId
 const thankYouUrl = new URL('/thank-you/', site.url).href;
 
 const serviceArea = [
-  'Traverse City', 'Leelanau', 'Crystal Lake', 'Torch Lake',
-  'Interlochen', 'Benzie County', 'Manistee County', 'Grand Traverse County',
-  'Antrim County', 'Wexford County', 'Kalkaska County', 'Charlevoix County',
+  'Traverse City',
+  'Leelanau',
+  'Crystal Lake',
+  'Torch Lake',
+  'Interlochen',
+  'Benzie County',
+  'Manistee County',
+  'Grand Traverse County',
+  'Antrim County',
+  'Wexford County',
+  'Kalkaska County',
+  'Charlevoix County',
 ];
 ---
 
 <footer class="w-full font-sans">
-
   <!-- ── ROW 1: full-width 2-column (navy | white) ──────────────────────── -->
   <div class="flex flex-col md:flex-row" id="contact">
-
     <!-- Left: Get In Touch + contact info + service area (navy) -->
-    <div class="flex flex-1 flex-col gap-4 bg-surface-brand p-[50px]">
+    <div class="bg-surface-brand flex flex-1 flex-col gap-4 p-[50px]">
       <div class="flex items-center gap-3">
-        <span class="block h-px w-10 bg-accent-500" aria-hidden="true"></span>
-        <span class="text-[16px] font-medium uppercase tracking-[2px] text-accent-500">Get In Touch</span>
+        <span class="bg-accent-500 block h-px w-10" aria-hidden="true"></span>
+        <span class="text-accent-500 text-[16px] font-medium tracking-[2px] uppercase"
+          >Get In Touch</span
+        >
       </div>
-      <h2 class="font-heading text-[48px] font-medium leading-tight text-neutral-0">Start Your</h2>
-      <h3 class="font-heading text-[48px] font-medium italic leading-tight text-neutral-0">Dream Project</h3>
-      <p class="text-[20px] text-neutral-0/75">
+      <h2 class="font-heading text-neutral-0 text-[48px] leading-tight font-medium">Start Your</h2>
+      <h3 class="font-heading text-neutral-0 text-[48px] leading-tight font-medium italic">
+        Dream Project
+      </h3>
+      <p class="text-neutral-0/75 text-[20px]">
         Len Allgaier will personally visit your property for a complimentary on-site design
         consultation. No obligation — just honest expertise.
       </p>
 
       <div class="mt-2 flex flex-col gap-5">
-        <a href={`tel:${site.business.phoneHref}`} class="flex items-center gap-3 no-underline group">
-          <span class="flex size-10 shrink-0 items-center justify-center rounded-full border border-neutral-0/30">
-            <Icon name="lucide:phone" class="size-5 text-accent-500" aria-hidden="true" />
+        <a
+          href={`tel:${site.business.phoneHref}`}
+          class="group flex items-center gap-3 no-underline"
+        >
+          <span
+            class="border-neutral-0/30 flex size-10 shrink-0 items-center justify-center rounded-full border"
+          >
+            <Icon name="lucide:phone" class="text-accent-500 size-5" aria-hidden="true" />
           </span>
           <span>
-            <p class="text-[16px] uppercase tracking-wider text-neutral-0/30">Phone</p>
-            <p class="text-[16px] font-medium text-neutral-0/75 group-hover:text-neutral-0 md:text-[18px] lg:text-[24px]">{site.business.phone}</p>
+            <p class="text-neutral-0/30 text-[16px] tracking-wider uppercase">Phone</p>
+            <p
+              class="text-neutral-0/75 group-hover:text-neutral-0 text-[16px] font-medium md:text-[18px] lg:text-[24px]"
+            >
+              {site.business.phone}
+            </p>
           </span>
         </a>
-        <a href={`mailto:${site.business.email}`} class="flex items-center gap-3 no-underline group">
-          <span class="flex size-10 shrink-0 items-center justify-center rounded-full border border-neutral-0/30">
-            <Icon name="lucide:mail" class="size-5 text-accent-500" aria-hidden="true" />
+        <a
+          href={`mailto:${site.business.email}`}
+          class="group flex items-center gap-3 no-underline"
+        >
+          <span
+            class="border-neutral-0/30 flex size-10 shrink-0 items-center justify-center rounded-full border"
+          >
+            <Icon name="lucide:mail" class="text-accent-500 size-5" aria-hidden="true" />
           </span>
           <span>
-            <p class="text-[16px] uppercase tracking-wider text-neutral-0/30">Email</p>
-            <p class="text-[16px] font-medium text-neutral-0/75 group-hover:text-neutral-0 md:text-[18px] lg:text-[24px]">{site.business.email}</p>
+            <p class="text-neutral-0/30 text-[16px] tracking-wider uppercase">Email</p>
+            <p
+              class="text-neutral-0/75 group-hover:text-neutral-0 text-[16px] font-medium md:text-[18px] lg:text-[24px]"
+            >
+              {site.business.email}
+            </p>
           </span>
         </a>
-        <a href="https://maps.app.goo.gl/981EGuRDzy4LDXW77" target="_blank" rel="noopener noreferrer" class="flex items-start gap-3 no-underline group">
-          <span class="flex size-10 shrink-0 items-center justify-center rounded-full border border-neutral-0/30">
-            <Icon name="lucide:map-pin" class="size-5 text-accent-500" aria-hidden="true" />
+        <a
+          href="https://maps.app.goo.gl/981EGuRDzy4LDXW77"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group flex items-start gap-3 no-underline"
+        >
+          <span
+            class="border-neutral-0/30 flex size-10 shrink-0 items-center justify-center rounded-full border"
+          >
+            <Icon name="lucide:map-pin" class="text-accent-500 size-5" aria-hidden="true" />
           </span>
           <span>
-            <p class="text-[16px] uppercase tracking-wider text-neutral-0/30">Address</p>
-            <p class="text-[16px] font-medium text-neutral-0/75 group-hover:text-neutral-0 md:text-[18px] lg:text-[24px]">
+            <p class="text-neutral-0/30 text-[16px] tracking-wider uppercase">Address</p>
+            <p
+              class="text-neutral-0/75 group-hover:text-neutral-0 text-[16px] font-medium md:text-[18px] lg:text-[24px]"
+            >
               {site.business.address.street}<br />
-              {site.business.address.locality}, {site.business.address.region} {site.business.address.postalCode}
+              {site.business.address.locality}, {site.business.address.region}
+              {site.business.address.postalCode}
             </p>
           </span>
         </a>
 
         <!-- Facebook -->
-        <div class="flex items-center gap-3 border-t border-neutral-0/30 pt-4">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" class="shrink-0" aria-hidden="true">
-            <path d="M12 1.33H10C9.12 1.33 8.27 1.68 7.64 2.31 7.02 2.93 6.67 3.78 6.67 4.67V6.67H4.67V9.33H6.67V14.67H9.33V9.33H11.33L12 6.67H9.33V4.67C9.33 4.49 9.4 4.32 9.53 4.2 9.65 4.07 9.82 4 10 4H12V1.33Z" stroke="rgba(255,255,255,0.55)" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/>
+        <div class="border-neutral-0/30 flex items-center gap-3 border-t pt-4">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            class="shrink-0"
+            aria-hidden="true"
+          >
+            <path
+              d="M12 1.33H10C9.12 1.33 8.27 1.68 7.64 2.31 7.02 2.93 6.67 3.78 6.67 4.67V6.67H4.67V9.33H6.67V14.67H9.33V9.33H11.33L12 6.67H9.33V4.67C9.33 4.49 9.4 4.32 9.53 4.2 9.65 4.07 9.82 4 10 4H12V1.33Z"
+              stroke="rgba(255,255,255,0.55)"
+              stroke-width="1.33"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
           </svg>
-          <p class="text-[20px] text-neutral-0/55">Follow us on Facebook</p>
+          <p class="text-neutral-0/55 text-[20px]">Follow us on Facebook</p>
         </div>
       </div>
 
       <!-- Service Area -->
       <div class="mt-2 flex flex-col gap-3">
-        <p class="text-[16px] uppercase tracking-wider text-neutral-0/30">Service Area</p>
+        <p class="text-neutral-0/30 text-[16px] tracking-wider uppercase">Service Area</p>
         <div class="flex flex-wrap gap-2">
-          {serviceArea.map((place) => (
-            <span class="bg-white/10 px-2 py-0.5 text-[15px] font-light text-neutral-0/75">{place}</span>
-          ))}
+          {
+            serviceArea.map((place) => (
+              <span class="text-neutral-0/75 bg-white/10 px-2 py-0.5 text-[15px] font-light">
+                {place}
+              </span>
+            ))
+          }
         </div>
       </div>
     </div>
 
     <!-- Right: Contact Form (white) -->
-    <div class="flex flex-1 flex-col gap-[10px] bg-surface-base p-[50px]">
-      <h3 class="font-heading text-[40px] font-medium text-brand-700">Request a Free Estimate</h3>
+    <div class="bg-surface-base flex flex-1 flex-col gap-[10px] p-[50px]">
+      <h3 class="font-heading text-brand-700 text-[40px] font-medium">Request a Free Estimate</h3>
       <p class="text-[14px] text-neutral-900/30">
         Fill out the form and Len will be in touch to schedule your complimentary on-site
         consultation.
       </p>
 
-      {!formAction && (
-        <p class="rounded border border-amber-300 bg-amber-50 p-3 text-xs text-amber-900">
-          Add a <code>formspreeId</code> to <code>src/config/site.ts</code> to activate this form.
-        </p>
-      )}
+      {
+        !formAction && (
+          <p class="rounded border border-amber-300 bg-amber-50 p-3 text-xs text-amber-900">
+            Add a <code>formspreeId</code> to <code>src/config/site.ts</code> to activate this form.
+          </p>
+        )
+      }
 
-      <form method="POST" action={formAction || '#'} class="mt-2 flex flex-col gap-4" name="estimate">
+      <form
+        method="POST"
+        action={formAction || '#'}
+        class="mt-2 flex flex-col gap-4"
+        name="estimate"
+      >
         {formAction && <input type="hidden" name="_next" value={thankYouUrl} />}
-        {formAction && <input type="hidden" name="_subject" value={`Free estimate request — ${site.name}`} />}
+        {
+          formAction && (
+            <input type="hidden" name="_subject" value={`Free estimate request — ${site.name}`} />
+          )
+        }
         <div class="absolute left-[-9999px]" aria-hidden="true">
           <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
         </div>
 
         <div class="grid gap-4 sm:grid-cols-2">
           <label class="flex flex-col gap-1">
-            <span class="text-[14px] font-medium uppercase tracking-wider text-neutral-900/30">Full Name *</span>
-            <input type="text" name="name" placeholder="Your name" required autocomplete="name"
-              class="border-b border-neutral-300 bg-transparent py-2 text-[16px] text-neutral-900/30 placeholder:text-neutral-400 focus:border-neutral-600 focus:outline-none" />
+            <span class="text-[14px] font-medium tracking-wider text-neutral-900/30 uppercase"
+              >Full Name *</span
+            >
+            <input
+              type="text"
+              name="name"
+              placeholder="Your name"
+              required
+              autocomplete="name"
+              class="border-b border-neutral-300 bg-transparent py-2 text-[16px] text-neutral-900/30 placeholder:text-neutral-400 focus:border-neutral-600 focus:outline-none"
+            />
           </label>
           <label class="flex flex-col gap-1">
-            <span class="text-[14px] font-medium uppercase tracking-wider text-neutral-900/30">Phone Number</span>
-            <input type="tel" name="phone" placeholder="(231) 555-0000" autocomplete="tel"
-              class="border-b border-neutral-300 bg-transparent py-2 text-[16px] text-neutral-900/30 placeholder:text-neutral-400 focus:border-neutral-600 focus:outline-none" />
+            <span class="text-[14px] font-medium tracking-wider text-neutral-900/30 uppercase"
+              >Phone Number</span
+            >
+            <input
+              type="tel"
+              name="phone"
+              placeholder="(231) 555-0000"
+              autocomplete="tel"
+              class="border-b border-neutral-300 bg-transparent py-2 text-[16px] text-neutral-900/30 placeholder:text-neutral-400 focus:border-neutral-600 focus:outline-none"
+            />
           </label>
         </div>
 
         <label class="flex flex-col gap-1">
-          <span class="text-[14px] font-medium uppercase tracking-wider text-neutral-900/30">Email Address *</span>
-          <input type="email" name="email" placeholder="you@email.com" required autocomplete="email"
-            class="border-b border-neutral-300 bg-transparent py-2 text-[16px] text-neutral-900/30 placeholder:text-neutral-400 focus:border-neutral-600 focus:outline-none" />
+          <span class="text-[14px] font-medium tracking-wider text-neutral-900/30 uppercase"
+            >Email Address *</span
+          >
+          <input
+            type="email"
+            name="email"
+            placeholder="you@email.com"
+            required
+            autocomplete="email"
+            class="border-b border-neutral-300 bg-transparent py-2 text-[16px] text-neutral-900/30 placeholder:text-neutral-400 focus:border-neutral-600 focus:outline-none"
+          />
         </label>
 
         <label class="flex flex-col gap-1">
-          <span class="text-[14px] font-medium uppercase tracking-wider text-neutral-900/30">Tell Us About Your Project *</span>
-          <textarea name="message" rows="4" placeholder="Describe your project, location, and any specific ideas..." required
-            class="border-b border-neutral-300 bg-transparent py-2 text-[16px] text-neutral-900/30 placeholder:text-neutral-400 focus:border-neutral-600 focus:outline-none resize-none"></textarea>
+          <span class="text-[14px] font-medium tracking-wider text-neutral-900/30 uppercase"
+            >Tell Us About Your Project *</span
+          >
+          <textarea
+            name="message"
+            rows="4"
+            placeholder="Describe your project, location, and any specific ideas..."
+            required
+            class="resize-none border-b border-neutral-300 bg-transparent py-2 text-[16px] text-neutral-900/30 placeholder:text-neutral-400 focus:border-neutral-600 focus:outline-none"
+          ></textarea>
         </label>
 
-        <button type="submit"
-          class="mt-2 inline-flex min-h-[52px] w-full cursor-pointer items-center justify-center rounded-none bg-brand-700 font-sans text-[20px] font-medium text-neutral-0 transition-colors hover:bg-brand-800 focus-visible:outline-2">
+        <button
+          type="submit"
+          class="bg-brand-700 text-neutral-0 hover:bg-brand-800 mt-2 inline-flex min-h-[52px] w-full cursor-pointer items-center justify-center rounded-none font-sans text-[20px] font-medium transition-colors focus-visible:outline-2"
+        >
           Send My Request
         </button>
       </form>
@@ -140,56 +239,90 @@ const serviceArea = [
 
   <!-- ── ROW 2: 3-column dark section ───────────────────────────────────── -->
   <div class="bg-[#1c1c1c] py-[50px]">
-    <div class="mx-auto flex max-w-page flex-col gap-[50px] px-gutter md:flex-row">
-
+    <div class="max-w-page px-gutter mx-auto flex flex-col gap-[50px] md:flex-row">
       <!-- Col 1: Logo + tagline -->
-      <div class="flex flex-1 flex-col gap-5 min-w-0">
+      <div class="flex min-w-0 flex-1 flex-col gap-5">
         <a href="/" class="inline-block no-underline">
-          <img src="/images/Peninsula-Pavers-logo.webp" alt={site.name} width="1554" height="981" style="height:70px;width:111px;max-width:none;display:block" />
+          <img
+            src="/images/Peninsula-Pavers-logo.webp"
+            alt={site.name}
+            width="1554"
+            height="981"
+            style="height:70px;width:111px;max-width:none;display:block"
+          />
         </a>
-        <p class="text-[14px] font-medium text-neutral-0/30">
+        <p class="text-neutral-0/30 text-[14px] font-medium">
           Full-service landscape and hardscaping company serving Northern Michigan since 1994.
           Residential and commercial paving brick, retaining walls, and outdoor living spaces.
         </p>
       </div>
 
       <!-- Col 2: Our Services -->
-      <div class="flex flex-1 flex-col gap-4 min-w-0">
-        <h3 class="font-heading text-[16px] font-medium uppercase tracking-[2px] text-accent-500">Our Services</h3>
+      <div class="flex min-w-0 flex-1 flex-col gap-4">
+        <h3 class="font-heading text-accent-500 text-[16px] font-medium tracking-[2px] uppercase">
+          Our Services
+        </h3>
         <nav aria-label="Footer services" class="flex flex-col gap-2">
-          {navigation.footer[0]?.links.map((link) => (
-            <a href={link.href} class="text-[16px] font-medium text-neutral-0/30 no-underline hover:text-neutral-0/60">
-              {link.label}
-            </a>
-          ))}
+          {
+            navigation.footer[0]?.links.map((link) => (
+              <a
+                href={link.href}
+                class="text-neutral-0/30 hover:text-neutral-0/60 text-[16px] font-medium no-underline"
+              >
+                {link.label}
+              </a>
+            ))
+          }
         </nav>
       </div>
 
       <!-- Col 3: Contact Us + Navigation -->
-      <div class="flex flex-1 flex-col gap-4 min-w-0">
-        <h3 class="font-heading text-[16px] font-medium uppercase tracking-[2px] text-accent-500">Contact Us</h3>
+      <div class="flex min-w-0 flex-1 flex-col gap-4">
+        <h3 class="font-heading text-accent-500 text-[16px] font-medium tracking-[2px] uppercase">
+          Contact Us
+        </h3>
         <div class="flex flex-col gap-2">
-          <a href={`tel:${site.business.phoneHref}`} class="flex items-center gap-2 text-[16px] font-medium text-neutral-0/30 no-underline hover:text-neutral-0/60">
+          <a
+            href={`tel:${site.business.phoneHref}`}
+            class="text-neutral-0/30 hover:text-neutral-0/60 flex items-center gap-2 text-[16px] font-medium no-underline"
+          >
             <Icon name="lucide:phone" class="size-4 shrink-0" aria-hidden="true" />
             {site.business.phone}
           </a>
-          <a href={`mailto:${site.business.email}`} class="flex items-center gap-2 text-[16px] font-medium text-neutral-0/30 no-underline hover:text-neutral-0/60">
+          <a
+            href={`mailto:${site.business.email}`}
+            class="text-neutral-0/30 hover:text-neutral-0/60 flex items-center gap-2 text-[16px] font-medium no-underline"
+          >
             <Icon name="lucide:mail" class="size-4 shrink-0" aria-hidden="true" />
             {site.business.email}
           </a>
-          <a href="https://maps.app.goo.gl/981EGuRDzy4LDXW77" target="_blank" rel="noopener noreferrer" class="flex items-start gap-2 text-[16px] font-medium text-neutral-0/30 no-underline hover:text-neutral-0/60">
+          <a
+            href="https://maps.app.goo.gl/981EGuRDzy4LDXW77"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-neutral-0/30 hover:text-neutral-0/60 flex items-start gap-2 text-[16px] font-medium no-underline"
+          >
             <Icon name="lucide:map-pin" class="mt-0.5 size-4 shrink-0" aria-hidden="true" />
-            {site.business.address.street}, {site.business.address.locality}, {site.business.address.region}
+            {site.business.address.street}, {site.business.address.locality}, {
+              site.business.address.region
+            }
           </a>
         </div>
 
-        <h3 class="mt-2 text-[16px] font-medium uppercase tracking-[2px] text-neutral-0/30">Navigation</h3>
+        <h3 class="text-neutral-0/30 mt-2 text-[16px] font-medium tracking-[2px] uppercase">
+          Navigation
+        </h3>
         <nav aria-label="Footer navigation" class="flex flex-col gap-2">
-          {navigation.footer[1]?.links.map((link) => (
-            <a href={link.href} class="text-[16px] font-medium text-neutral-0/30 no-underline hover:text-neutral-0/60">
-              {link.label}
-            </a>
-          ))}
+          {
+            navigation.footer[1]?.links.map((link) => (
+              <a
+                href={link.href}
+                class="text-neutral-0/30 hover:text-neutral-0/60 text-[16px] font-medium no-underline"
+              >
+                {link.label}
+              </a>
+            ))
+          }
         </nav>
       </div>
     </div>
@@ -197,10 +330,11 @@ const serviceArea = [
 
   <!-- ── COPYRIGHT BAR ───────────────────────────────────────────────────── -->
   <div class="border-t border-[#ffffff33] bg-[#1c1c1c]">
-    <div class="mx-auto flex max-w-page flex-col gap-1 px-gutter py-5 text-[14px] font-medium text-neutral-0/30 sm:flex-row sm:items-center sm:justify-between">
+    <div
+      class="max-w-page px-gutter text-neutral-0/30 mx-auto flex flex-col gap-1 py-5 text-[14px] font-medium sm:flex-row sm:items-center sm:justify-between"
+    >
       <p>&copy; {year} {site.legalName ?? site.name}. All rights reserved.</p>
       <p>Traverse City, Michigan &middot; BBB Accredited Business</p>
     </div>
   </div>
-
 </footer>

@@ -7,21 +7,26 @@ import { site } from '../config/site';
 ---
 
 <BaseLayout title={`Page Not Found | ${site.name}`} noindex sticky="overlay">
-
-  <section class="relative flex min-h-[700px] items-center overflow-hidden" aria-label="Page not found">
+  <section
+    class="relative flex min-h-[700px] items-center overflow-hidden"
+    aria-label="Page not found"
+  >
     <div
       class="absolute inset-0 bg-cover bg-center"
       style="background-image:linear-gradient(rgba(0,0,0,0.62),rgba(0,0,0,0.62)),url('/images/s1.webp')"
       aria-hidden="true"
-    ></div>
+    >
+    </div>
 
-    <div class="relative z-10 mx-auto w-full max-w-page px-gutter pt-[100px]">
+    <div class="max-w-page px-gutter relative z-10 mx-auto w-full pt-[100px]">
       <div class="mb-5 flex items-center gap-3">
-        <span class="block h-px w-10 shrink-0 bg-accent-500" aria-hidden="true"></span>
-        <span class="font-sans text-[16px] font-medium tracking-wide text-accent-400">Error 404</span>
+        <span class="bg-accent-500 block h-px w-10 shrink-0" aria-hidden="true"></span>
+        <span class="text-accent-400 font-sans text-[16px] font-medium tracking-wide"
+          >Error 404</span
+        >
       </div>
 
-      <Heading level={1} class="!text-[56px] font-medium text-neutral-0 max-w-3xl">
+      <Heading level={1} class="text-neutral-0 max-w-3xl !text-[56px] font-medium">
         We couldn&rsquo;t find that page
       </Heading>
 
@@ -33,7 +38,7 @@ import { site } from '../config/site';
         <Button href="/" size="lg">Back to home</Button>
         <a
           href={`tel:${site.business.phoneHref}`}
-          class="inline-flex items-center gap-2 border border-neutral-0/75 bg-transparent px-[25px] py-[12px] font-sans text-[20px] font-medium text-neutral-0 no-underline hover:border-neutral-0 hover:bg-white/10"
+          class="border-neutral-0/75 text-neutral-0 hover:border-neutral-0 inline-flex items-center gap-2 border bg-transparent px-[25px] py-[12px] font-sans text-[20px] font-medium no-underline hover:bg-white/10"
         >
           <Icon name="lucide:phone" class="size-5" aria-hidden="true" />
           {site.business.phone}
@@ -41,5 +46,4 @@ import { site } from '../config/site';
       </div>
     </div>
   </section>
-
 </BaseLayout>
