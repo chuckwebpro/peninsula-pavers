@@ -8,7 +8,7 @@ const EXCLUDED_FROM_SITEMAP = ['/thank-you/', '/styleguide/'];
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://peninsulapavers.com',
+  site: 'https://site.peninsulapavers.com',
   output: 'static',
   trailingSlash: 'always',
   build: { format: 'directory' },
