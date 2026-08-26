@@ -4,27 +4,87 @@ import Section from '../components/ui/Section.astro';
 import Container from '../components/ui/Container.astro';
 import Heading from '../components/ui/Heading.astro';
 import Button from '../components/ui/Button.astro';
-import { site } from '../config/site';
 import { Icon } from 'astro-icon/components';
+import { site } from '../config/site';
+
+const steps = [
+  {
+    number: '01',
+    title: 'We review your request',
+    body: 'Our team reads your message and prepares for your free consultation.',
+  },
+  {
+    number: '02',
+    title: "We'll be in touch",
+    body: 'Expect a call or email the same business day — usually within a few hours.',
+  },
+  {
+    number: '03',
+    title: 'Free on-site estimate',
+    body: 'We visit your property and walk you through a detailed written quote, no obligation.',
+  },
+];
 ---
 
-<BaseLayout title="Thank you" description="We've received your message." noindex>
-  <Section background="base" spacing="lg">
-    <Container align="center" gap="md">
-      <Icon name="lucide:circle-check" class="text-brand-600 size-14" aria-hidden="true" />
-      <Heading level={1} size="xl">Thanks — we&rsquo;ve got it</Heading>
-      <p class="max-w-reading text-ink-muted">
-        Your message is on its way to our team. We usually reply the same business day. If
-        it&rsquo;s urgent, calling is faster.
+<BaseLayout title={`Thank You | ${site.name}`} description="We've received your message." noindex sticky="overlay">
+
+  <!-- ── HERO ───────────────────────────────────────────────────────────── -->
+  <section class="relative flex min-h-[750px] items-center overflow-hidden" aria-label="Confirmation">
+    <div
+      class="absolute inset-0 bg-cover bg-center"
+      style="background-image:linear-gradient(rgba(0,0,0,0.502),rgba(0,0,0,0.502)),url('/images/s1.webp')"
+      aria-hidden="true"
+    ></div>
+
+    <div class="relative z-10 mx-auto w-full max-w-page px-gutter pt-[100px]">
+      <div class="mb-5 flex items-center gap-3">
+        <Icon name="lucide:circle-check" class="size-6 text-accent-400" aria-hidden="true" />
+        <span class="font-sans text-[16px] font-medium tracking-wide text-accent-400">Message received</span>
+      </div>
+
+      <Heading level={1} class="!text-[56px] font-medium text-neutral-0 max-w-3xl">
+        Thanks &mdash; we&rsquo;ve got it
+      </Heading>
+
+      <p class="mt-4 max-w-xl font-sans text-[20px] text-neutral-0/75">
+        Your message is on its way to our team. We usually reply the same business day.
+        If it&rsquo;s urgent, calling is faster.
       </p>
 
-      <div class="flex flex-wrap justify-center gap-3">
-        <Button href={`tel:${site.business.phoneHref}`}>
-          <Icon name="lucide:phone" class="size-4" aria-hidden="true" />
+      <div class="mt-8 flex flex-wrap items-center gap-5">
+        <Button href="/" size="lg">Back to home</Button>
+        <a
+          href={`tel:${site.business.phoneHref}`}
+          class="inline-flex items-center gap-2 border border-neutral-0/75 bg-transparent px-[25px] py-[12px] font-sans text-[20px] font-medium text-neutral-0 no-underline hover:border-neutral-0 hover:bg-white/10"
+        >
+          <Icon name="lucide:phone" class="size-5" aria-hidden="true" />
           {site.business.phone}
-        </Button>
-        <Button href="/" variant="secondary">Back to home</Button>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHAT HAPPENS NEXT ─────────────────────────────────────────────── -->
+  <Section background="muted" spacing="md">
+    <Container align="center" gap="lg">
+      <div class="flex items-center gap-4">
+        <span class="block h-px w-10 shrink-0 bg-accent-500" aria-hidden="true"></span>
+        <span class="font-sans text-[16px] font-semibold uppercase tracking-wide text-ink-muted">What Happens Next</span>
+        <span class="block h-px w-10 shrink-0 bg-accent-500" aria-hidden="true"></span>
+      </div>
+
+      <Heading level={2} size="xl">Here&rsquo;s what to expect</Heading>
+
+      <div class="grid w-full gap-6 sm:grid-cols-3">
+        {steps.map((step) => (
+          <div class="flex flex-col gap-3 rounded-lg bg-surface-base p-8 shadow-sm">
+            <span class="font-sans text-[42px] font-semibold leading-none text-accent-500">{step.number}</span>
+            <Heading level={3} size="md">{step.title}</Heading>
+            <p class="font-sans text-[16px] text-ink-muted">{step.body}</p>
+          </div>
+        ))}
       </div>
     </Container>
   </Section>
+
 </BaseLayout>

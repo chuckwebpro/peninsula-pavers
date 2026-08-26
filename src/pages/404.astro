@@ -1,40 +1,45 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Section from '../components/ui/Section.astro';
-import Container from '../components/ui/Container.astro';
-import Heading from '../components/ui/Heading.astro';
 import Button from '../components/ui/Button.astro';
-import { navigation } from '../config/navigation';
+import Heading from '../components/ui/Heading.astro';
+import { Icon } from 'astro-icon/components';
 import { site } from '../config/site';
 ---
 
-<BaseLayout title="Page not found" noindex>
-  <Section background="base" spacing="lg">
-    <Container align="center" gap="md">
-      <p class="text-ink-muted text-sm font-semibold tracking-wide uppercase">Error 404</p>
-      <Heading level={1} size="xl">We couldn&rsquo;t find that page</Heading>
-      <p class="max-w-reading text-ink-muted">
-        The link may be out of date, or the page may have moved. Try one of these instead.
+<BaseLayout title={`Page Not Found | ${site.name}`} noindex sticky="overlay">
+
+  <section class="relative flex min-h-[700px] items-center overflow-hidden" aria-label="Page not found">
+    <div
+      class="absolute inset-0 bg-cover bg-center"
+      style="background-image:linear-gradient(rgba(0,0,0,0.62),rgba(0,0,0,0.62)),url('/images/s1.webp')"
+      aria-hidden="true"
+    ></div>
+
+    <div class="relative z-10 mx-auto w-full max-w-page px-gutter pt-[100px]">
+      <div class="mb-5 flex items-center gap-3">
+        <span class="block h-px w-10 shrink-0 bg-accent-500" aria-hidden="true"></span>
+        <span class="font-sans text-[16px] font-medium tracking-wide text-accent-400">Error 404</span>
+      </div>
+
+      <Heading level={1} class="!text-[56px] font-medium text-neutral-0 max-w-3xl">
+        We couldn&rsquo;t find that page
+      </Heading>
+
+      <p class="mt-4 max-w-xl font-sans text-[20px] text-neutral-300">
+        The link may be out of date, or the page may have moved.
       </p>
 
-      <ul class="flex flex-wrap justify-center gap-x-6 gap-y-2">
-        {
-          navigation.primary.map((item) => (
-            <li>
-              <a href={item.href ?? '/'} class="text-ink-brand inline-flex min-h-11 items-center">
-                {item.label}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-
-      <div class="flex flex-wrap justify-center gap-3">
-        <Button href="/">Back to home</Button>
-        <Button href={`tel:${site.business.phoneHref}`} variant="secondary">
-          Call {site.business.phone}
-        </Button>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <Button href="/" size="lg">Back to home</Button>
+        <a
+          href={`tel:${site.business.phoneHref}`}
+          class="inline-flex items-center gap-2 border border-neutral-0/75 bg-transparent px-[25px] py-[12px] font-sans text-[20px] font-medium text-neutral-0 no-underline hover:border-neutral-0 hover:bg-white/10"
+        >
+          <Icon name="lucide:phone" class="size-5" aria-hidden="true" />
+          {site.business.phone}
+        </a>
       </div>
-    </Container>
-  </Section>
+    </div>
+  </section>
+
 </BaseLayout>
