@@ -1,4 +1,4 @@
-# Hosting (cPanel)
+# Hosting (cPanel site)
 
 Everything runs on your own infrastructure. The only external services are GitHub
 (source + CI) and Formspree (form delivery).
