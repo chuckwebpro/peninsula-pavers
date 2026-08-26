@@ -1,0 +1,281 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Section from '../../components/ui/Section.astro';
+import Container from '../../components/ui/Container.astro';
+import Heading from '../../components/ui/Heading.astro';
+import Button from '../../components/ui/Button.astro';
+import { Icon } from 'astro-icon/components';
+import { site } from '../../config/site';
+
+const benefits = [
+  {
+    title: "Boost Your Home's Curb Appeal",
+    body: 'A custom paver driveway creates a polished first impression and instantly enhances the appearance of your home.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#C8922A"><g clip-path="url(#b1)"><path d="M23.121 9.069L15.536 1.483C14.597.547 13.326.021 12 .021c-1.326 0-2.597.526-3.536 1.462L.879 9.069A3.997 3.997 0 000 11.19V21.007C0 21.803.316 22.566.879 23.128.441 23.691 2.204 24.007 3 24.007h18c.796 0 1.559-.316 2.121-.879.563-.562.879-1.325.879-2.121V11.19a3.997 3.997 0 00-.879-2.121zM15 22.007H9v-3.934c0-.796.316-1.559.879-2.121A2.999 2.999 0 0112 15.073c.796 0 1.559.316 2.121.879.563.562.879 1.325.879 2.121v3.934zM22 21.007c0 .265-.105.52-.293.707-.187.188-.442.293-.707.293H17v-3.934A5 5 0 0015.536 14.537 5 5 0 0012 13.073a5 5 0 00-3.536 1.464A5 5 0 007 18.073v3.934H3a1 1 0 01-1-1V11.19c.001-.265.106-.52.293-.707L9.878 2.9A3 3 0 0112 2.024a3 3 0 012.122.876L21.707 10.486c.186.187.291.44.293.704V21.007z"/></g><defs><clipPath id="b1"><rect width="24" height="24" fill="white"/></clipPath></defs></svg>`,
+  },
+  {
+    title: 'Increase Property Value',
+    body: 'A professionally installed driveway adds lasting value by improving both the functionality and appearance of your property.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#C8922A"><g clip-path="url(#b2)"><path d="M21 6h-6c-.553 0-1 .447-1 1s.447 1 1 1h5.586l-6.562 6.562c-.564.564-1.482.564-2.047 0l-2.539-2.539c-1.344-1.344-3.531-1.344-4.875 0L.293 16.293a.999.999 0 000 1.414A.997.997 0 001 18a.997.997 0 00.707-.293l4.27-4.27a1.5 1.5 0 012.047 0l2.539 2.539c1.344 1.344 3.531 1.344 4.875 0L22 9.414V15c0 .553.447 1 1 1s1-.447 1-1V9c0-1.654-1.346-3-3-3z"/></g><defs><clipPath id="b2"><rect width="24" height="24" fill="white"/></clipPath></defs></svg>`,
+  },
+  {
+    title: 'Better Performance in All Seasons',
+    body: 'Proper excavation and drainage help prevent settling, standing water, and frost damage, keeping your driveway looking its best year after year.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#C8922A"><g clip-path="url(#b3)"><path d="M22 10h-7c-1.103 0-2 .897-2 2v4H2c-1.103 0-2 .897-2 2v1.5C0 21.981 2.019 24 4.5 24h15c2.481 0 4.5-2.019 4.5-4.5V12c0-1.103-.897-2-2-2zM15 12h7v4h-7v-4zm1 6v4H8v-4h8zM2 19.5V18h4v4H4.5C3.122 22 2 20.878 2 19.5zM22 19.5C22 20.878 20.879 22 19.5 22H18v-4h4v1.5zM1.397 8.386l4.819 2.81c.439.202.906.301 1.373.301.62 0 1.236-.176 1.779-.524C10.39 10.318 11 9.179 11 7.924V7h2.269c.346.597.992 1 1.731 1H20c1.103 0 2-.897 2-2s-.897-2-2-2h-5c-.739 0-1.385.403-1.731 1H11V4.076c0-1.254-.61-2.394-1.632-3.049C8.417.417 7.239.334 6.13.849L1.414 3.605C.542 4.076 0 4.994 0 6c0 1 .535 1.912 1.397 2.386zm.996-3.037l4.659-2.727c.193-.089.374-.123.538-.123.308 0 .553.119.699.212.445.286.711.796.711 1.365v3.848c0 .569-.266 1.08-.711 1.365-.224.143-.68.345-1.15.135L2.393 6.652a.42.42 0 01-.029-.017C2.035 6.458 2 6.132 2 6c0-.132.035-.458.393-.651z"/></g><defs><clipPath id="b3"><rect width="24" height="24" fill="white"/></clipPath></defs></svg>`,
+  },
+  {
+    title: 'Built for Everyday Use',
+    body: "Whether it's daily commuting, guest parking, or recreational vehicles, a custom paver driveway is designed to handle the demands of everyday life while maintaining its appearance.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#C8922A"><g clip-path="url(#b4)"><path d="M22.967 17.298c-.021-.03-1.557-1.815-1.557-1.815.319-.235.589-.543.781-.91.462-.88.399-1.935-.165-2.753-.025-.037-1.886-2.092-1.886-2.092.458-.231.84-.601 1.084-1.073.42-.811.353-1.779-.176-2.526-.021-.03-4.663-5.284-4.663-5.284C15.436-.23 13.562-.229 12.614.846l-.615.696-.615-.695C10.435-.228 8.563-.228 7.613.847c0 0-4.643 5.254-4.664 5.284-.528.748-.597 1.715-.177 2.527.244.472.626.842 1.083 1.073 0 0-1.859 2.055-1.885 2.091-.564.818-.627 1.874-.166 2.753.192.366.461.675.781.91 0 0-1.537 1.785-1.557 1.814C.394 18.219.323 19.405.843 20.396c.52.99 1.538 1.604 2.656 1.604h5v1c0 .552.448 1 1 1s1-.448 1-1v-1h3v1c0 .552.447 1 1 1 .553 0 1-.448 1-1v-1h4.997c1.118 0 2.136-.615 2.655-1.604.521-.99.449-2.177-.186-3.098h.005zM4.562 7.318l4.551-5.148c.131-.148.299-.17.388-.17s.256.022.387.17l.779.881s-2.694 3.049-2.714 3.079c-.391.554-.527 1.228-.401 1.87H4.604c-.284 0-.41-.185-.451-.264-.038-.082-.091-.242.015-.418h-.006zm-.97 5.682l2.722-3h2.299s-1.614 1.784-1.639 1.82c-.447.647-.566 1.44-.373 2.18H4.169c-.364 0-.534-.25-.59-.356-.053-.102-.154-.361.013-.644zm-1.026 6.465c-.082-.156-.238-.56.037-.994l2.13-2.471h2.36s-1.09 1.268-1.11 1.298C5.48 18.101 5.383 19.099 5.705 20H3.504c-.545 0-.802-.374-.886-.535h-.052zm18.816 0c-.084.161-.34.535-.885.535H8.503c-.545 0-.802-.374-.886-.535-.082-.156-.238-.56.037-.994l2.429-2.818c.255-.296.314-.714.152-1.069A1.003 1.003 0 009.327 14H9.17c-.364 0-.534-.25-.59-.356-.053-.102-.154-.361.013-.644l3.02-3.328c.266-.293.334-.715.173-1.077a1.003 1.003 0 00-.918-.594h-.868c-.284 0-.41-.185-.451-.264-.038-.082-.091-.242.016-.418L14.116 2.17c.13-.147.298-.169.386-.169s.256.022.387.17l4.551 5.147c.105.177.056.336.013.418-.041.079-.167.264-.451.264h-.868a1.003 1.003 0 00-.918.594c-.16.362-.093.784.173 1.077L20.41 13c.167.282.066.541.013.643-.057.107-.227.357-.591.357h-.157a1.003 1.003 0 00-.909.584c-.163.355-.104.773.152 1.069l2.429 2.818c.191.305.206.673.037.995l-.003-.001z"/></g><defs><clipPath id="b4"><rect width="24" height="24" fill="white"/></clipPath></defs></svg>`,
+  },
+  {
+    title: 'Designed to Match Your Home',
+    body: "Choose from a variety of colors, patterns, and borders to create a driveway that complements your home's architecture and style.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#C8922A"><g clip-path="url(#b5)"><path d="M23.047 17.197l-4.318 3.935C16.698 22.982 14.067 24 11.321 24H1c-.553 0-1-.447-1-1s.447-1 1-1h10.32c2.247 0 4.399-.833 6.061-2.347l4.284-3.902c.347-.348.43-.944.156-1.324-.18-.249-.442-.399-.74-.424-.291-.019-.58.082-.788.29l-4.234 3.886C15.521 18.687 14.797 19 14 19H9c-.553 0-1-.447-1-1s.447-1 1-1h5c.252 0 1-.115 1-1 0-.552-.448-1-1-1H9.088c-2.403 0-4.664.937-6.364 2.636l-.998 1.053a1 1 0 01-1.414-.274 1 1 0 01.275-1.416l1.017-1.071C3.501 14.832 6.151 13 9.089 13H14c1.236 0 2.3.752 2.759 1.822l2.151-1.974c.591-.593 1.456-.915 2.331-.839.88.07 1.683.525 2.203 1.248.844 1.174.673 2.866-.397 3.939v.001zM4.006 2.162c-.042-.581.172-1.153.588-1.568C5.009.178 5.581-.04 6.163.006 9.04.209 10.948 1.201 12 3.118 13.053 1.201 14.96.209 17.838.006c.591-.048 1.154.172 1.568.588.416.415.63.987.588 1.569-.311 4.413-2.48 6.545-6.994 6.808V9.999c0 .553-.447 1-1 1s-1-.447-1-9.999V8.97C6.486 8.707 4.317 6.576 4.006 2.162zm9.026 4.806c3.361-.224 4.734-1.637 4.968-4.946-3.329.214-4.744 1.585-4.968 4.946zM6.021 2c.214 3.329 1.585 4.744 4.946 4.968C10.743 3.607 9.33 2.234 6.021 2z"/></g><defs><clipPath id="b5"><rect width="24" height="24" fill="white"/></clipPath></defs></svg>`,
+  },
+];
+
+const galleryImages = [
+  '/images/driveway-1.jpg',
+  '/images/driveway-2.jpg',
+  '/images/driveway-3.jpg',
+  '/images/driveway-4.jpg',
+  '/images/driveway-5.jpg',
+  '/images/driveway-6.jpg',
+];
+
+const faqs = [
+  {
+    q: 'What does an outdoor living space cost in Traverse City?',
+    a: "Every relationship and every project is unique, so we don't publish a price range that would be wrong for most people who read it. Cost depends on square footage, material selection, site conditions, grade, drainage needs, and features like fireplaces, kitchens, or lighting. After we see your space, you get a detailed written quote with no obligation, and that price is locked for 30 days.",
+  },
+  {
+    q: 'How long does an outdoor living space project take?',
+    a: "It depends on scope and weather, and we won't pretend otherwise. A straightforward patio and seating area moves faster than a full outdoor kitchen with a fireplace and integrated lighting. What we will do is give you a specific timeline in writing during your free consultation, before you commit to anything, and tell you right away if weather is going to shift it.",
+  },
+  {
+    q: 'How long will your crew be on my property?',
+    a: "We give you the on-site window in your written estimate, and we hold to it unless weather forces a change. When that happens, you hear it from us the same day. We keep the work area clean and safe the entire time, because you still have to live there while we're working.",
+  },
+];
+---
+
+<BaseLayout
+  title={`Custom Paver Driveways | ${site.name}`}
+  description="Custom paver driveways in Traverse City, MI. Peninsula Pavers builds driveways that handle Northern Michigan winters using quality brick pavers and natural stone."
+  sticky="overlay"
+>
+
+  <!-- ── HERO ───────────────────────────────────────────────────────────── -->
+  <section class="relative flex min-h-[750px] items-center overflow-hidden" aria-label="Page hero">
+    <div
+      class="absolute inset-0 bg-cover bg-center"
+      style="background-image:linear-gradient(rgba(0,0,0,0.502),rgba(0,0,0,0.502)),url('/images/s1.webp')"
+      aria-hidden="true"
+    ></div>
+
+    <div class="relative z-10 mx-auto w-full max-w-page px-gutter pt-[100px]">
+      <div class="mb-5 flex items-center gap-3">
+        <span class="block h-px w-10 shrink-0 bg-accent-500" aria-hidden="true"></span>
+        <span class="font-sans text-[16px] font-medium tracking-wide text-accent-400">Peninsula Pavers, Inc.</span>
+      </div>
+
+      <Heading level={1} class="!text-[56px] font-medium text-neutral-0 max-w-3xl">
+        Custom Paver Driveways<br />Traverse City MI
+      </Heading>
+
+      <p class="mt-4 max-w-[900px] font-sans text-[20px] font-medium text-neutral-0/75">
+        Your driveway is the first thing anyone sees — and in northern Michigan, it's also the
+        hardest working surface on your property. Peninsula Pavers builds custom paver driveways
+        that handle everything our winters throw at them while making your home look its best
+        from the street.
+      </p>
+
+      <div class="mt-8 flex flex-wrap items-center gap-5">
+        <Button href="#contact" size="lg">Free Estimate</Button>
+        <a
+          href={`tel:${site.business.phoneHref}`}
+          class="inline-flex items-center gap-2 border border-neutral-0/75 bg-transparent px-[25px] py-[12px] font-sans text-[20px] font-medium text-neutral-0 no-underline hover:border-neutral-0 hover:bg-white/10"
+        >
+          <Icon name="lucide:phone" class="size-5" aria-hidden="true" />
+          {site.business.phone}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FEATURE: IMAGE + TEXT ─────────────────────────────────────────── -->
+  <Section background="muted" spacing="md">
+    <Container gap="lg">
+      <div class="flex w-full flex-col gap-10 md:flex-row md:items-center md:gap-10">
+
+        <div class="relative shrink-0 md:w-[50%]">
+          <div
+            class="absolute bottom-[-12px] right-[-12px] hidden size-24 border border-accent-500 md:block"
+            aria-hidden="true"
+          ></div>
+          <img
+            src="/images/IMG_2014.webp"
+            alt="Custom paver driveway built by Peninsula Pavers"
+            width="688"
+            height="516"
+            class="relative z-[2] w-full object-cover"
+            loading="lazy"
+          />
+        </div>
+
+        <div class="flex flex-col gap-3 md:w-[50%]">
+          <div class="flex items-center gap-3">
+            <span class="block h-px w-10 bg-accent-500" aria-hidden="true"></span>
+            <span class="font-sans text-[16px] font-medium uppercase tracking-[2px] text-accent-500">Create Your Perfect Space</span>
+          </div>
+          <Heading level={2} class="!text-4xl font-bold text-brand-700">Custom Paver Driveways</Heading>
+          <Heading level={2} class="!text-4xl font-medium italic text-brand-700">Beautiful, Durable Paver Driveways</Heading>
+          <p class="font-sans text-[16px] text-ink-muted">
+            Your driveway is the first thing anyone sees, and in northern Michigan it's also the
+            hardest working surface on your property. It takes plow blades, salt, freeze and thaw,
+            and the weight of every vehicle that visits. Concrete cracks. Asphalt softens and
+            fades. A properly built paver driveway handles all of it, and when something does
+            eventually need attention, individual pavers can be lifted and reset rather than
+            tearing out a whole slab.
+          </p>
+          <p class="font-sans text-[16px] text-ink-muted">
+            We design driveway layouts and patterns that suit the house, whether that's formal and
+            symmetrical or something warmer with a border and inlay. Homeowners tell us regularly
+            that the driveway changed how the entire property reads from the street.
+          </p>
+        </div>
+
+      </div>
+    </Container>
+  </Section>
+
+  <!-- ── WHY TRAVERSE CITY HOMEOWNERS CHOOSE ───────────────────────────── -->
+  <Section background="muted" spacing="md">
+    <Container gap="lg">
+
+      <div class="flex w-full flex-col gap-10 md:flex-row md:items-end md:justify-between">
+        <div class="flex flex-col gap-3">
+          <div class="flex items-center gap-3">
+            <span class="block h-px w-10 bg-accent-500" aria-hidden="true"></span>
+            <span class="font-sans text-[16px] font-medium uppercase tracking-[2px] text-accent-500">Outdoor Living Spaces</span>
+          </div>
+          <Heading level={2} class="!text-4xl font-bold text-brand-700">Why Traverse City Homeowners Choose</Heading>
+          <Heading level={2} class="!text-4xl font-medium italic text-brand-700">Paver Driveways</Heading>
+        </div>
+        <p class="max-w-sm font-sans text-[16px] text-ink-muted md:text-end">
+          From driveways to waterscapes, Peninsula Pavers brings 30 years of Northern Michigan
+          craftsmanship to every project.
+        </p>
+      </div>
+
+      <div class="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-6">
+        {benefits.map((b, i) => (
+          <div class:list={[
+            'flex flex-col gap-5 bg-neutral-0 p-[10px] lg:col-span-2',
+            i === 3 && 'lg:col-start-2',
+            i === 4 && 'lg:col-start-4',
+          ]}>
+            <div class="inline-flex size-14 shrink-0 items-center justify-center bg-accent-50">
+              <Fragment set:html={b.icon} />
+            </div>
+            <h3 class="font-heading text-xl font-bold text-brand-700">{b.title}</h3>
+            <p class="font-sans text-[16px] text-ink-muted">{b.body}</p>
+          </div>
+        ))}
+      </div>
+
+    </Container>
+  </Section>
+
+  <!-- ── MID-PAGE CTA STRIP ─────────────────────────────────────────────── -->
+  <div class="w-full bg-surface-brand py-[30px]">
+    <div class="mx-auto flex max-w-page flex-col items-start justify-between gap-6 px-gutter md:flex-row md:items-center">
+      <div class="flex flex-col items-start gap-[10px]">
+        <p class="font-sans text-[16px] font-medium uppercase tracking-[2px] text-accent-500">Free Consultation</p>
+        <h2 class="font-heading text-[30px] font-medium text-neutral-0">Ready to Transform Your Driveway?</h2>
+        <p class="font-sans text-[16px] text-neutral-0/75">Len will personally visit your property — no obligation, no cost.</p>
+      </div>
+      <div class="flex w-full shrink-0 flex-col items-stretch gap-[10px] sm:w-auto sm:flex-row sm:items-center">
+        <Button href="#contact" size="lg">Free Estimate</Button>
+        <a
+          href={`tel:${site.business.phoneHref}`}
+          class="inline-flex items-center gap-2 border border-neutral-0/75 bg-transparent px-[25px] py-[12px] font-sans text-[20px] font-medium text-neutral-0 no-underline hover:border-neutral-0 hover:bg-white/10"
+        >
+          <Icon name="lucide:phone" class="size-5" aria-hidden="true" />
+          {site.business.phone}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── GALLERY ────────────────────────────────────────────────────────── -->
+  <Section background="muted" spacing="md">
+    <Container gap="lg">
+
+      <div class="flex w-full flex-col gap-10 md:flex-row md:items-end md:justify-between">
+        <div class="flex flex-col gap-3">
+          <div class="flex items-center gap-3">
+            <span class="block h-px w-10 bg-accent-500" aria-hidden="true"></span>
+            <span class="font-sans text-[16px] font-medium uppercase tracking-[2px] text-accent-500">Outdoor Living Spaces</span>
+          </div>
+          <Heading level={2} class="!text-4xl font-bold text-brand-700">See Our</Heading>
+          <Heading level={2} class="!text-4xl font-medium italic text-brand-700">Previous Work</Heading>
+        </div>
+        <p class="max-w-sm font-sans text-[16px] text-ink-muted md:text-end">
+          From driveways to waterscapes, Peninsula Pavers brings 30 years of Northern Michigan
+          craftsmanship to every project.
+        </p>
+      </div>
+
+      <div class="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {galleryImages.map((src, i) => (
+          <div
+            class="h-[350px]"
+            style={`background-image:url('${src}');background-size:cover;background-position:bottom center`}
+            role="img"
+            aria-label={`Custom driveway project ${i + 1}`}
+          ></div>
+        ))}
+      </div>
+
+    </Container>
+  </Section>
+
+  <!-- ── FAQ ────────────────────────────────────────────────────────────── -->
+  <section class="w-full bg-surface-brand py-section" aria-labelledby="faq-heading">
+    <div class="mx-auto flex max-w-[1380px] flex-col items-center gap-8 px-gutter">
+
+      <div class="flex flex-col items-center gap-4 text-center">
+        <div class="flex items-center gap-4">
+          <span class="block h-px w-10 bg-accent-500" aria-hidden="true"></span>
+          <span class="font-sans text-[16px] font-medium uppercase tracking-[2px] text-accent-500">Frequently Asked Questions</span>
+          <span class="block h-px w-10 bg-accent-500" aria-hidden="true"></span>
+        </div>
+        <Heading id="faq-heading" level={2} class="!text-4xl font-bold text-neutral-0">
+          We Can Answer All Your Questions
+        </Heading>
+      </div>
+
+      <div class="flex w-full flex-wrap justify-center gap-5">
+        {faqs.map((faq) => (
+          <div class="flex w-full flex-col gap-5 bg-white/[0.08] p-[30px] sm:w-[calc(50%-10px)] lg:w-[32%]">
+            <div class="flex items-start gap-3">
+              <svg aria-hidden="true" class="mt-1 size-5 shrink-0 text-accent-400" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                <path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"/>
+              </svg>
+              <h3 class="font-heading text-xl font-medium text-neutral-0">{faq.q}</h3>
+            </div>
+            <p class="font-sans text-[16px] font-medium text-neutral-0/75">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+
+      <p class="font-sans text-[16px] text-neutral-0/75">
+        Still have questions? <a href={`tel:${site.business.phoneHref}`} class="text-accent-400 no-underline hover:underline">Call us today!</a>
+      </p>
+
+    </div>
+  </section>
+
+</BaseLayout>

@@ -1,0 +1,148 @@
+---
+/**
+ * Owns its outer element rather than wrapping in Section: sticky behaviour
+ * needs its own positioning and stacking context. Container is used inside.
+ *
+ * The nav slots are filled by MegaMenu (md and up) and MobileNav (below md),
+ * both reading src/config/navigation.ts — one tree, two renderings.
+ */
+import Container from '../ui/Container.astro';
+import Button from '../ui/Button.astro';
+import MegaMenu from './MegaMenu.astro';
+import MobileNav from './MobileNav.astro';
+import { navigation } from '../../config/navigation';
+import { site } from '../../config/site';
+import { Icon } from 'astro-icon/components';
+
+export type HeaderSticky = 'static' | 'sticky' | 'shrink' | 'hide-on-scroll' | 'overlay';
+
+interface Props {
+  sticky?: HeaderSticky;
+}
+
+const { sticky = 'sticky' } = Astro.props;
+
+const currentPath = Astro.url.pathname;
+const positioned = sticky === 'sticky' || sticky === 'shrink' || sticky === 'hide-on-scroll';
+const overlaid = sticky === 'overlay';
+---
+
+<header
+  data-sticky={sticky}
+  class:list={[
+    'group/header z-50 w-full',
+    overlaid
+      ? 'absolute inset-x-0 top-0 border-b border-transparent bg-transparent'
+      : 'sticky top-0 border-b border-line-base bg-surface-base',
+  ]}
+>
+  <Container
+    as="div"
+    layout="bar"
+    gap="none"
+    class="justify-between gap-4 py-4 group-data-[scrolled=true]/header:py-2"
+  >
+    <a href="/" class="flex shrink-0 items-center no-underline">
+      <img
+        src="/images/pplogo.webp"
+        alt={site.name}
+        width="227"
+        height="113"
+        style="height:113px;width:227px;max-width:none;display:block"
+      />
+    </a>
+
+    <MegaMenu currentPath={currentPath} overlaid={overlaid} />
+
+    <div class="flex items-center gap-2">
+      <a
+        href={`tel:${site.business.phoneHref}`}
+        class:list={[
+          'hidden min-h-11 items-center gap-2 px-2 font-medium no-underline lg:inline-flex',
+          overlaid ? 'text-neutral-0 hover:text-neutral-200' : 'text-ink-base',
+        ]}
+      >
+        <Icon name="lucide:phone" class="size-4" aria-hidden="true" />
+        {site.business.phone}
+      </a>
+
+      {
+        navigation.cta && (
+          <Button href={navigation.cta.href} size="sm" class="max-lg:hidden">
+            {navigation.cta.label}
+          </Button>
+        )
+      }
+
+      <MobileNav currentPath={currentPath} overlaid={overlaid} />
+    </div>
+  </Container>
+</header>
+
+<style>
+  header {
+    transition:
+      transform 200ms ease,
+      padding 150ms ease;
+  }
+
+  header[data-hidden='true'] {
+    transform: translateY(-100%);
+  }
+
+  header[data-scrolled='true'] {
+    box-shadow: var(--shadow-sm);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    header {
+      transition: none;
+    }
+
+    header[data-hidden='true'] {
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+  const header = document.querySelector<HTMLElement>('header[data-sticky]');
+
+  if (header) {
+    const mode = header.dataset.sticky;
+
+    if (mode === 'shrink' || mode === 'hide-on-scroll') {
+      let lastY = window.scrollY;
+      let ticking = false;
+
+      const update = () => {
+        const y = window.scrollY;
+        header.dataset.scrolled = String(y > 8);
+
+        if (mode === 'hide-on-scroll') {
+          // Never retract while the drawer or a mega panel is open.
+          const navOpen =
+            document.querySelector('#nav-toggle')?.getAttribute('aria-expanded') === 'true' ||
+            document.querySelector('.mega-item[data-open="true"]') !== null;
+          header.dataset.hidden = String(!navOpen && y > lastY && y > 120);
+        }
+
+        lastY = y;
+        ticking = false;
+      };
+
+      window.addEventListener(
+        'scroll',
+        () => {
+          if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(update);
+          }
+        },
+        { passive: true },
+      );
+
+      update();
+    }
+  }
+</script>
