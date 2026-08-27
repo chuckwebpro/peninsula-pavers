@@ -9,11 +9,11 @@ Each entry in the `projects` array requires these five fields:
 
 ```ts
 {
-  type: string;       // eyebrow label, e.g. "Outdoor Patio"
-  title: string;      // headline quote (without the curly quotes — those are added automatically)
+  type: string; // eyebrow label, e.g. "Outdoor Patio"
+  title: string; // headline quote (without the curly quotes — those are added automatically)
   clientName: string; // e.g. "Dawn Hartley"
   clientCity: string; // e.g. "Traverse City"
-  review: string;     // one-paragraph body text
+  review: string; // one-paragraph body text
   images: [string, string, string, string]; // exactly 4 paths — see below
 }
 ```
@@ -22,12 +22,12 @@ Each entry in the `projects` array requires these five fields:
 
 The `images` tuple must have **exactly four** entries:
 
-| Index | Role              | Displayed as                       |
-| ----- | ----------------- | ---------------------------------- |
-| `[0]` | Main image        | Large photo, left side of the card |
-| `[1]` | Thumbnail 1       | Bottom strip, column 1 of 3        |
-| `[2]` | Thumbnail 2       | Bottom strip, column 2 of 3        |
-| `[3]` | Thumbnail 3       | Bottom strip, column 3 of 3        |
+| Index | Role        | Displayed as                       |
+| ----- | ----------- | ---------------------------------- |
+| `[0]` | Main image  | Large photo, left side of the card |
+| `[1]` | Thumbnail 1 | Bottom strip, column 1 of 3        |
+| `[2]` | Thumbnail 2 | Bottom strip, column 2 of 3        |
+| `[3]` | Thumbnail 3 | Bottom strip, column 3 of 3        |
 
 All four images are also available in the lightbox. Clicking any image opens the
 lightbox at that image's index; the user can arrow through all four from there.
@@ -100,8 +100,8 @@ separately via the `tItems` array, also in the frontmatter of
 ```ts
 {
   quote: string; // full review text
-  name: string;  // "First Last"
-  role: string;  // displayed below the name, e.g. "Homeowner"
+  name: string; // "First Last"
+  role: string; // displayed below the name, e.g. "Homeowner"
 }
 ```
 
