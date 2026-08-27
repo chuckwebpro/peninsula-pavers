@@ -6,6 +6,8 @@ import Heading from '../components/ui/Heading.astro';
 import Button from '../components/ui/Button.astro';
 import { Icon } from 'astro-icon/components';
 import { site } from '../config/site';
+import TestimonialsCarousel from '../components/blocks/TestimonialsCarousel.astro';
+import { testimonials } from '../config/testimonials';
 
 interface Project {
   type: string;
@@ -90,28 +92,6 @@ const projects: Project[] = [
 ];
 
 const p0 = projects[0];
-
-const tItems = [
-  {
-    quote:
-      'I have worked with Peninsula Pavers and the experience was WONDERFUL! They exceeded all of my needs; their design and creativity is amazing. Thank you for making my landscape an envy to my neighbors!',
-    name: 'Dawn Hartley',
-    role: 'Homeowner',
-  },
-  {
-    quote:
-      'Len and his company come with creativity, reliability and a commitment to detail — no matter the size of the project. Len has the vision and insight of not only what works, but what looks right and is aesthetically pleasing.',
-    name: 'Kelly E. Miller',
-    role: 'Homeowner',
-  },
-  {
-    quote:
-      "Three years later and my driveway always looks amazing. Lenny said it would be great and he's right!",
-    name: 'Maggie Smith Kent',
-    role: 'Homeowner',
-  },
-];
-const tSlides = [...tItems, ...tItems];
 ---
 
 <BaseLayout
@@ -340,124 +320,12 @@ const tSlides = [...tItems, ...tItems];
     </span>
   </div>
 
-  <!-- ── WHAT OUR CLIENTS SAY ───────────────────────────────────────────── -->
-  <section id="testimonials" class="bg-surface-brand w-full py-[50px]">
-    <div class="max-w-page px-gutter mx-auto flex flex-col items-center gap-5 text-center">
-      <div class="flex items-center gap-3">
-        <span class="bg-accent-500 block h-px w-10" aria-hidden="true"></span>
-        <span class="text-accent-500 font-sans text-[16px] font-medium tracking-[2px] uppercase"
-          >Client Stories</span
-        >
-        <span class="bg-accent-500 block h-px w-10" aria-hidden="true"></span>
-      </div>
-      <Heading level={2} class="text-neutral-0 !text-4xl font-bold">What Our Clients Say</Heading>
-      <p class="text-neutral-0/75 max-w-lg font-sans text-[20px] font-medium">
-        Trusted by homeowners and businesses across Northern Michigan for over 30 years.
-      </p>
-    </div>
-
-    <div class="t-carousel relative mx-auto mt-[50px] max-w-[1380px] px-12">
-      <div class="t-window overflow-hidden">
-        <ul class="t-track flex" style="will-change:transform">
-          {
-            tSlides.map(({ quote, name, role }) => (
-              <li class="t-slide">
-                <div class="flex h-full flex-col gap-4 border border-[#ffffff1c] bg-[#ffffff0d] p-5">
-                  <span
-                    class="font-heading text-accent-500 text-3xl leading-none"
-                    aria-hidden="true"
-                  >
-                    &ldquo;
-                  </span>
-                  <div class="flex gap-0.5" aria-label="5 out of 5 stars">
-                    {Array.from({ length: 5 }).map(() => (
-                      <svg
-                        class="size-4"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                      >
-                        <path
-                          d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
-                          fill="var(--color-accent-500)"
-                          stroke="none"
-                        />
-                      </svg>
-                    ))}
-                  </div>
-                  <p class="text-neutral-0/75 flex-1 font-sans text-[16px] italic">{quote}</p>
-                  <footer>
-                    <p class="text-neutral-0 font-sans text-[16px] font-medium">{name}</p>
-                    <p class="text-accent-500 font-sans text-[16px] tracking-[2px] uppercase">
-                      {role}
-                    </p>
-                  </footer>
-                </div>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-
-      <button
-        class="t-prev text-neutral-0 absolute top-1/2 left-0 flex -translate-y-1/2 items-center justify-center p-2"
-        aria-label="Previous testimonial"
-      >
-        <Icon name="lucide:chevron-left" class="size-6" aria-hidden="true" />
-      </button>
-      <button
-        class="t-next text-neutral-0 absolute top-1/2 right-0 flex -translate-y-1/2 items-center justify-center p-2"
-        aria-label="Next testimonial"
-      >
-        <Icon name="lucide:chevron-right" class="size-6" aria-hidden="true" />
-      </button>
-
-      <div class="t-dots mt-6 flex justify-center gap-2"></div>
-    </div>
-  </section>
+  <!-- ── WHAT OUR CLIENTS SAY ─────────────────────────────────────────────── -->
+  <TestimonialsCarousel id="testimonials" items={testimonials} />
 </BaseLayout>
 
 <!-- Project data for client-side JS -->
 <script id="pp-data" type="application/json" set:html={JSON.stringify(projects)} />
-
-<style>
-  .t-slide {
-    flex-shrink: 0;
-    width: 33.333%;
-    padding: 0 10px;
-    box-sizing: border-box;
-  }
-  @media (max-width: 1023px) {
-    .t-slide {
-      width: 50%;
-    }
-  }
-  @media (max-width: 767px) {
-    .t-slide {
-      width: 100%;
-    }
-  }
-  .t-track {
-    transition: transform 500ms ease;
-  }
-  .t-dots button {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: #fff;
-    opacity: 0.5;
-    border: none;
-    cursor: pointer;
-    transition:
-      opacity 150ms,
-      background 150ms;
-    padding: 0;
-  }
-  .t-dots button.active {
-    background: var(--color-accent-500);
-    opacity: 1;
-  }
-</style>
 
 <script is:inline>
   (function () {
@@ -575,76 +443,5 @@ const tSlides = [...tItems, ...tItems];
       if (e.key === 'ArrowLeft') lbPrev.click();
       if (e.key === 'ArrowRight') lbNext.click();
     });
-
-    /* ── TESTIMONIAL CAROUSEL ──────────────────────────────────────────── */
-    var carousel = document.querySelector('.t-carousel');
-    if (!carousel) return;
-    var track = carousel.querySelector('.t-track');
-    var slides = Array.from(carousel.querySelectorAll('.t-slide'));
-    var prevBtn = carousel.querySelector('.t-prev');
-    var nextBtn = carousel.querySelector('.t-next');
-    var dotsEl = carousel.querySelector('.t-dots');
-    var idx = 0,
-      timer;
-    var UNIQUE = 3;
-
-    function perView() {
-      if (window.innerWidth >= 1024) return 3;
-      if (window.innerWidth >= 768) return 2;
-      return 1;
-    }
-
-    function goTo(i) {
-      var pv = perView();
-      var max = slides.length - pv;
-      idx = i;
-      if (idx < 0) idx = max;
-      if (idx > max) idx = 0;
-      track.style.transform = 'translateX(-' + idx * (100 / pv) + '%)';
-      dotsEl.querySelectorAll('button').forEach(function (d, j) {
-        d.classList.toggle('active', j === idx % UNIQUE);
-      });
-    }
-
-    for (var i = 0; i < UNIQUE; i++) {
-      (function (n) {
-        var btn = document.createElement('button');
-        btn.setAttribute('aria-label', 'Go to slide ' + (n + 1));
-        btn.addEventListener('click', function () {
-          clearInterval(timer);
-          goTo(n);
-          startTimer();
-        });
-        dotsEl.appendChild(btn);
-      })(i);
-    }
-
-    prevBtn.addEventListener('click', function () {
-      clearInterval(timer);
-      goTo(idx - 1);
-      startTimer();
-    });
-    nextBtn.addEventListener('click', function () {
-      clearInterval(timer);
-      goTo(idx + 1);
-      startTimer();
-    });
-
-    function startTimer() {
-      timer = setInterval(function () {
-        goTo(idx + 1);
-      }, 5000);
-    }
-
-    carousel.addEventListener('mouseenter', function () {
-      clearInterval(timer);
-    });
-    carousel.addEventListener('mouseleave', startTimer);
-    window.addEventListener('resize', function () {
-      goTo(idx);
-    });
-
-    goTo(0);
-    startTimer();
   })();
 </script>

@@ -1,0 +1,234 @@
+---
+import Heading from '../ui/Heading.astro';
+import { Icon } from 'astro-icon/components';
+import type { TestimonialItem } from '../../config/testimonials';
+
+interface Props {
+  items: TestimonialItem[];
+  id?: string;
+}
+
+const { items, id } = Astro.props;
+const slides = [...items, ...items, ...items];
+const unique = items.length;
+---
+
+<section {id} class="bg-surface-brand w-full py-[50px]">
+  <div class="max-w-page px-gutter mx-auto flex flex-col items-center gap-5 text-center">
+    <div class="flex items-center gap-3">
+      <span class="bg-accent-500 block h-px w-10" aria-hidden="true"></span>
+      <span class="text-accent-500 font-sans text-[16px] font-medium tracking-[2px] uppercase"
+        >Client Stories</span
+      >
+      <span class="bg-accent-500 block h-px w-10" aria-hidden="true"></span>
+    </div>
+    <Heading level={2} class="text-neutral-0 !text-4xl font-bold">What Our Clients Say</Heading>
+    <p class="text-neutral-0/75 max-w-lg font-sans text-[20px] font-medium">
+      Trusted by homeowners and businesses across Northern Michigan for over 30 years.
+    </p>
+  </div>
+
+  <div class="t-carousel relative mx-auto mt-[50px] max-w-[1380px] px-12">
+    <div class="t-window overflow-hidden">
+      <ul class="t-track flex" style="will-change:transform">
+        {
+          slides.map(({ quote, name, role, rating }) => (
+            <li class="t-slide">
+              <div class="flex h-full flex-col gap-4 border border-[#ffffff1c] bg-[#ffffff0d] p-5">
+                <span class="font-heading text-accent-500 text-3xl leading-none" aria-hidden="true">
+                  &ldquo;
+                </span>
+                {rating && (
+                  <div class="flex gap-0.5" role="img" aria-label={`${rating} out of 5 stars`}>
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <svg
+                        class="size-4"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                          fill={i < rating ? 'var(--color-accent-500)' : 'rgba(255,255,255,0.2)'}
+                          stroke="none"
+                        />
+                      </svg>
+                    ))}
+                  </div>
+                )}
+                <p class="text-neutral-0/75 flex-1 font-sans text-[16px] italic">{quote}</p>
+                <footer>
+                  <p class="text-neutral-0 font-sans text-[16px] font-medium">{name}</p>
+                  {role && (
+                    <p class="text-accent-500 font-sans text-[16px] tracking-[2px] uppercase">
+                      {role}
+                    </p>
+                  )}
+                </footer>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <button
+      class="t-prev text-neutral-0 absolute top-1/2 left-0 flex -translate-y-1/2 items-center justify-center p-2"
+      aria-label="Previous testimonial"
+    >
+      <Icon name="lucide:chevron-left" class="size-6" aria-hidden="true" />
+    </button>
+    <button
+      class="t-next text-neutral-0 absolute top-1/2 right-0 flex -translate-y-1/2 items-center justify-center p-2"
+      aria-label="Next testimonial"
+    >
+      <Icon name="lucide:chevron-right" class="size-6" aria-hidden="true" />
+    </button>
+
+    <div class="t-dots mt-6 flex justify-center gap-2"></div>
+  </div>
+</section>
+
+<style>
+  .t-slide {
+    flex-shrink: 0;
+    width: 33.333%;
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+  @media (max-width: 1023px) {
+    .t-slide {
+      width: 50%;
+    }
+  }
+  @media (max-width: 767px) {
+    .t-slide {
+      width: 100%;
+    }
+  }
+  .t-track {
+    transition: transform 500ms ease;
+  }
+  .t-dots button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #fff;
+    opacity: 0.5;
+    border: none;
+    cursor: pointer;
+    transition:
+      opacity 150ms,
+      background 150ms;
+    padding: 0;
+  }
+  .t-dots button.active {
+    background: var(--color-accent-500);
+    opacity: 1;
+  }
+</style>
+
+<script define:vars={{ unique }}>
+  (function () {
+    var carousel = document.querySelector('.t-carousel');
+    if (!carousel) return;
+    var track = carousel.querySelector('.t-track');
+    var slides = Array.from(carousel.querySelectorAll('.t-slide'));
+    var prevBtn = carousel.querySelector('.t-prev');
+    var nextBtn = carousel.querySelector('.t-next');
+    var dotsEl = carousel.querySelector('.t-dots');
+    var idx, timer;
+    var UNIQUE = unique; /* injected at build time from items.length */
+
+    function perView() {
+      if (window.innerWidth >= 1024) return 3;
+      if (window.innerWidth >= 768) return 2;
+      return 1;
+    }
+
+    function dot() {
+      dotsEl.querySelectorAll('button').forEach(function (d, j) {
+        d.classList.toggle('active', j === idx % UNIQUE);
+      });
+    }
+
+    function goTo(i) {
+      idx = i;
+      track.style.transform = 'translateX(-' + idx * (100 / perView()) + '%)';
+      dot();
+    }
+
+    /* After animating into a clone set, silently jump back to the real set */
+    track.addEventListener('transitionend', function (e) {
+      if (e.propertyName !== 'transform') return;
+      if (idx >= UNIQUE * 2 || idx < UNIQUE) {
+        track.style.transition = 'none';
+        idx = idx >= UNIQUE * 2 ? idx - UNIQUE : idx + UNIQUE;
+        track.style.transform = 'translateX(-' + idx * (100 / perView()) + '%)';
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            track.style.transition = '';
+          });
+        });
+      }
+    });
+
+    for (var i = 0; i < UNIQUE; i++) {
+      (function (n) {
+        var btn = document.createElement('button');
+        btn.setAttribute('aria-label', 'Go to slide ' + (n + 1));
+        btn.addEventListener('click', function () {
+          clearInterval(timer);
+          goTo(UNIQUE + n); /* always target middle set */
+          startTimer();
+        });
+        dotsEl.appendChild(btn);
+      })(i);
+    }
+
+    prevBtn.addEventListener('click', function () {
+      clearInterval(timer);
+      goTo(idx - 1);
+      startTimer();
+    });
+    nextBtn.addEventListener('click', function () {
+      clearInterval(timer);
+      goTo(idx + 1);
+      startTimer();
+    });
+
+    function startTimer() {
+      timer = setInterval(function () {
+        goTo(idx + 1);
+      }, 5000);
+    }
+
+    carousel.addEventListener('mouseenter', function () {
+      clearInterval(timer);
+    });
+    carousel.addEventListener('mouseleave', startTimer);
+
+    /* On resize, reapply transform without animation then re-enable transition */
+    window.addEventListener('resize', function () {
+      track.style.transition = 'none';
+      if (idx >= UNIQUE * 2) idx -= UNIQUE;
+      else if (idx < UNIQUE) idx += UNIQUE;
+      track.style.transform = 'translateX(-' + idx * (100 / perView()) + '%)';
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          track.style.transition = '';
+        });
+      });
+    });
+
+    /* Initialize at middle set without animation, then start */
+    track.style.transition = 'none';
+    goTo(UNIQUE);
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        track.style.transition = '';
+        startTimer();
+      });
+    });
+  })();
+</script>
