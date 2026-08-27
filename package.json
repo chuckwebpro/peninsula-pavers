@@ -15,8 +15,10 @@
     "preverify": "node scripts/build-tokens.mjs",
     "verify": "astro check && prettier --check .",
     "format": "prettier --write .",
+    "preaudit:lh": "npm run build",
     "audit:lh": "lhci autorun",
-    "audit:a11y": "start-server-and-test preview http://localhost:4321 \"pa11y-ci\"",
+    "preview:audit": "astro preview --port 4322",
+    "audit:a11y": "start-server-and-test preview:audit http://localhost:4322 \"pa11y-ci\"",
     "audit": "npm run audit:lh && npm run audit:a11y"
   },
   "dependencies": {
