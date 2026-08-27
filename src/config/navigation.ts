@@ -68,7 +68,7 @@ export const navigation: NavigationConfig = {
       },
     },
     { label: 'About', href: '/about-us/' },
-    { label: 'Testimonials', href: '/#testimonials' },
+    { label: 'Testimonials', href: '/testimonials/' },
     { label: 'Contact', href: '#contact' },
   ],
 
@@ -92,7 +92,7 @@ export const navigation: NavigationConfig = {
       links: [
         { label: 'Home', href: '/' },
         { label: 'About', href: '/about-us/' },
-        { label: 'Testimonials', href: '/#testimonials' },
+        { label: 'Testimonials', href: '/testimonials/' },
         { label: 'Contact', href: '#contact' },
       ],
     },

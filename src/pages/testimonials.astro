@@ -1,0 +1,632 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/ui/Section.astro';
+import Container from '../components/ui/Container.astro';
+import Heading from '../components/ui/Heading.astro';
+import Button from '../components/ui/Button.astro';
+import { Icon } from 'astro-icon/components';
+import { site } from '../config/site';
+
+interface Project {
+  type: string;
+  title: string;
+  clientName: string;
+  clientCity: string;
+  review: string;
+  images: [string, string, string, string];
+}
+
+const projects: Project[] = [
+  {
+    type: 'Outdoor Patio',
+    title: 'They transformed my entire backyard patio',
+    clientName: 'Dawn Hartley',
+    clientCity: 'Traverse City',
+    review:
+      "Peninsula Pavers took our crumbling concrete slab and replaced it with a beautiful brick paver patio that we use every single weekend. The craftsmanship is exceptional and the drainage they built in means we've never had standing water since.",
+    images: ['/images/patio-1.jpg', '/images/patio-2.jpg', '/images/patio-3.jpg', '/images/patio-4.jpg'],
+  },
+  {
+    type: 'Retaining Wall',
+    title: 'Three years later and it still looks exactly like day one',
+    clientName: 'Maggie Smith Kent',
+    clientCity: 'Traverse City',
+    review:
+      'We had a severe erosion problem on our hillside property. Peninsula Pavers designed a tiered retaining wall system that solved the problem completely. Three years of freeze-thaw cycles later and not a single stone has shifted.',
+    images: [
+      '/images/retaining-wall-1.jpg',
+      '/images/retaining-wall-2.jpg',
+      '/images/retaining-wall-3.jpg',
+      '/images/retaining-wall-4.jpg',
+    ],
+  },
+  {
+    type: 'Paver Driveway',
+    title: 'The detail work and craftsmanship is beyond anything I expected',
+    clientName: 'Kelly E. Miller',
+    clientCity: 'Traverse City',
+    review:
+      'Len and his team installed a new paver driveway and front entry for our home. They matched the style perfectly to our house and the attention to detail in the border work and pattern was exceptional. Every neighbor who visits asks who did it.',
+    images: [
+      '/images/driveway-1.jpg',
+      '/images/driveway-2.jpg',
+      '/images/driveway-3.jpg',
+      '/images/driveway-4.jpg',
+    ],
+  },
+  {
+    type: 'Custom Walkway',
+    title: 'Our front walkway completely changed the curb appeal of our home',
+    clientName: 'Jim & Carol Benson',
+    clientCity: 'Petoskey',
+    review:
+      'We wanted a natural stone walkway that would complement our cottage-style home. Peninsula Pavers delivered exactly that — a beautiful flagstone path that looks like it belongs there. The work was clean, on schedule, and exactly what we envisioned.',
+    images: [
+      '/images/walkway-1.jpg',
+      '/images/walkway-2.jpg',
+      '/images/walkway-3.jpg',
+      '/images/walkway-4.jpg',
+    ],
+  },
+  {
+    type: 'Waterscape',
+    title: 'The water feature makes our whole backyard feel like a retreat',
+    clientName: 'Sandra & Tom Wiley',
+    clientCity: 'Leelanau County',
+    review:
+      'We asked Peninsula Pavers to create a water feature and surrounding hardscape for our lakeside property. The result is absolutely stunning. The natural stone work and the way the water flows is exactly what we imagined.',
+    images: [
+      '/images/waterscape-1.jpg',
+      '/images/waterscape-2.jpg',
+      '/images/waterscape-3.jpg',
+      '/images/waterscape-4.jpg',
+    ],
+  },
+];
+
+const p0 = projects[0];
+
+const tItems = [
+  {
+    quote:
+      'I have worked with Peninsula Pavers and the experience was WONDERFUL! They exceeded all of my needs; their design and creativity is amazing. Thank you for making my landscape an envy to my neighbors!',
+    name: 'Dawn Hartley',
+    role: 'Homeowner',
+  },
+  {
+    quote:
+      'Len and his company come with creativity, reliability and a commitment to detail — no matter the size of the project. Len has the vision and insight of not only what works, but what looks right and is aesthetically pleasing.',
+    name: 'Kelly E. Miller',
+    role: 'Homeowner',
+  },
+  {
+    quote:
+      "Three years later and my driveway always looks amazing. Lenny said it would be great and he's right!",
+    name: 'Maggie Smith Kent',
+    role: 'Homeowner',
+  },
+];
+const tSlides = [...tItems, ...tItems];
+---
+
+<BaseLayout
+  title={`Client Testimonials | ${site.name}`}
+  description="Read client testimonials and see previous projects from Peninsula Pavers in Traverse City, MI — patios, driveways, retaining walls, walkways, and waterscapes."
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Testimonials', href: '/testimonials/' },
+  ]}
+  sticky="overlay"
+>
+  <!-- ── HERO ───────────────────────────────────────────────────────────── -->
+  <section class="relative flex min-h-[750px] items-center overflow-hidden" aria-label="Page hero">
+    <div
+      class="absolute inset-0 bg-cover bg-center"
+      style="background-image:linear-gradient(rgba(0,0,0,0.502),rgba(0,0,0,0.502)),url('/images/s1.webp')"
+      aria-hidden="true"
+    ></div>
+
+    <div class="max-w-page px-gutter relative z-10 mx-auto w-full pt-[100px]">
+      <div class="mb-5 flex items-center gap-3">
+        <span class="bg-accent-500 block h-px w-10 shrink-0" aria-hidden="true"></span>
+        <span class="text-accent-400 font-sans text-[16px] font-medium tracking-wide"
+          >Peninsula Pavers, Inc.</span
+        >
+      </div>
+
+      <Heading level={1} class="text-neutral-0 max-w-3xl !text-[56px] font-medium">
+        Client Testimonials From Traverse City, MI
+      </Heading>
+
+      <p class="text-neutral-0/75 mt-4 max-w-[900px] font-sans text-[20px] font-medium">
+        Peninsula Pavers has built patios, driveways, walls, and outdoor living spaces across
+        Traverse City for more than 25 years. Owner-designed, locally owned.
+      </p>
+
+      <div class="mt-8 flex flex-wrap items-center gap-5">
+        <Button href="#free-estimate" size="lg">Get Your Free Design Consultation</Button>
+        <a
+          href="/services/"
+          class="border-neutral-0/75 text-neutral-0 hover:border-neutral-0 inline-flex items-center gap-2 border bg-transparent px-[25px] py-[12px] font-sans text-[20px] font-medium no-underline hover:bg-white/10"
+        >
+          <Icon name="lucide:layout-grid" class="size-5" aria-hidden="true" />
+          View Our Projects
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PREVIOUS PROJECTS ─────────────────────────────────────────────── -->
+  <Section background="muted" spacing="md">
+    <Container gap="lg">
+      <!-- Section header -->
+      <div class="flex w-full flex-col gap-10 md:flex-row md:items-end md:justify-between">
+        <div class="flex flex-col gap-3">
+          <div class="flex items-center gap-3">
+            <span class="bg-accent-500 block h-px w-10" aria-hidden="true"></span>
+            <span class="text-accent-500 font-sans text-[16px] font-medium tracking-[2px] uppercase"
+              >From Start to Finish We Support Your Vision</span
+            >
+          </div>
+          <Heading level={2} class="text-brand-700 !text-4xl font-bold">See Our Previous Projects</Heading>
+          <Heading level={2} class="text-brand-700 !text-4xl font-medium italic">Your Dream to Reality</Heading>
+        </div>
+        <p class="text-ink-muted max-w-sm font-sans text-[16px] md:text-end">
+          Patios, pavers, retaining walls, pathways and driveways, waterscapes. All outdoor living
+          spaces are complete landscape designs using natural stone, pavers, and materials selected
+          for how they perform.
+        </p>
+      </div>
+
+      <!-- Project card -->
+      <div class="w-full bg-white shadow-[0_4px_16px_rgba(0,0,0,0.12)]">
+        <div class="flex flex-col lg:flex-row">
+
+          <!-- Left: image gallery -->
+          <div class="flex flex-col lg:w-[47%]">
+            <!-- Main image -->
+            <button
+              id="pp-main-btn"
+              class="group relative block w-full overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent-500"
+              aria-label={`View full-size ${p0.type} project image`}
+            >
+              <div class="aspect-[4/3] w-full overflow-hidden">
+                <img
+                  id="pp-main-img"
+                  src={p0.images[0]}
+                  alt={`${p0.type} project by Peninsula Pavers`}
+                  width="677"
+                  height="508"
+                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  loading="eager"
+                />
+              </div>
+            </button>
+
+            <!-- Thumbnail strip -->
+            <div id="pp-thumbs" class="grid grid-cols-3">
+              {
+                p0.images.slice(1).map((src, i) => (
+                  <button
+                    class="group relative block overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent-500"
+                    aria-label={`View ${p0.type} image ${i + 2}`}
+                    data-lb-index={String(i + 1)}
+                  >
+                    <div class="aspect-[4/3] w-full overflow-hidden">
+                      <img
+                        src={src}
+                        alt={`${p0.type} by Peninsula Pavers, image ${i + 2}`}
+                        width="225"
+                        height="169"
+                        class="h-full w-full object-cover transition-opacity duration-200 group-hover:opacity-80"
+                        loading="lazy"
+                      />
+                    </div>
+                  </button>
+                ))
+              }
+            </div>
+          </div>
+
+          <!-- Right: project details -->
+          <div class="flex flex-1 flex-col justify-between p-8 lg:p-10 xl:p-14">
+            <div class="flex flex-col gap-5">
+              <div class="flex items-center gap-3">
+                <span class="bg-accent-500 block h-px w-8 shrink-0" aria-hidden="true"></span>
+                <span
+                  id="pp-eyebrow"
+                  class="text-accent-500 font-sans text-[16px] font-medium tracking-[2px] uppercase"
+                  >{p0.type}</span
+                >
+              </div>
+
+              <blockquote class="flex flex-col gap-3">
+                <p
+                  id="pp-title"
+                  class="font-heading text-brand-700 text-[28px] font-bold leading-snug lg:text-[32px]"
+                >
+                  &ldquo;{p0.title}&rdquo;
+                </p>
+                <footer>
+                  <cite
+                    id="pp-client"
+                    class="text-ink-muted font-sans text-[16px] not-italic font-medium"
+                    >{p0.clientName} &ndash; {p0.clientCity}</cite
+                  >
+                </footer>
+              </blockquote>
+
+              <p id="pp-review" class="text-ink-muted font-sans text-[16px] leading-relaxed">
+                {p0.review}
+              </p>
+            </div>
+
+            <!-- Nav arrows -->
+            <div class="mt-10 flex items-center gap-4">
+              <button
+                id="pp-prev"
+                class="flex size-10 shrink-0 items-center justify-center rounded-full border border-brand-700 bg-white text-neutral-500 transition-colors hover:bg-brand-700 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-700"
+                aria-label="Previous project"
+              >
+                <Icon name="lucide:chevron-left" class="size-4" aria-hidden="true" />
+              </button>
+              <button
+                id="pp-next"
+                class="flex size-10 shrink-0 items-center justify-center rounded-full border border-brand-700 bg-white text-neutral-500 transition-colors hover:bg-brand-700 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-700"
+                aria-label="Next project"
+              >
+                <Icon name="lucide:chevron-right" class="size-4" aria-hidden="true" />
+              </button>
+              <span
+                id="pp-counter"
+                class="text-ink-muted font-sans text-[16px]"
+                aria-live="polite"
+                aria-atomic="true"
+              >
+                1 / {projects.length}
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- ── LIGHTBOX ────────────────────────────────────────────────────────── -->
+  <div
+    id="pp-lightbox"
+    class="fixed inset-0 z-[200] hidden items-center justify-center bg-black/90"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Project image lightbox"
+  >
+    <button
+      id="pp-lb-close"
+      class="absolute top-4 right-4 flex size-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+      aria-label="Close lightbox"
+    >
+      <Icon name="lucide:x" class="size-5" aria-hidden="true" />
+    </button>
+    <button
+      id="pp-lb-prev"
+      class="absolute left-4 top-1/2 -translate-y-1/2 flex size-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+      aria-label="Previous image"
+    >
+      <Icon name="lucide:chevron-left" class="size-6" aria-hidden="true" />
+    </button>
+    <img
+      id="pp-lb-img"
+      src=""
+      alt=""
+      class="max-h-[85vh] max-w-[85vw] object-contain"
+    />
+    <button
+      id="pp-lb-next"
+      class="absolute right-4 top-1/2 -translate-y-1/2 flex size-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+      aria-label="Next image"
+    >
+      <Icon name="lucide:chevron-right" class="size-6" aria-hidden="true" />
+    </button>
+    <span
+      id="pp-lb-counter"
+      class="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-black/50 px-4 py-1.5 font-sans text-[16px] text-white"
+      aria-live="polite"
+    >
+      1 / 4
+    </span>
+  </div>
+
+  <!-- ── WHAT OUR CLIENTS SAY ───────────────────────────────────────────── -->
+  <section id="testimonials" class="bg-surface-brand w-full py-[50px]">
+    <div class="max-w-page px-gutter mx-auto flex flex-col items-center gap-5 text-center">
+      <div class="flex items-center gap-3">
+        <span class="bg-accent-500 block h-px w-10" aria-hidden="true"></span>
+        <span class="text-accent-500 font-sans text-[16px] font-medium tracking-[2px] uppercase"
+          >Client Stories</span
+        >
+        <span class="bg-accent-500 block h-px w-10" aria-hidden="true"></span>
+      </div>
+      <Heading level={2} class="text-neutral-0 !text-4xl font-bold">What Our Clients Say</Heading>
+      <p class="text-neutral-0/75 max-w-lg font-sans text-[20px] font-medium">
+        Trusted by homeowners and businesses across Northern Michigan for over 30 years.
+      </p>
+    </div>
+
+    <div class="t-carousel relative mx-auto mt-[50px] max-w-[1380px] px-12">
+      <div class="t-window overflow-hidden">
+        <ul class="t-track flex" style="will-change:transform">
+          {
+            tSlides.map(({ quote, name, role }) => (
+              <li class="t-slide">
+                <div class="flex h-full flex-col gap-4 border border-[#ffffff1c] bg-[#ffffff0d] p-5">
+                  <span
+                    class="font-heading text-accent-500 text-3xl leading-none"
+                    aria-hidden="true"
+                  >
+                    &ldquo;
+                  </span>
+                  <div class="flex gap-0.5" aria-label="5 out of 5 stars">
+                    {Array.from({ length: 5 }).map(() => (
+                      <svg
+                        class="size-4"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                          fill="var(--color-accent-500)"
+                          stroke="none"
+                        />
+                      </svg>
+                    ))}
+                  </div>
+                  <p class="text-neutral-0/75 flex-1 font-sans text-[16px] italic">{quote}</p>
+                  <footer>
+                    <p class="text-neutral-0 font-sans text-[16px] font-medium">{name}</p>
+                    <p class="text-accent-500 font-sans text-[16px] tracking-[2px] uppercase">
+                      {role}
+                    </p>
+                  </footer>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <button
+        class="t-prev text-neutral-0 absolute top-1/2 left-0 flex -translate-y-1/2 items-center justify-center p-2"
+        aria-label="Previous testimonial"
+      >
+        <Icon name="lucide:chevron-left" class="size-6" aria-hidden="true" />
+      </button>
+      <button
+        class="t-next text-neutral-0 absolute top-1/2 right-0 flex -translate-y-1/2 items-center justify-center p-2"
+        aria-label="Next testimonial"
+      >
+        <Icon name="lucide:chevron-right" class="size-6" aria-hidden="true" />
+      </button>
+
+      <div class="t-dots mt-6 flex justify-center gap-2"></div>
+    </div>
+  </section>
+</BaseLayout>
+
+<!-- Project data for client-side JS -->
+<script id="pp-data" type="application/json" set:html={JSON.stringify(projects)}></script>
+
+<style>
+  .t-slide {
+    flex-shrink: 0;
+    width: 33.333%;
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+  @media (max-width: 1023px) {
+    .t-slide { width: 50%; }
+  }
+  @media (max-width: 767px) {
+    .t-slide { width: 100%; }
+  }
+  .t-track { transition: transform 500ms ease; }
+  .t-dots button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #fff;
+    opacity: 0.5;
+    border: none;
+    cursor: pointer;
+    transition: opacity 150ms, background 150ms;
+    padding: 0;
+  }
+  .t-dots button.active {
+    background: var(--color-accent-500);
+    opacity: 1;
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    /* ── PROJECT SLIDER ────────────────────────────────────────────────── */
+    var dataEl = document.getElementById('pp-data');
+    if (!dataEl) return;
+    var projects = JSON.parse(dataEl.textContent);
+    var currentIdx = 0;
+    var lbProjectIdx = 0;
+    var lbImageIdx = 0;
+
+    var mainImg = document.getElementById('pp-main-img');
+    var mainBtn = document.getElementById('pp-main-btn');
+    var thumbsEl = document.getElementById('pp-thumbs');
+    var eyebrow = document.getElementById('pp-eyebrow');
+    var titleEl = document.getElementById('pp-title');
+    var clientEl = document.getElementById('pp-client');
+    var reviewEl = document.getElementById('pp-review');
+    var counterEl = document.getElementById('pp-counter');
+
+    function showProject(idx) {
+      var p = projects[idx];
+      currentIdx = idx;
+
+      mainImg.src = p.images[0];
+      mainImg.alt = p.type + ' project by Peninsula Pavers';
+      mainBtn.setAttribute('aria-label', 'View full-size ' + p.type + ' image');
+
+      var thumbBtns = thumbsEl.querySelectorAll('button');
+      var thumbImgs = thumbsEl.querySelectorAll('img');
+      thumbBtns.forEach(function (btn, i) {
+        btn.setAttribute('aria-label', 'View ' + p.type + ' image ' + (i + 2));
+      });
+      thumbImgs.forEach(function (img, i) {
+        img.src = p.images[i + 1];
+        img.alt = p.type + ' by Peninsula Pavers, image ' + (i + 2);
+      });
+
+      eyebrow.textContent = p.type;
+      titleEl.textContent = '\u201C' + p.title + '\u201D';
+      clientEl.textContent = p.clientName + ' \u2013 ' + p.clientCity;
+      reviewEl.textContent = p.review;
+      counterEl.textContent = (idx + 1) + ' / ' + projects.length;
+    }
+
+    document.getElementById('pp-prev').addEventListener('click', function () {
+      showProject((currentIdx - 1 + projects.length) % projects.length);
+    });
+    document.getElementById('pp-next').addEventListener('click', function () {
+      showProject((currentIdx + 1) % projects.length);
+    });
+
+    /* ── LIGHTBOX ──────────────────────────────────────────────────────── */
+    var lightbox = document.getElementById('pp-lightbox');
+    var lbImg = document.getElementById('pp-lb-img');
+    var lbCounter = document.getElementById('pp-lb-counter');
+    var lbClose = document.getElementById('pp-lb-close');
+    var lbPrev = document.getElementById('pp-lb-prev');
+    var lbNext = document.getElementById('pp-lb-next');
+
+    function openLightbox(projIdx, imgIdx) {
+      lbProjectIdx = projIdx;
+      lbImageIdx = imgIdx;
+      updateLightbox();
+      lightbox.classList.remove('hidden');
+      lightbox.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      lbClose.focus();
+    }
+
+    function closeLightbox() {
+      lightbox.classList.add('hidden');
+      lightbox.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    function updateLightbox() {
+      var p = projects[lbProjectIdx];
+      lbImg.src = p.images[lbImageIdx];
+      lbImg.alt = p.type + ' by Peninsula Pavers, image ' + (lbImageIdx + 1);
+      lbCounter.textContent = (lbImageIdx + 1) + ' / ' + p.images.length;
+    }
+
+    mainBtn.addEventListener('click', function () {
+      openLightbox(currentIdx, 0);
+    });
+
+    thumbsEl.querySelectorAll('button').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        openLightbox(currentIdx, parseInt(btn.dataset.lbIndex, 10));
+      });
+    });
+
+    lbClose.addEventListener('click', closeLightbox);
+
+    lbPrev.addEventListener('click', function () {
+      var p = projects[lbProjectIdx];
+      lbImageIdx = (lbImageIdx - 1 + p.images.length) % p.images.length;
+      updateLightbox();
+    });
+
+    lbNext.addEventListener('click', function () {
+      var p = projects[lbProjectIdx];
+      lbImageIdx = (lbImageIdx + 1) % p.images.length;
+      updateLightbox();
+    });
+
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (lightbox.classList.contains('hidden')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') lbPrev.click();
+      if (e.key === 'ArrowRight') lbNext.click();
+    });
+
+    /* ── TESTIMONIAL CAROUSEL ──────────────────────────────────────────── */
+    var carousel = document.querySelector('.t-carousel');
+    if (!carousel) return;
+    var track = carousel.querySelector('.t-track');
+    var slides = Array.from(carousel.querySelectorAll('.t-slide'));
+    var prevBtn = carousel.querySelector('.t-prev');
+    var nextBtn = carousel.querySelector('.t-next');
+    var dotsEl = carousel.querySelector('.t-dots');
+    var idx = 0, timer;
+    var UNIQUE = 3;
+
+    function perView() {
+      if (window.innerWidth >= 1024) return 3;
+      if (window.innerWidth >= 768) return 2;
+      return 1;
+    }
+
+    function goTo(i) {
+      var pv = perView();
+      var max = slides.length - pv;
+      idx = i;
+      if (idx < 0) idx = max;
+      if (idx > max) idx = 0;
+      track.style.transform = 'translateX(-' + idx * (100 / pv) + '%)';
+      dotsEl.querySelectorAll('button').forEach(function (d, j) {
+        d.classList.toggle('active', j === idx % UNIQUE);
+      });
+    }
+
+    for (var i = 0; i < UNIQUE; i++) {
+      (function (n) {
+        var btn = document.createElement('button');
+        btn.setAttribute('aria-label', 'Go to slide ' + (n + 1));
+        btn.addEventListener('click', function () {
+          clearInterval(timer);
+          goTo(n);
+          startTimer();
+        });
+        dotsEl.appendChild(btn);
+      })(i);
+    }
+
+    prevBtn.addEventListener('click', function () {
+      clearInterval(timer);
+      goTo(idx - 1);
+      startTimer();
+    });
+    nextBtn.addEventListener('click', function () {
+      clearInterval(timer);
+      goTo(idx + 1);
+      startTimer();
+    });
+
+    function startTimer() {
+      timer = setInterval(function () { goTo(idx + 1); }, 5000);
+    }
+
+    carousel.addEventListener('mouseenter', function () { clearInterval(timer); });
+    carousel.addEventListener('mouseleave', startTimer);
+    window.addEventListener('resize', function () { goTo(idx); });
+
+    goTo(0);
+    startTimer();
+  })();
+</script>
