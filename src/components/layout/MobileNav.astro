@@ -24,7 +24,7 @@ const isCurrent = (href: string) =>
   href === '/' ? currentPath === '/' : currentPath.startsWith(href);
 
 const linkClass =
-  'flex min-h-12 items-center gap-3 rounded-md px-2 text-base no-underline text-ink-base aria-[current=page]:text-ink-brand aria-[current=page]:font-medium';
+  'flex min-h-12 items-center gap-3 rounded-md px-2 text-base no-underline text-neutral-0 hover:bg-white/10 aria-[current=page]:text-accent-400 aria-[current=page]:font-medium';
 ---
 
 <button
@@ -44,7 +44,7 @@ const linkClass =
 <div
   id="mobile-nav"
   hidden
-  class="bg-surface-base fixed inset-0 top-(--header-h) z-40 overflow-y-auto overscroll-contain lg:hidden"
+  class="fixed inset-0 top-(--header-h) z-40 overflow-y-auto overscroll-contain lg:hidden"
 >
   <Container
     as="nav"
@@ -62,7 +62,7 @@ const linkClass =
 
           if (sublinks.length === 0) {
             return (
-              <li class="border-line-base border-b">
+              <li class="border-b border-white/10">
                 <a
                   href={item.href ?? '#'}
                   aria-current={isCurrent(item.href ?? '') ? 'page' : undefined}
@@ -77,7 +77,7 @@ const linkClass =
           const panelId = `mobile-panel-${index}`;
 
           return (
-            <li class="border-line-base border-b">
+            <li class="border-b border-white/10">
               <div class="flex items-center">
                 {item.href ? (
                   <a
@@ -93,7 +93,7 @@ const linkClass =
 
                 <button
                   type="button"
-                  class="mobile-accordion inline-flex size-12 shrink-0 items-center justify-center rounded-md hover:bg-neutral-100"
+                  class="mobile-accordion text-neutral-0 inline-flex size-12 shrink-0 items-center justify-center rounded-md hover:bg-white/10"
                   aria-expanded="false"
                   aria-controls={panelId}
                 >
@@ -106,11 +106,7 @@ const linkClass =
                 </button>
               </div>
 
-              <ul
-                id={panelId}
-                hidden
-                class="border-line-base mb-2 ml-2 flex flex-col border-l pl-3"
-              >
+              <ul id={panelId} hidden class="mb-2 ml-2 flex flex-col border-l border-white/10 pl-3">
                 {sublinks.map((link) => (
                   <li>
                     <a
@@ -121,7 +117,7 @@ const linkClass =
                       {link.icon && (
                         <Icon
                           name={link.icon}
-                          class="text-brand-600 size-5 shrink-0"
+                          class="text-accent-400 size-5 shrink-0"
                           aria-hidden="true"
                         />
                       )}
@@ -138,7 +134,7 @@ const linkClass =
 
     <div class="mt-6 flex flex-col gap-3">
       {navigation.cta && <Button href={navigation.cta.href}>{navigation.cta.label}</Button>}
-      <Button href={`tel:${site.business.phoneHref}`} variant="secondary">
+      <Button href={`tel:${site.business.phoneHref}`} variant="inverse">
         <Icon name="lucide:phone" class="size-4" aria-hidden="true" />
         {site.business.phone}
       </Button>
@@ -150,6 +146,7 @@ const linkClass =
   /* Overwritten from the real header height when the drawer opens. */
   #mobile-nav {
     --header-h: 4rem;
+    background-color: rgb(0 0 0 / 0.85);
   }
 
   .mobile-accordion[aria-expanded='true'] :global(svg) {

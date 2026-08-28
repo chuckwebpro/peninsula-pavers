@@ -32,7 +32,7 @@ const overlaid = sticky === 'overlay';
   class:list={[
     'group/header z-50 w-full',
     overlaid
-      ? 'absolute inset-x-0 top-0 border-b border-transparent bg-transparent'
+      ? 'fixed inset-x-0 top-0 border-b border-transparent bg-transparent'
       : 'border-line-base bg-surface-base sticky top-0 border-b',
   ]}
 >
@@ -83,6 +83,9 @@ const overlaid = sticky === 'overlay';
   header {
     transition:
       transform 200ms ease,
+      background-color 200ms ease,
+      border-color 200ms ease,
+      box-shadow 200ms ease,
       padding 150ms ease;
   }
 
@@ -92,6 +95,11 @@ const overlaid = sticky === 'overlay';
 
   header[data-scrolled='true'] {
     box-shadow: var(--shadow-sm);
+  }
+
+  header[data-sticky='overlay'][data-scrolled='true'] {
+    background-color: rgb(0 0 0 / 0.65);
+    border-color: rgb(255 255 255 / 0.08);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -125,6 +133,44 @@ const overlaid = sticky === 'overlay';
             document.querySelector('#nav-toggle')?.getAttribute('aria-expanded') === 'true' ||
             document.querySelector('.mega-item[data-open="true"]') !== null;
           header.dataset.hidden = String(!navOpen && y > lastY && y > 120);
+        }
+
+        lastY = y;
+        ticking = false;
+      };
+
+      window.addEventListener(
+        'scroll',
+        () => {
+          if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(update);
+          }
+        },
+        { passive: true },
+      );
+
+      update();
+    } else if (mode === 'overlay') {
+      // Smart-sticky: transparent at top → solid when scrolled → hide on downscroll → reveal on upscroll.
+      const SOLID_AT = 80;
+      const HIDE_AFTER = 250;
+      let lastY = window.scrollY;
+      let ticking = false;
+
+      const update = () => {
+        const y = window.scrollY;
+        const pastSolid = y > SOLID_AT;
+        header.dataset.scrolled = String(pastSolid);
+
+        const navOpen =
+          document.querySelector('#nav-toggle')?.getAttribute('aria-expanded') === 'true' ||
+          document.querySelector('.mega-item[data-open="true"]') !== null;
+
+        if (!navOpen && pastSolid && y > lastY && y > HIDE_AFTER) {
+          header.dataset.hidden = 'true';
+        } else if (!pastSolid || y < lastY || navOpen) {
+          header.dataset.hidden = 'false';
         }
 
         lastY = y;
