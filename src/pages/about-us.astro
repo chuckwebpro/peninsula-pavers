@@ -6,14 +6,21 @@ import Heading from '../components/ui/Heading.astro';
 import Button from '../components/ui/Button.astro';
 import { Icon } from 'astro-icon/components';
 import { site } from '../config/site';
+import Gallery from '../components/ui/Gallery.astro';
+import aboutImg1 from '../assets/images/walkway-1.jpg';
+import aboutImg2 from '../assets/images/IMG_1450.jpg';
+import aboutImg3 from '../assets/images/waterscape-1.jpg';
+import aboutImg4 from '../assets/images/retaining-wall-feature.jpg';
+import aboutImg5 from '../assets/images/warm-pond.jpg';
+import aboutImg6 from '../assets/images/IMG_1164.webp';
 
 const galleryImages = [
-  { src: '/images/walkway-1.jpg', alt: 'Custom stone walkway' },
-  { src: '/images/IMG_1450.jpg', alt: 'Custom paver patio' },
-  { src: '/images/waterscape-1.jpg', alt: 'Waterfall and pond' },
-  { src: '/images/retaining-wall-feature.jpg', alt: 'Retaining wall' },
-  { src: '/images/landscaping-2.jpg', alt: 'Landscaping and pond' },
-  { src: '/images/IMG_1164.webp', alt: 'Outdoor hardscaping' },
+  { src: aboutImg1, alt: 'Custom stone walkway' },
+  { src: aboutImg2, alt: 'Custom paver patio' },
+  { src: aboutImg3, alt: 'Waterfall and pond' },
+  { src: aboutImg4, alt: 'Retaining wall' },
+  { src: aboutImg5, alt: 'Landscaping and pond' },
+  { src: aboutImg6, alt: 'Outdoor hardscaping' },
 ];
 
 const faqs = [
@@ -182,18 +189,7 @@ const faqs = [
         </p>
       </div>
 
-      <div class="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {
-          galleryImages.map(({ src, alt }) => (
-            <div
-              class="h-[350px]"
-              style={`background-image:url('${src}');background-size:cover;background-position:center`}
-              role="img"
-              aria-label={alt}
-            />
-          ))
-        }
-      </div>
+      <Gallery images={galleryImages} />
     </Container>
   </Section>
 

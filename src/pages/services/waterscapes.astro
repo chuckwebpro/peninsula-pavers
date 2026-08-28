@@ -7,6 +7,13 @@ import Button from '../../components/ui/Button.astro';
 import { Icon } from 'astro-icon/components';
 import { site } from '../../config/site';
 import { serviceSchema } from '../../config/schema';
+import Gallery from '../../components/ui/Gallery.astro';
+import waterscape1 from '../../assets/images/waterscape-1.jpg';
+import waterscape2 from '../../assets/images/waterscape-2.jpg';
+import waterscape3 from '../../assets/images/waterscape-3.jpg';
+import waterscape4 from '../../assets/images/waterscape-4.jpg';
+import waterscape5 from '../../assets/images/waterscape-5.jpg';
+import waterscape6 from '../../assets/images/waterscape-6.jpg';
 
 const benefits = [
   {
@@ -37,12 +44,12 @@ const benefits = [
 ];
 
 const galleryImages = [
-  '/images/waterscape-1.jpg',
-  '/images/waterscape-2.jpg',
-  '/images/waterscape-3.jpg',
-  '/images/waterscape-4.jpg',
-  '/images/waterscape-5.jpg',
-  '/images/waterscape-6.jpg',
+  { src: waterscape1, alt: 'Waterscape project 1' },
+  { src: waterscape2, alt: 'Waterscape project 2' },
+  { src: waterscape3, alt: 'Waterscape project 3' },
+  { src: waterscape4, alt: 'Waterscape project 4' },
+  { src: waterscape5, alt: 'Waterscape project 5' },
+  { src: waterscape6, alt: 'Waterscape project 6' },
 ];
 
 const faqs = [
@@ -259,18 +266,7 @@ const faqs = [
         </p>
       </div>
 
-      <div class="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {
-          galleryImages.map((src, i) => (
-            <div
-              class="h-[350px]"
-              style={`background-image:url('${src}');background-size:cover;background-position:center`}
-              role="img"
-              aria-label={`Waterscape project ${i + 1}`}
-            />
-          ))
-        }
-      </div>
+      <Gallery images={galleryImages} />
     </Container>
   </Section>
 

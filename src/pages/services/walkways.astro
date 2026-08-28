@@ -7,6 +7,13 @@ import Button from '../../components/ui/Button.astro';
 import { Icon } from 'astro-icon/components';
 import { site } from '../../config/site';
 import { serviceSchema } from '../../config/schema';
+import Gallery from '../../components/ui/Gallery.astro';
+import walkway1 from '../../assets/images/walkway-1.jpg';
+import walkway2 from '../../assets/images/walkway-2.jpg';
+import walkway3 from '../../assets/images/walkway-3.jpg';
+import walkway4 from '../../assets/images/walkway-4.jpg';
+import walkway5 from '../../assets/images/walkway-5.jpg';
+import walkway6 from '../../assets/images/walkway-6.jpg';
 
 const benefits = [
   {
@@ -37,12 +44,12 @@ const benefits = [
 ];
 
 const galleryImages = [
-  '/images/walkway-1.jpg',
-  '/images/walkway-2.jpg',
-  '/images/walkway-3.jpg',
-  '/images/walkway-4.jpg',
-  '/images/walkway-5.jpg',
-  '/images/walkway-6.jpg',
+  { src: walkway1, alt: 'Custom walkway project 1' },
+  { src: walkway2, alt: 'Custom walkway project 2' },
+  { src: walkway3, alt: 'Custom walkway project 3' },
+  { src: walkway4, alt: 'Custom walkway project 4' },
+  { src: walkway5, alt: 'Custom walkway project 5' },
+  { src: walkway6, alt: 'Custom walkway project 6' },
 ];
 
 const faqs = [
@@ -258,18 +265,7 @@ const faqs = [
         </p>
       </div>
 
-      <div class="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {
-          galleryImages.map((src, i) => (
-            <div
-              class="h-[350px]"
-              style={`background-image:url('${src}');background-size:cover;background-position:bottom center`}
-              role="img"
-              aria-label={`Custom walkway project ${i + 1}`}
-            />
-          ))
-        }
-      </div>
+      <Gallery images={galleryImages} objectPosition="bottom center" />
     </Container>
   </Section>
 

@@ -7,6 +7,13 @@ import Button from '../../components/ui/Button.astro';
 import { Icon } from 'astro-icon/components';
 import { site } from '../../config/site';
 import { serviceSchema } from '../../config/schema';
+import Gallery from '../../components/ui/Gallery.astro';
+import patio1 from '../../assets/images/patio-1.jpg';
+import patio2 from '../../assets/images/patio-2.jpg';
+import patio3 from '../../assets/images/patio-3.jpg';
+import patio4 from '../../assets/images/patio-4.jpg';
+import patio5 from '../../assets/images/patio-5.jpg';
+import patio6 from '../../assets/images/patio-6.jpg';
 
 const benefits = [
   {
@@ -37,12 +44,12 @@ const benefits = [
 ];
 
 const galleryImages = [
-  '/images/patio-1.jpg',
-  '/images/patio-2.jpg',
-  '/images/patio-3.jpg',
-  '/images/patio-4.jpg',
-  '/images/patio-5.jpg',
-  '/images/patio-6.jpg',
+  { src: patio1, alt: 'Custom patio project 1' },
+  { src: patio2, alt: 'Custom patio project 2' },
+  { src: patio3, alt: 'Custom patio project 3' },
+  { src: patio4, alt: 'Custom patio project 4' },
+  { src: patio5, alt: 'Custom patio project 5' },
+  { src: patio6, alt: 'Custom patio project 6' },
 ];
 
 const faqs = [
@@ -264,18 +271,7 @@ const faqs = [
         </p>
       </div>
 
-      <div class="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {
-          galleryImages.map((src, i) => (
-            <div
-              class="h-[350px]"
-              style={`background-image:url('${src}');background-size:cover;background-position:bottom center`}
-              role="img"
-              aria-label={`Custom patio project ${i + 1}`}
-            />
-          ))
-        }
-      </div>
+      <Gallery images={galleryImages} objectPosition="bottom center" />
     </Container>
   </Section>
 

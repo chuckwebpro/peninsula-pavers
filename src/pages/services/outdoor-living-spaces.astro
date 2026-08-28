@@ -7,6 +7,13 @@ import Button from '../../components/ui/Button.astro';
 import { Icon } from 'astro-icon/components';
 import { site } from '../../config/site';
 import { serviceSchema } from '../../config/schema';
+import Gallery from '../../components/ui/Gallery.astro';
+import olsImg1 from '../../assets/images/IMG_145.webp';
+import olsImg2 from '../../assets/images/IMG_0941.webp';
+import olsImg3 from '../../assets/images/IMG_1657.webp';
+import olsImg4 from '../../assets/images/IMG_13211.webp';
+import olsImg5 from '../../assets/images/IMG_16531.webp';
+import olsImg6 from '../../assets/images/west-bay-home1.webp';
 
 const benefits = [
   {
@@ -37,12 +44,12 @@ const benefits = [
 ];
 
 const galleryImages = [
-  '/images/IMG_145.webp',
-  '/images/IMG_0941.webp',
-  '/images/IMG_1657.webp',
-  '/images/IMG_13211.webp',
-  '/images/IMG_16531.webp',
-  '/images/west-bay-home1.webp',
+  { src: olsImg1, alt: 'Outdoor living space project 1' },
+  { src: olsImg2, alt: 'Outdoor living space project 2' },
+  { src: olsImg3, alt: 'Outdoor living space project 3' },
+  { src: olsImg4, alt: 'Outdoor living space project 4' },
+  { src: olsImg5, alt: 'Outdoor living space project 5' },
+  { src: olsImg6, alt: 'Outdoor living space project 6' },
 ];
 
 const faqs = [
@@ -271,19 +278,7 @@ const faqs = [
         </p>
       </div>
 
-      <!-- Photo tiles -->
-      <div class="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {
-          galleryImages.map((src, i) => (
-            <div
-              class="h-[350px]"
-              style={`background-image:url('${src}');background-size:cover;background-position:bottom center`}
-              role="img"
-              aria-label={`Outdoor living space project ${i + 1}`}
-            />
-          ))
-        }
-      </div>
+      <Gallery images={galleryImages} objectPosition="bottom center" />
     </Container>
   </Section>
 

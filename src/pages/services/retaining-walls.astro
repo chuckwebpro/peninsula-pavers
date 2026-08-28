@@ -7,6 +7,13 @@ import Button from '../../components/ui/Button.astro';
 import { Icon } from 'astro-icon/components';
 import { site } from '../../config/site';
 import { serviceSchema } from '../../config/schema';
+import Gallery from '../../components/ui/Gallery.astro';
+import wall1 from '../../assets/images/retaining-wall-1.jpg';
+import wall2 from '../../assets/images/retaining-wall-2.jpg';
+import wall3 from '../../assets/images/retaining-wall-3.jpg';
+import wall4 from '../../assets/images/retaining-wall-4.jpg';
+import wall5 from '../../assets/images/retaining-wall-5.jpg';
+import wall6 from '../../assets/images/retaining-wall-6.jpg';
 
 const benefits = [
   {
@@ -37,12 +44,12 @@ const benefits = [
 ];
 
 const galleryImages = [
-  '/images/retaining-wall-1.jpg',
-  '/images/retaining-wall-2.jpg',
-  '/images/retaining-wall-3.jpg',
-  '/images/retaining-wall-4.jpg',
-  '/images/retaining-wall-5.jpg',
-  '/images/retaining-wall-6.jpg',
+  { src: wall1, alt: 'Retaining wall project 1' },
+  { src: wall2, alt: 'Retaining wall project 2' },
+  { src: wall3, alt: 'Retaining wall project 3' },
+  { src: wall4, alt: 'Retaining wall project 4' },
+  { src: wall5, alt: 'Retaining wall project 5' },
+  { src: wall6, alt: 'Retaining wall project 6' },
 ];
 
 const faqs = [
@@ -261,18 +268,7 @@ const faqs = [
         </p>
       </div>
 
-      <div class="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {
-          galleryImages.map((src, i) => (
-            <div
-              class="h-[350px]"
-              style={`background-image:url('${src}');background-size:cover;background-position:bottom center`}
-              role="img"
-              aria-label={`Retaining wall project ${i + 1}`}
-            />
-          ))
-        }
-      </div>
+      <Gallery images={galleryImages} objectPosition="bottom center" />
     </Container>
   </Section>
 

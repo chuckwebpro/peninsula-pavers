@@ -7,6 +7,13 @@ import Button from '../../components/ui/Button.astro';
 import { Icon } from 'astro-icon/components';
 import { site } from '../../config/site';
 import { serviceSchema } from '../../config/schema';
+import Gallery from '../../components/ui/Gallery.astro';
+import coolColors from '../../assets/images/cool-colors.jpg';
+import ourMission from '../../assets/images/our-mission.jpg';
+import retainingWallWithSteps from '../../assets/images/retaining-wall-with-steps.jpg';
+import warmColors from '../../assets/images/warm-colors.jpg';
+import warmPond from '../../assets/images/warm-pond.jpg';
+import weeping from '../../assets/images/weeping.jpg';
 
 const benefits = [
   {
@@ -37,12 +44,12 @@ const benefits = [
 ];
 
 const galleryImages = [
-  '/images/cool-colors.jpg',
-  '/images/our-mission.jpg',
-  '/images/retaining-wall-with-steps.jpg',
-  '/images/warm-colors.jpg',
-  '/images/warm-pond.jpg',
-  '/images/weeping.jpg',
+  { src: coolColors, alt: 'Landscaping with cool color tones' },
+  { src: ourMission, alt: 'Our landscape design mission' },
+  { src: retainingWallWithSteps, alt: 'Retaining wall with steps' },
+  { src: warmColors, alt: 'Landscaping with warm color tones' },
+  { src: warmPond, alt: 'Landscaping with a pond feature' },
+  { src: weeping, alt: 'Weeping tree landscaping feature' },
 ];
 
 const faqs = [
@@ -261,18 +268,7 @@ const faqs = [
         </p>
       </div>
 
-      <div class="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {
-          galleryImages.map((src, i) => (
-            <div
-              class="h-[350px]"
-              style={`background-image:url('${src}');background-size:cover;background-position:center`}
-              role="img"
-              aria-label={`Landscaping project ${i + 1}`}
-            />
-          ))
-        }
-      </div>
+      <Gallery images={galleryImages} />
     </Container>
   </Section>
 
