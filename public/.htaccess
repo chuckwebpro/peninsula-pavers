@@ -12,6 +12,9 @@ ErrorDocument 404 /404.html
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
+  # Legacy about URL.
+  RewriteRule ^about-us/?$ /about/ [R=301,L]
+
   # Force HTTPS.
   RewriteCond %{HTTPS} !=on
   RewriteCond %{HTTP:X-Forwarded-Proto} !https

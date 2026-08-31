@@ -32,7 +32,7 @@ const websiteId = `${origin}/#website`;
 const orgId = `${origin}/#organization`;
 const logoId = `${origin}/#logo`;
 const catalogId = `${origin}/services/#catalog`;
-const lenId = `${origin}/about-us/#len-allgaier`;
+const lenId = `${origin}/about/#len-allgaier`;
 
 const abs = (path: string) => (path.startsWith('http') ? path : new URL(path, origin).href);
 const pageUrl = abs(Astro.url.pathname);

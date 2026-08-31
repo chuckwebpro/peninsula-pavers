@@ -67,7 +67,7 @@ export const navigation: NavigationConfig = {
         ],
       },
     },
-    { label: 'About', href: '/about-us/' },
+    { label: 'About', href: '/about/' },
     { label: 'Testimonials', href: '/testimonials/' },
     { label: 'Contact', href: '#contact' },
   ],
@@ -91,7 +91,7 @@ export const navigation: NavigationConfig = {
       heading: 'Company',
       links: [
         { label: 'Home', href: '/' },
-        { label: 'About', href: '/about-us/' },
+        { label: 'About', href: '/about/' },
         { label: 'Testimonials', href: '/testimonials/' },
         { label: 'Contact', href: '#contact' },
       ],

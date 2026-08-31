@@ -12,6 +12,9 @@ export default defineConfig({
   output: 'static',
   trailingSlash: 'always',
   build: { format: 'directory' },
+  redirects: {
+    '/about-us': '/about/',
+  },
   integrations: [
     mdx(),
     icon(),
