@@ -100,5 +100,6 @@ const { breadcrumbs, faqs, service, pageType, sticky = 'sticky', ...seo } = Astr
     <EstimateDrawer />
     <RecaptchaV3 />
     {site.consent === 'banner' && <CookieConsent />}
+    <slot name="scripts" />
   </body>
 </html>

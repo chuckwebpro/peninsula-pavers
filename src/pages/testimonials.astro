@@ -303,7 +303,7 @@ const p0 = projects[0];
     >
       <Icon name="lucide:chevron-left" class="size-6" aria-hidden="true" />
     </button>
-    <img id="pp-lb-img" src="" alt="" class="max-h-[85vh] max-w-[85vw] object-contain" />
+    <img id="pp-lb-img" alt="" class="max-h-[85vh] max-w-[85vw] object-contain" />
     <button
       id="pp-lb-next"
       class="absolute top-1/2 right-4 flex size-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
@@ -322,126 +322,128 @@ const p0 = projects[0];
 
   <!-- ── WHAT OUR CLIENTS SAY ─────────────────────────────────────────────── -->
   <TestimonialsCarousel id="testimonials" items={testimonials} />
+
+  <Fragment slot="scripts">
+    <!-- Project data for client-side JS -->
+    <script is:inline id="pp-data" type="application/json" set:html={JSON.stringify(projects)} />
+
+    <script is:inline>
+      (function () {
+        /* ── PROJECT SLIDER ────────────────────────────────────────────────── */
+        var dataEl = document.getElementById('pp-data');
+        if (!dataEl) return;
+        var projects = JSON.parse(dataEl.textContent);
+        var currentIdx = 0;
+        var lbProjectIdx = 0;
+        var lbImageIdx = 0;
+
+        var mainImg = document.getElementById('pp-main-img');
+        var mainBtn = document.getElementById('pp-main-btn');
+        var thumbsEl = document.getElementById('pp-thumbs');
+        var eyebrow = document.getElementById('pp-eyebrow');
+        var titleEl = document.getElementById('pp-title');
+        var clientEl = document.getElementById('pp-client');
+        var reviewEl = document.getElementById('pp-review');
+        var counterEl = document.getElementById('pp-counter');
+
+        function showProject(idx) {
+          var p = projects[idx];
+          currentIdx = idx;
+
+          mainImg.src = p.images[0];
+          mainImg.alt = p.type + ' project by Peninsula Pavers';
+          mainBtn.setAttribute('aria-label', 'View full-size ' + p.type + ' image');
+
+          var thumbBtns = thumbsEl.querySelectorAll('button');
+          var thumbImgs = thumbsEl.querySelectorAll('img');
+          thumbBtns.forEach(function (btn, i) {
+            btn.setAttribute('aria-label', 'View ' + p.type + ' image ' + (i + 2));
+          });
+          thumbImgs.forEach(function (img, i) {
+            img.src = p.images[i + 1];
+            img.alt = p.type + ' by Peninsula Pavers, image ' + (i + 2);
+          });
+
+          eyebrow.textContent = p.type;
+          titleEl.textContent = '\u201C' + p.title + '\u201D';
+          clientEl.textContent = p.clientName + ' \u2013 ' + p.clientCity;
+          reviewEl.textContent = p.review;
+          counterEl.textContent = idx + 1 + ' / ' + projects.length;
+        }
+
+        document.getElementById('pp-prev').addEventListener('click', function () {
+          showProject((currentIdx - 1 + projects.length) % projects.length);
+        });
+        document.getElementById('pp-next').addEventListener('click', function () {
+          showProject((currentIdx + 1) % projects.length);
+        });
+
+        /* ── LIGHTBOX ──────────────────────────────────────────────────────── */
+        var lightbox = document.getElementById('pp-lightbox');
+        var lbImg = document.getElementById('pp-lb-img');
+        var lbCounter = document.getElementById('pp-lb-counter');
+        var lbClose = document.getElementById('pp-lb-close');
+        var lbPrev = document.getElementById('pp-lb-prev');
+        var lbNext = document.getElementById('pp-lb-next');
+
+        function openLightbox(projIdx, imgIdx) {
+          lbProjectIdx = projIdx;
+          lbImageIdx = imgIdx;
+          updateLightbox();
+          lightbox.classList.remove('hidden');
+          lightbox.classList.add('flex');
+          document.body.style.overflow = 'hidden';
+          lbClose.focus();
+        }
+
+        function closeLightbox() {
+          lightbox.classList.add('hidden');
+          lightbox.classList.remove('flex');
+          document.body.style.overflow = '';
+        }
+
+        function updateLightbox() {
+          var p = projects[lbProjectIdx];
+          lbImg.src = p.images[lbImageIdx];
+          lbImg.alt = p.type + ' by Peninsula Pavers, image ' + (lbImageIdx + 1);
+          lbCounter.textContent = lbImageIdx + 1 + ' / ' + p.images.length;
+        }
+
+        mainBtn.addEventListener('click', function () {
+          openLightbox(currentIdx, 0);
+        });
+
+        thumbsEl.querySelectorAll('button').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            openLightbox(currentIdx, parseInt(btn.dataset.lbIndex, 10));
+          });
+        });
+
+        lbClose.addEventListener('click', closeLightbox);
+
+        lbPrev.addEventListener('click', function () {
+          var p = projects[lbProjectIdx];
+          lbImageIdx = (lbImageIdx - 1 + p.images.length) % p.images.length;
+          updateLightbox();
+        });
+
+        lbNext.addEventListener('click', function () {
+          var p = projects[lbProjectIdx];
+          lbImageIdx = (lbImageIdx + 1) % p.images.length;
+          updateLightbox();
+        });
+
+        lightbox.addEventListener('click', function (e) {
+          if (e.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener('keydown', function (e) {
+          if (lightbox.classList.contains('hidden')) return;
+          if (e.key === 'Escape') closeLightbox();
+          if (e.key === 'ArrowLeft') lbPrev.click();
+          if (e.key === 'ArrowRight') lbNext.click();
+        });
+      })();
+    </script>
+  </Fragment>
 </BaseLayout>
-
-<!-- Project data for client-side JS -->
-<script is:inline id="pp-data" type="application/json" set:html={JSON.stringify(projects)} />
-
-<script is:inline>
-  (function () {
-    /* ── PROJECT SLIDER ────────────────────────────────────────────────── */
-    var dataEl = document.getElementById('pp-data');
-    if (!dataEl) return;
-    var projects = JSON.parse(dataEl.textContent);
-    var currentIdx = 0;
-    var lbProjectIdx = 0;
-    var lbImageIdx = 0;
-
-    var mainImg = document.getElementById('pp-main-img');
-    var mainBtn = document.getElementById('pp-main-btn');
-    var thumbsEl = document.getElementById('pp-thumbs');
-    var eyebrow = document.getElementById('pp-eyebrow');
-    var titleEl = document.getElementById('pp-title');
-    var clientEl = document.getElementById('pp-client');
-    var reviewEl = document.getElementById('pp-review');
-    var counterEl = document.getElementById('pp-counter');
-
-    function showProject(idx) {
-      var p = projects[idx];
-      currentIdx = idx;
-
-      mainImg.src = p.images[0];
-      mainImg.alt = p.type + ' project by Peninsula Pavers';
-      mainBtn.setAttribute('aria-label', 'View full-size ' + p.type + ' image');
-
-      var thumbBtns = thumbsEl.querySelectorAll('button');
-      var thumbImgs = thumbsEl.querySelectorAll('img');
-      thumbBtns.forEach(function (btn, i) {
-        btn.setAttribute('aria-label', 'View ' + p.type + ' image ' + (i + 2));
-      });
-      thumbImgs.forEach(function (img, i) {
-        img.src = p.images[i + 1];
-        img.alt = p.type + ' by Peninsula Pavers, image ' + (i + 2);
-      });
-
-      eyebrow.textContent = p.type;
-      titleEl.textContent = '\u201C' + p.title + '\u201D';
-      clientEl.textContent = p.clientName + ' \u2013 ' + p.clientCity;
-      reviewEl.textContent = p.review;
-      counterEl.textContent = idx + 1 + ' / ' + projects.length;
-    }
-
-    document.getElementById('pp-prev').addEventListener('click', function () {
-      showProject((currentIdx - 1 + projects.length) % projects.length);
-    });
-    document.getElementById('pp-next').addEventListener('click', function () {
-      showProject((currentIdx + 1) % projects.length);
-    });
-
-    /* ── LIGHTBOX ──────────────────────────────────────────────────────── */
-    var lightbox = document.getElementById('pp-lightbox');
-    var lbImg = document.getElementById('pp-lb-img');
-    var lbCounter = document.getElementById('pp-lb-counter');
-    var lbClose = document.getElementById('pp-lb-close');
-    var lbPrev = document.getElementById('pp-lb-prev');
-    var lbNext = document.getElementById('pp-lb-next');
-
-    function openLightbox(projIdx, imgIdx) {
-      lbProjectIdx = projIdx;
-      lbImageIdx = imgIdx;
-      updateLightbox();
-      lightbox.classList.remove('hidden');
-      lightbox.classList.add('flex');
-      document.body.style.overflow = 'hidden';
-      lbClose.focus();
-    }
-
-    function closeLightbox() {
-      lightbox.classList.add('hidden');
-      lightbox.classList.remove('flex');
-      document.body.style.overflow = '';
-    }
-
-    function updateLightbox() {
-      var p = projects[lbProjectIdx];
-      lbImg.src = p.images[lbImageIdx];
-      lbImg.alt = p.type + ' by Peninsula Pavers, image ' + (lbImageIdx + 1);
-      lbCounter.textContent = lbImageIdx + 1 + ' / ' + p.images.length;
-    }
-
-    mainBtn.addEventListener('click', function () {
-      openLightbox(currentIdx, 0);
-    });
-
-    thumbsEl.querySelectorAll('button').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        openLightbox(currentIdx, parseInt(btn.dataset.lbIndex, 10));
-      });
-    });
-
-    lbClose.addEventListener('click', closeLightbox);
-
-    lbPrev.addEventListener('click', function () {
-      var p = projects[lbProjectIdx];
-      lbImageIdx = (lbImageIdx - 1 + p.images.length) % p.images.length;
-      updateLightbox();
-    });
-
-    lbNext.addEventListener('click', function () {
-      var p = projects[lbProjectIdx];
-      lbImageIdx = (lbImageIdx + 1) % p.images.length;
-      updateLightbox();
-    });
-
-    lightbox.addEventListener('click', function (e) {
-      if (e.target === lightbox) closeLightbox();
-    });
-
-    document.addEventListener('keydown', function (e) {
-      if (lightbox.classList.contains('hidden')) return;
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft') lbPrev.click();
-      if (e.key === 'ArrowRight') lbNext.click();
-    });
-  })();
-</script>
