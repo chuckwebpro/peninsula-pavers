@@ -325,7 +325,7 @@ const p0 = projects[0];
 </BaseLayout>
 
 <!-- Project data for client-side JS -->
-<script id="pp-data" type="application/json" set:html={JSON.stringify(projects)} />
+<script is:inline id="pp-data" type="application/json" set:html={JSON.stringify(projects)} />
 
 <script is:inline>
   (function () {

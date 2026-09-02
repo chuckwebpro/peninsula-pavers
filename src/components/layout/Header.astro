@@ -23,7 +23,6 @@ interface Props {
 const { sticky = 'sticky' } = Astro.props;
 
 const currentPath = Astro.url.pathname;
-const positioned = sticky === 'sticky' || sticky === 'shrink' || sticky === 'hide-on-scroll';
 const overlaid = sticky === 'overlay';
 ---
 

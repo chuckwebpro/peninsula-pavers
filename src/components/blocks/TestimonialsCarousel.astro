@@ -128,12 +128,11 @@ const unique = items.length;
   }
 </style>
 
-<script define:vars={{ unique }}>
+<script is:inline define:vars={{ unique }}>
   (function () {
     var carousel = document.querySelector('.t-carousel');
     if (!carousel) return;
     var track = carousel.querySelector('.t-track');
-    var slides = Array.from(carousel.querySelectorAll('.t-slide'));
     var prevBtn = carousel.querySelector('.t-prev');
     var nextBtn = carousel.querySelector('.t-next');
     var dotsEl = carousel.querySelector('.t-dots');

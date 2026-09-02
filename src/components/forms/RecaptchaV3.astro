@@ -12,74 +12,72 @@ const siteKey = site.recaptchaSiteKey;
 {
   siteKey && (
     <>
-      <script is:inline src={`https://www.google.com/recaptcha/api.js?render=${siteKey}`}></script>
-      <div id="recaptcha-config" hidden data-sitekey={siteKey}></div>
-      <script>
-        const siteKey = document.getElementById('recaptcha-config')?.dataset.sitekey ?? '';
-
-        type Grecaptcha = {
-          ready: (cb: () => void) => void;
-          execute: (key: string, options: { action: string }) => Promise<string>;
-        };
-
-        const waitForRecaptcha = () =>
-          new Promise<Grecaptcha>((resolve, reject) => {
-            const started = Date.now();
-            const tick = () => {
-              const grecaptcha = (window as Window & { grecaptcha?: Grecaptcha }).grecaptcha;
-              if (grecaptcha?.execute) {
-                grecaptcha.ready(() => resolve(grecaptcha));
-                return;
-              }
-              if (Date.now() - started > 8000) {
-                reject(new Error('recaptcha-timeout'));
-                return;
-              }
-              requestAnimationFrame(tick);
-            };
-            tick();
-          });
-
-        const attachToken = async (form: HTMLFormElement) => {
-          const grecaptcha = await waitForRecaptcha();
-          const token = await grecaptcha.execute(siteKey, { action: 'contact' });
-          let input = form.querySelector<HTMLInputElement>('input[name="g-recaptcha-response"]');
-          if (!input) {
-            input = document.createElement('input');
-            input.type = 'hidden';
-            input.name = 'g-recaptcha-response';
-            form.appendChild(input);
-          }
-          input.value = token;
-        };
-
-        let releasing: HTMLFormElement | null = null;
-
-        document.addEventListener(
-          'submit',
-          (event) => {
-            const form = event.target;
-            if (!(form instanceof HTMLFormElement)) return;
-            if (!form.action.includes('formspree.io')) return;
-            if (!siteKey) return;
-            if (releasing === form) {
-              releasing = null;
-              return;
-            }
-
-            event.preventDefault();
-            event.stopImmediatePropagation();
-
-            attachToken(form)
-              .catch(() => undefined)
-              .then(() => {
-                releasing = form;
-                form.requestSubmit();
-              });
-          },
-          true,
-        );
-      </script>
+      <script is:inline src={`https://www.google.com/recaptcha/api.js?render=${siteKey}`} />
+      <div id="recaptcha-config" hidden data-sitekey={siteKey} />
     </>
   )
 }
+
+<script is:inline>
+  const siteKey = document.getElementById('recaptcha-config')?.dataset.sitekey ?? '';
+  if (!siteKey) {
+    // reCAPTCHA not configured — skip hooking form submits.
+  } else {
+    const waitForRecaptcha = () =>
+      new Promise((resolve, reject) => {
+        const started = Date.now();
+        const tick = () => {
+          const grecaptcha = window.grecaptcha;
+          if (grecaptcha?.execute) {
+            grecaptcha.ready(() => resolve(grecaptcha));
+            return;
+          }
+          if (Date.now() - started > 8000) {
+            reject(new Error('recaptcha-timeout'));
+            return;
+          }
+          requestAnimationFrame(tick);
+        };
+        tick();
+      });
+
+    const attachToken = async (form) => {
+      const grecaptcha = await waitForRecaptcha();
+      const token = await grecaptcha.execute(siteKey, { action: 'contact' });
+      let input = form.querySelector('input[name="g-recaptcha-response"]');
+      if (!input) {
+        input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'g-recaptcha-response';
+        form.appendChild(input);
+      }
+      input.value = token;
+    };
+
+    let releasing = null;
+
+    document.addEventListener(
+      'submit',
+      (event) => {
+        const form = event.target;
+        if (!(form instanceof HTMLFormElement)) return;
+        if (!form.action.includes('formspree.io')) return;
+        if (releasing === form) {
+          releasing = null;
+          return;
+        }
+
+        event.preventDefault();
+        event.stopImmediatePropagation();
+
+        attachToken(form)
+          .catch(() => undefined)
+          .then(() => {
+            releasing = form;
+            form.requestSubmit();
+          });
+      },
+      true,
+    );
+  }
+</script>
