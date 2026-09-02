@@ -15,6 +15,12 @@ ErrorDocument 404 /404.html
   # Legacy about URL.
   RewriteRule ^about-us/?$ /about/ [R=301,L]
 
+  # Legacy service URLs from the previous site.
+  RewriteRule ^traverse-city-custom-walkways/index\.html$ /services/walkways/ [R=301,L]
+  RewriteRule ^traverse-city-custom-walkways/?$ /services/walkways/ [R=301,L]
+  RewriteRule ^traverse-city-landscaping/index\.html$ /services/landscaping/ [R=301,L]
+  RewriteRule ^traverse-city-landscaping/?$ /services/landscaping/ [R=301,L]
+
   # Force HTTPS.
   RewriteCond %{HTTPS} !=on
   RewriteCond %{HTTP:X-Forwarded-Proto} !https

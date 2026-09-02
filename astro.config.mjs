@@ -14,6 +14,8 @@ export default defineConfig({
   build: { format: 'directory' },
   redirects: {
     '/about-us': '/about/',
+    '/traverse-city-custom-walkways': '/services/walkways/',
+    '/traverse-city-landscaping': '/services/landscaping/',
   },
   integrations: [
     mdx(),
