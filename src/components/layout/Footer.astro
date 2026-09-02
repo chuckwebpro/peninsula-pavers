@@ -1,19 +1,11 @@
 ---
 import { navigation } from '../../config/navigation';
-import { site } from '../../config/site';
+import { site, hearAboutOptions } from '../../config/site';
 import { Icon } from 'astro-icon/components';
 
 const year = new Date().getFullYear();
 const formAction = site.formspreeId ? `https://formspree.io/f/${site.formspreeId}` : '';
 const thankYouUrl = new URL('/thank-you/', site.url).href;
-
-const hearAboutOptions = [
-  { value: 'google', label: 'Google' },
-  { value: 'bing', label: 'Bing' },
-  { value: 'social media', label: 'Social Media' },
-  { value: 'word of mouth', label: 'Word of Mouth' },
-  { value: 'other', label: 'Other' },
-];
 
 const serviceArea = [
   'Traverse City',

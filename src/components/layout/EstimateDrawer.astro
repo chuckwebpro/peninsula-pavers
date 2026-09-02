@@ -1,5 +1,5 @@
 ---
-import { site } from '../../config/site';
+import { site, hearAboutOptions } from '../../config/site';
 import { Icon } from 'astro-icon/components';
 
 const formAction = site.estimateFormspreeId
@@ -170,6 +170,19 @@ const services = [
           }
         </div>
       </fieldset>
+
+      <label class="flex flex-col gap-1">
+        <span class="text-[12px] font-medium tracking-wider text-neutral-900/40 uppercase"
+          >How did you hear about us?</span
+        >
+        <select
+          name="hear_about_us"
+          class="focus:border-brand-700 border-b border-neutral-300 bg-transparent py-2 text-[16px] text-neutral-900 focus:outline-none"
+        >
+          <option value="">Select one...</option>
+          {hearAboutOptions.map((option) => <option value={option.value}>{option.label}</option>)}
+        </select>
+      </label>
 
       <label class="flex flex-col gap-1">
         <span class="text-[12px] font-medium tracking-wider text-neutral-900/40 uppercase"

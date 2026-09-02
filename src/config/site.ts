@@ -204,5 +204,13 @@ export const formattedAddress = [
   `${site.business.address.locality}, ${site.business.address.region} ${site.business.address.postalCode}`,
 ].join(', ');
 
+export const hearAboutOptions = [
+  { value: 'google', label: 'Google' },
+  { value: 'bing', label: 'Bing' },
+  { value: 'social media', label: 'Social Media' },
+  { value: 'word of mouth', label: 'Word of Mouth' },
+  { value: 'other', label: 'Other' },
+];
+
 /** No configured ID means the analytics bundle is never mounted at all. */
 export const hasAnalytics = Object.values(site.analytics).some(Boolean);
