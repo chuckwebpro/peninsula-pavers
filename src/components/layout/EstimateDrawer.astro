@@ -2,7 +2,9 @@
 import { site } from '../../config/site';
 import { Icon } from 'astro-icon/components';
 
-const formAction = site.formspreeId ? `https://formspree.io/f/${site.formspreeId}` : '';
+const formAction = site.estimateFormspreeId
+  ? `https://formspree.io/f/${site.estimateFormspreeId}`
+  : '';
 const thankYouUrl = new URL('/thank-you/', site.url).href;
 
 const services = [
@@ -82,7 +84,8 @@ const services = [
     {
       !formAction && (
         <p class="mb-5 rounded border border-amber-300 bg-amber-50 p-3 text-[14px] text-amber-900">
-          Add a <code>formspreeId</code> to <code>src/config/site.ts</code> to activate this form.
+          Add a <code>estimateFormspreeId</code> to <code>src/config/site.ts</code> to activate this
+          form.
         </p>
       )
     }

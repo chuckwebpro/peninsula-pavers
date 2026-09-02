@@ -103,26 +103,37 @@ const serviceArea = [
           </span>
         </a>
 
-        <!-- Facebook -->
-        <div class="border-neutral-0/30 flex items-center gap-3 border-t pt-4">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-            fill="none"
-            class="shrink-0"
-            aria-hidden="true"
-          >
-            <path
-              d="M12 1.33H10C9.12 1.33 8.27 1.68 7.64 2.31 7.02 2.93 6.67 3.78 6.67 4.67V6.67H4.67V9.33H6.67V14.67H9.33V9.33H11.33L12 6.67H9.33V4.67C9.33 4.49 9.4 4.32 9.53 4.2 9.65 4.07 9.82 4 10 4H12V1.33Z"
-              stroke="rgba(255,255,255,0.55)"
-              stroke-width="1.33"
-              stroke-linecap="round"
-              stroke-linejoin="round"></path>
-          </svg>
-          <p class="text-neutral-0/55 text-[20px]">Follow us on Facebook</p>
-        </div>
+        {
+          site.social.facebook && (
+            <a
+              href={site.social.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="border-neutral-0/30 group flex items-center gap-3 border-t pt-4 no-underline"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                class="shrink-0"
+                aria-hidden="true"
+              >
+                <path
+                  d="M12 1.33H10C9.12 1.33 8.27 1.68 7.64 2.31 7.02 2.93 6.67 3.78 6.67 4.67V6.67H4.67V9.33H6.67V14.67H9.33V9.33H11.33L12 6.67H9.33V4.67C9.33 4.49 9.4 4.32 9.53 4.2 9.65 4.07 9.82 4 10 4H12V1.33Z"
+                  stroke="rgba(255,255,255,0.55)"
+                  stroke-width="1.33"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <p class="text-neutral-0/55 group-hover:text-neutral-0 text-[20px]">
+                Follow us on Facebook
+              </p>
+            </a>
+          )
+        }
       </div>
 
       <!-- Service Area -->

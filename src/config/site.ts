@@ -80,8 +80,17 @@ export interface SiteConfig {
   /** Absolute or site-relative path to the fallback Open Graph image. */
   defaultOgImage: string;
 
-  /** Formspree form ID only, not the full URL. Blank disables the form. */
+  /** Formspree form ID for the footer contact form. Blank disables the form. */
   formspreeId: string;
+
+  /** Formspree form ID for the Free Estimate drawer. Blank disables that form. */
+  estimateFormspreeId: string;
+
+  /**
+   * Google reCAPTCHA v3 site key (public). Blank skips the widget until Formspree
+   * provides one. The matching secret is configured in the Formspree dashboard.
+   */
+  recaptchaSiteKey: string;
 
   analytics: {
     ga4: string;
@@ -162,11 +171,16 @@ export const site: SiteConfig = {
     priceRange: '$$$',
   },
 
-  social: { googleBusiness: '' },
+  social: {
+    googleBusiness: '',
+    facebook: 'https://www.facebook.com/Peninsula.Pavers',
+  },
 
   defaultOgImage: '/images/s1.webp',
 
-  formspreeId: '',
+  formspreeId: 'mvkorkbj',
+  estimateFormspreeId: 'mnpqvpln',
+  recaptchaSiteKey: '6LcUs6UtAAAAABxFzdaRm5-VNFL_PAHdd8dlb3VW',
 
   analytics: {
     ga4: '',
