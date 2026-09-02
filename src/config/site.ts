@@ -111,7 +111,7 @@ export interface SiteConfig {
 }
 
 export const site: SiteConfig = {
-  url: 'https://site.peninsulapavers.com',
+  url: 'https://peninsulapavers.com',
   name: 'Peninsula Pavers',
   legalName: 'Peninsula Pavers, Inc.',
   tagline: 'Crafted for Northern Michigan',
