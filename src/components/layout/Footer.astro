@@ -7,6 +7,14 @@ const year = new Date().getFullYear();
 const formAction = site.formspreeId ? `https://formspree.io/f/${site.formspreeId}` : '';
 const thankYouUrl = new URL('/thank-you/', site.url).href;
 
+const hearAboutOptions = [
+  { value: 'google', label: 'Google' },
+  { value: 'bing', label: 'Bing' },
+  { value: 'social media', label: 'Social Media' },
+  { value: 'word of mouth', label: 'Word of Mouth' },
+  { value: 'other', label: 'Other' },
+];
+
 const serviceArea = [
   'Traverse City',
   'Leelanau',
@@ -223,6 +231,19 @@ const serviceArea = [
             autocomplete="email"
             class="border-b border-neutral-300 bg-transparent py-2 text-[16px] text-neutral-900/30 placeholder:text-neutral-400 focus:border-neutral-600 focus:outline-none"
           />
+        </label>
+
+        <label class="flex flex-col gap-1">
+          <span class="text-[14px] font-medium tracking-wider text-neutral-900/30 uppercase"
+            >How did you hear about us?</span
+          >
+          <select
+            name="hear_about_us"
+            class="border-b border-neutral-300 bg-transparent py-2 text-[16px] text-neutral-900/30 focus:border-neutral-600 focus:outline-none"
+          >
+            <option value="">Select one...</option>
+            {hearAboutOptions.map((option) => <option value={option.value}>{option.label}</option>)}
+          </select>
         </label>
 
         <label class="flex flex-col gap-1">
