@@ -3,6 +3,7 @@ dist
 .astro
 src/styles/theme.css
 package-lock.json
+public/api/vendor
 
 # Planning docs are hand-formatted; leave them alone.
 .github/prompts

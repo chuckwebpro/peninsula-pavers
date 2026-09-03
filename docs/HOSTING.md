@@ -1,7 +1,8 @@
 # Hosting (cPanel)
 
 Everything runs on your own infrastructure. The only external services are GitHub
-(source + CI) and Formspree (form delivery).
+(source + CI) and Google reCAPTCHA (form spam protection). Form delivery is handled by
+the PHP mail handler — see `docs/FORMS-AND-EMAIL.md`.
 
 ## URL shape — decided once, do not change casually
 

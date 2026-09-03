@@ -4,7 +4,7 @@ import { site, hearAboutOptions } from '../../config/site';
 import { Icon } from 'astro-icon/components';
 
 const year = new Date().getFullYear();
-const formAction = site.formspreeId ? `https://formspree.io/f/${site.formspreeId}` : '';
+const formAction = site.formEndpoint || '';
 const thankYouUrl = new URL('/thank-you/', site.url).href;
 
 const serviceArea = [
@@ -162,7 +162,8 @@ const serviceArea = [
       {
         !formAction && (
           <p class="rounded border border-amber-300 bg-amber-50 p-3 text-xs text-amber-900">
-            Add a <code>formspreeId</code> to <code>src/config/site.ts</code> to activate this form.
+            Add a <code>formEndpoint</code> to <code>src/config/site.ts</code> to activate this
+            form.
           </p>
         )
       }
@@ -172,13 +173,10 @@ const serviceArea = [
         action={formAction || '#'}
         class="mt-2 flex flex-col gap-4"
         name="estimate"
+        data-site-form
+        data-thank-you={thankYouUrl}
       >
-        {formAction && <input type="hidden" name="_next" value={thankYouUrl} />}
-        {
-          formAction && (
-            <input type="hidden" name="_subject" value={`Free estimate request — ${site.name}`} />
-          )
-        }
+        {formAction && <input type="hidden" name="form_type" value="footer" />}
         <div class="absolute left-[-9999px]" aria-hidden="true">
           <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
         </div>

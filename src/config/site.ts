@@ -80,15 +80,12 @@ export interface SiteConfig {
   /** Absolute or site-relative path to the fallback Open Graph image. */
   defaultOgImage: string;
 
-  /** Formspree form ID for the footer contact form. Blank disables the form. */
-  formspreeId: string;
-
-  /** Formspree form ID for the Free Estimate drawer. Blank disables that form. */
-  estimateFormspreeId: string;
+  /** Relative path to the PHP form handler. Blank disables all forms. */
+  formEndpoint: string;
 
   /**
-   * Google reCAPTCHA v3 site key (public). Blank skips the widget until Formspree
-   * provides one. The matching secret is configured in the Formspree dashboard.
+   * Google reCAPTCHA v3 site key (public). Blank skips the widget. The matching
+   * secret is configured server-side in ~/private/peninsula-pavers-mail.php.
    */
   recaptchaSiteKey: string;
 
@@ -178,8 +175,7 @@ export const site: SiteConfig = {
 
   defaultOgImage: '/images/s1.webp',
 
-  formspreeId: 'mvkorkbj',
-  estimateFormspreeId: 'mnpqvpln',
+  formEndpoint: '/api/submit.php',
   recaptchaSiteKey: '6LcUs6UtAAAAABxFzdaRm5-VNFL_PAHdd8dlb3VW',
 
   analytics: {

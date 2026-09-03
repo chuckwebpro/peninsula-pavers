@@ -2,9 +2,7 @@
 import { site, hearAboutOptions } from '../../config/site';
 import { Icon } from 'astro-icon/components';
 
-const formAction = site.estimateFormspreeId
-  ? `https://formspree.io/f/${site.estimateFormspreeId}`
-  : '';
+const formAction = site.formEndpoint || '';
 const thankYouUrl = new URL('/thank-you/', site.url).href;
 
 const services = [
@@ -84,8 +82,7 @@ const services = [
     {
       !formAction && (
         <p class="mb-5 rounded border border-amber-300 bg-amber-50 p-3 text-[14px] text-amber-900">
-          Add a <code>estimateFormspreeId</code> to <code>src/config/site.ts</code> to activate this
-          form.
+          Add a <code>formEndpoint</code> to <code>src/config/site.ts</code> to activate this form.
         </p>
       )
     }
@@ -95,13 +92,10 @@ const services = [
       action={formAction || '#'}
       class="flex flex-col gap-5"
       name="estimate-drawer"
+      data-site-form
+      data-thank-you={thankYouUrl}
     >
-      {formAction && <input type="hidden" name="_next" value={thankYouUrl} />}
-      {
-        formAction && (
-          <input type="hidden" name="_subject" value={`Free estimate request — ${site.name}`} />
-        )
-      }
+      {formAction && <input type="hidden" name="form_type" value="drawer" />}
       <!-- Honeypot spam prevention -->
       <div class="absolute left-[-9999px]" aria-hidden="true">
         <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
