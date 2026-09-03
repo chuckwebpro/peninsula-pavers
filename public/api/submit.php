@@ -68,16 +68,19 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 }
 
 $services = [];
-if (isset($_POST['services'])) {
+if (isset($_POST['services']) && is_array($_POST['services'])) {
     $rawServices = $_POST['services'];
-    if (!is_array($rawServices)) {
-        $rawServices = [$rawServices];
-    }
-    foreach ($rawServices as $item) {
-        $item = trim((string) $item);
-        if ($item !== '') {
-            $services[] = $item;
-        }
+} elseif (isset($_POST['services'])) {
+    // Legacy submissions with name="services" (no []) — PHP keeps only the last value.
+    $rawServices = [$_POST['services']];
+} else {
+    $rawServices = [];
+}
+
+foreach ($rawServices as $item) {
+    $item = trim((string) $item);
+    if ($item !== '') {
+        $services[] = $item;
     }
 }
 
