@@ -180,7 +180,7 @@ export const site: SiteConfig = {
 
   analytics: {
     ga4: '',
-    gtm: '',
+    gtm: 'GTM-K5J2BDXK',
     metaPixel: '',
     bingUet: '',
     clarity: '',
