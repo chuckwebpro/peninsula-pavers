@@ -137,6 +137,8 @@ try {
         $autoreplyTemplate = resolveTemplateForForm($config, $formType, 'autoreply');
         $autoreplyHtml = renderTemplate($autoreplyTemplate, [
             'name' => escapeHtml($name),
+            'site_name' => $templateVars['site_name'],
+            'site_url' => $templateVars['site_url'],
         ]);
 
         sendMail(
